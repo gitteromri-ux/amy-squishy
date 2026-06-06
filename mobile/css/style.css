@@ -1040,3 +1040,23 @@ img{ image-rendering:auto; -webkit-backface-visibility:hidden; backface-visibili
 
 /* --- Headings: a touch crisper rendering --- */
 .sec-head h2,.hero h1{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+
+/* ---------- Owner band: REAL Amy portrait photo card ---------- */
+.owner-photo--real{position:relative;display:flex;justify-content:center;justify-self:center;width:100%}
+.owner-photo--real .owner-real{
+  width:100%;max-width:230px;height:auto;display:block;
+  border-radius:22px;object-fit:cover;
+  border:5px solid #fff;
+  box-shadow:0 26px 54px -22px rgba(232,136,158,.55), 0 8px 22px -12px rgba(26,21,24,.25);
+}
+.owner-photo--real .sig{
+  position:absolute;bottom:-14px;right:-8px;
+  background:#fff;border-radius:var(--r-pill);padding:9px 18px;
+  box-shadow:var(--shadow-md);border:1px solid var(--line);
+  font-family:var(--font-script);font-weight:600;color:var(--pink-deep);
+  font-size:.95rem;white-space:nowrap;
+}
+@media(max-width:900px){
+  .owner-photo--real .owner-real{max-width:200px}
+  .owner-photo--real .sig{position:static;display:inline-block;margin-top:14px;right:auto;bottom:auto}
+}
