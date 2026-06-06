@@ -371,7 +371,7 @@ h1{font-weight:800}
 .filters-toggle{display:none}
 @media(max-width:900px){
   .shop-layout{grid-template-columns:1fr}
-  .filters{position:fixed;inset:0;z-index:200;border-radius:0;transform:translateX(-100%);transition:transform .35s var(--ease);max-width:300px;overflow-y:auto}
+  .filters{position:fixed;top:0;right:0;bottom:0;left:auto;width:300px;max-width:88vw;z-index:200;border-radius:0;transform:translateX(110%);transition:transform .35s var(--ease);overflow-y:auto;box-shadow:-12px 0 40px -16px rgba(0,0,0,.35)}
   .filters.open{transform:none}
   .filters-toggle{display:inline-flex;align-items:center;gap:8px}
 }
