@@ -802,3 +802,27 @@ h1{font-weight:800}
   .cat-dark .cat-card .cnt{ font-size:.72rem; white-space:nowrap; }
   .cat-dark .cat-card .cc-arrow{ display:none; }
 }
+
+/* === MOBILE BATCH FIX (imgs/dog/newsletter) === */
+@media(max-width:600px){
+  /* 1) Product images BIGGER inside the squares */
+  .prod-media{ aspect-ratio:1/1; }
+  .prod-media img{ inset:2% !important; width:96% !important; height:96% !important; }
+  .prod-media .sq{ font-size:4.4rem; }
+
+  /* 2) Promo dog must NOT cover text: move it to its own row below the copy */
+  .promo-strip{ padding:22px 0 12px; }
+  .promo-strip .container{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; }
+  .promo-dog{ position:static !important; transform:none !important;
+    width:130px; max-width:46vw; margin:6px auto 0; left:auto; bottom:auto; }
+
+  /* 3) Newsletter card: never overflow the viewport */
+  .explore-grid{ grid-template-columns:1fr !important; }
+  .nl-card{ grid-column:span 1 !important; width:100%; max-width:100%; box-sizing:border-box;
+    padding:24px 18px !important; border-radius:20px; flex-direction:column; align-items:stretch; text-align:start; }
+  .nl-card .nl-copy{ min-width:0; width:100%; }
+  .nl-card .nl-copy h3{ font-size:1.25rem; line-height:1.25; }
+  .nl-form{ min-width:0; width:100%; flex-direction:column; }
+  .nl-form input{ min-width:0; width:100%; box-sizing:border-box; }
+  .nl-form .btn{ width:100%; }
+}
