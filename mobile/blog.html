@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260606b">
+  <link rel="stylesheet" href="css/style.css?v=20260606c">
   <style>
     /* ---- Blog-specific styles ---- */
     .blog-hero {
@@ -101,7 +101,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 85% 75% at 50% 18%, rgba(255,255,255,.5), transparent 62%);
+      background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, transparent 32%, transparent 70%, rgba(0,0,0,.12) 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -297,7 +297,7 @@
       .featured-body { padding: 28px 24px; }
     }
   </style>
-<link rel="stylesheet" href="css/mobile.css?v=20260606b">
+<link rel="stylesheet" href="css/mobile.css?v=20260606c">
 <meta name="theme-color" content="#E8889E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -323,9 +323,8 @@
 
     <!-- Featured Article -->
     <a href="post1.html" class="featured-card reveal" style="display:grid">
-      <div class="featured-cover grad-1">
+      <div class="featured-cover grad-1" style="background-image:url('../assets/img/blog1.png');background-size:cover;background-position:center;">
         <span class="cat-tag" style="background:var(--ink);color:#fff;">🎓 מדריך</span>
-        <span class="cover-ico">🫧</span>
       </div>
       <div class="featured-body">
         <span class="cat-tag" style="background:var(--pink-tint);color:var(--pink-deep);">מדריך למתחילים</span>
@@ -347,9 +346,8 @@
 
       <!-- Card 2 -->
       <a href="post2.html" class="article-card reveal">
-        <div class="article-cover grad-2">
+        <div class="article-cover grad-2" style="background-image:url('../assets/img/blog2.png');background-size:cover;background-position:center;">
           <span class="cat-tag" style="background:var(--ink);color:#fff;">📋 מדריך</span>
-          <span class="cover-ico">🎯</span>
         </div>
         <div class="article-body">
           <h3>15 קטגוריות הסקווישי — איך לבחור את המתאים לכם</h3>
@@ -365,9 +363,8 @@
 
       <!-- Card 3 -->
       <a href="post3.html" class="article-card reveal">
-        <div class="article-cover grad-3">
+        <div class="article-cover grad-3" style="background-image:url('../assets/img/blog3.png');background-size:cover;background-position:center;">
           <span class="cat-tag" style="background:var(--ink);color:#fff;">🌟 טרנד</span>
-          <span class="cover-ico">🫧</span>
         </div>
         <div class="article-body">
           <h3>סקווישי נידו: למה כולם מכורים?</h3>
@@ -383,9 +380,8 @@
 
       <!-- Card 4 -->
       <a href="post4.html" class="article-card reveal">
-        <div class="article-cover grad-4">
+        <div class="article-cover grad-4" style="background-image:url('../assets/img/blog4.png');background-size:cover;background-position:center;">
           <span class="cat-tag" style="background:var(--ink);color:#fff;">🧠 מדע</span>
-          <span class="cover-ico">🧘</span>
         </div>
         <div class="article-body">
           <h3>סקווישי להרגעת חרדה ומתח — מה אומר המדע</h3>
@@ -401,9 +397,8 @@
 
       <!-- Card 5 -->
       <a href="post5.html" class="article-card reveal">
-        <div class="article-cover grad-5">
+        <div class="article-cover grad-5" style="background-image:url('../assets/img/blog5.png');background-size:cover;background-position:center;">
           <span class="cat-tag" style="background:var(--ink);color:#fff;">🛠 טיפול</span>
-          <span class="cover-ico">✨</span>
         </div>
         <div class="article-body">
           <h3>איך לשמור על הסקווישי שלכם שיחזיק שנים</h3>
@@ -419,9 +414,8 @@
 
       <!-- Card 6 -->
       <a href="post6.html" class="article-card reveal">
-        <div class="article-cover grad-6">
+        <div class="article-cover grad-6" style="background-image:url('../assets/img/blog6.png');background-size:cover;background-position:center;">
           <span class="cat-tag" style="background:var(--ink);color:#fff;">🎁 מתנות</span>
-          <span class="cover-ico">🎀</span>
         </div>
         <div class="article-body">
           <h3>מתנה מושלמת: סקווישי לכל גיל ולכל אירוע</h3>
@@ -454,9 +448,9 @@
 
 <div id="footer-mount"></div>
 <div id="wa-mount"></div>
-<script src="js/products.js?v=20260606b"></script>
-<script src="js/app.js?v=20260606b"></script>
-<script src="js/whatsapp.js?v=20260606b"></script>
+<script src="js/products.js?v=20260606c"></script>
+<script src="js/app.js?v=20260606c"></script>
+<script src="js/whatsapp.js?v=20260606c"></script>
 <script>
   AmyApp.mountChrome("blog");
   AmyApp.initReveal();
