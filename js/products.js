@@ -5,7 +5,7 @@
 
 // 15 הקטגוריות הרשמיות
 const CATEGORIES = [
-  { id: "needoh",   name: "נידו (Nee-Doh)",        emoji: "🫧", desc: "סקווישי הנידו הקלאסיים — לחיצה, מתיחה ומעיכה אינסופית" },
+  { id: "needoh",   name: "נידו",                    emoji: "🫧", desc: "סקווישי הנידו הקלאסיים — לחיצה, מתיחה ומעיכה אינסופית" },
   { id: "eyepop",   name: "מוציא עיניים",          emoji: "👀", desc: "לחיצה והעיניים קופצות — האהובים על הילדים" },
   { id: "sand",     name: "סקווישי חול",           emoji: "🏖️", desc: "מרקם חולי קינטי ייחודי, נמס בין האצבעות" },
   { id: "water",    name: "סקווישי מים",           emoji: "💧", desc: "מרקם מימי קריר ומרגיע, ספלאט מושלם" },
@@ -164,8 +164,8 @@ const PRODUCTS = [
   P("ביצת נידו קטנה", "mini", 6.9, { emoji: "🥚",  source: "Pinky Fidgets" }),
 
   // ---------- ענק ופרימיום ----------
-  P("נידו בוטן XXL פרימיום", "giant", 59.9, { emoji: "🥜",  badge: "פרימיום", source: "Gilgi" }),
-  P("Mystery Box XXL מוגזמת", "giant", 100.0, { emoji: "🎁",  badge: "בלעדי", source: "Pinky Fidgets" }),
+  P("נידו בוטן ענק פרימיום", "giant", 59.9, { emoji: "🥜",  badge: "פרימיום", source: "Gilgi" }),
+  P("קופסת הפתעה ענקית", "giant", 100.0, { emoji: "🎁",  badge: "בלעדי", source: "Pinky Fidgets" }),
   P("שקית הפתעות גדולה", "giant", 60.0, { emoji: "🎁",  badge: "בלעדי", source: "Gilgi" }),
 ];
 

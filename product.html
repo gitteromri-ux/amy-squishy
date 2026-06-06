@@ -7,7 +7,7 @@
   <meta name="description" content="סקווישי איכותי — לחיצה, הרגעת מתחים, מתנה מושלמת. איימי סקווישי — המגוון הגדול בישראל.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* ---- Product page layout ---- */
@@ -66,10 +66,13 @@
     }
     .gallery-main img.product-img {
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      inset: 7%;
+      width: 86%;
+      height: 86%;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.16));
+      transition: transform .55s var(--ease);
+      user-select: none;
     }
 
     /* Thumbnail row — identical size/zoom/proportions */
@@ -109,7 +112,15 @@
       filter: drop-shadow(0 4px 8px rgba(0,0,0,.12));
       transition: transform .4s var(--ease);
     }
-    .gallery-thumb:hover .thumb-emoji { transform: scale(1.15); }
+    .gallery-thumb img.thumb-img {
+      width: 78%;
+      height: 64%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,.12));
+      transition: transform .4s var(--ease);
+    }
+    .gallery-thumb:hover .thumb-emoji,
+    .gallery-thumb:hover img.thumb-img { transform: scale(1.12); }
     .gallery-thumb .thumb-label {
       font-size: .62rem;
       font-weight: 700;
@@ -464,8 +475,10 @@
       <button class="gallery-thumb${i === 0 ? " active" : ""}"
               data-angle="${i}"
               aria-label="תמונה: ${label}"
-              onclick="switchAngle(${i}, '${p.emoji||cat.emoji}')">
-        <span class="thumb-emoji" style="transform:${ANGLE_TRANSFORMS[i]}">${p.emoji||cat.emoji}</span>
+              onclick="switchAngle(${i})">
+        <img class="thumb-img" src="${p.img}" alt="${p.name} — ${label}" loading="lazy" style="transform:${ANGLE_TRANSFORMS[i]}"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="thumb-emoji" style="display:none;transform:${ANGLE_TRANSFORMS[i]}">${p.emoji||cat.emoji}</span>
         <span class="thumb-label">${label}</span>
       </button>`).join("");
 
@@ -514,7 +527,9 @@
         <!-- Gallery column -->
         <div class="gallery-col">
           <div class="gallery-main" id="galleryMain" aria-label="תמונה ראשית">
-            <span class="main-emoji" id="mainEmoji">${p.emoji||cat.emoji}</span>
+            <img class="product-img" id="mainImg" src="${p.img}" alt="${p.name}"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span class="main-emoji" id="mainEmoji" style="display:none">${p.emoji||cat.emoji}</span>
           </div>
           <div class="gallery-thumbs" id="galleryThumbs">
             ${thumbsHTML}
@@ -664,11 +679,11 @@
   }
 
   /* ---- Gallery angle switching ---- */
-  function switchAngle(idx, emoji) {
+  function switchAngle(idx) {
+    const mainImg = document.getElementById("mainImg");
+    if (mainImg) mainImg.style.transform = ANGLE_TRANSFORMS[idx];
     const mainEmoji = document.getElementById("mainEmoji");
-    if (mainEmoji) {
-      mainEmoji.style.transform = ANGLE_TRANSFORMS[idx];
-    }
+    if (mainEmoji) mainEmoji.style.transform = ANGLE_TRANSFORMS[idx];
     document.querySelectorAll(".gallery-thumb").forEach((t, i) => {
       t.classList.toggle("active", i === idx);
     });

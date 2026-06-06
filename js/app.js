@@ -38,7 +38,8 @@
       <a href="product.html?id=${p.id}" class="prod-media" aria-label="${p.name}">
         ${p.badge?`<span class="badge">${p.badge}</span>`:""}
         ${fast?`<span class="badge fast">⚡ 4 ימים</span>`:""}
-        <span class="sq">${p.emoji||cat.emoji}</span>
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="sq" style="display:none">${p.emoji||cat.emoji}</span>
       </a>
       <div class="prod-body">
         <span class="prod-cat">${cat.emoji} ${cat.name.split(" ")[0]}</span>
