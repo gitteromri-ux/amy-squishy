@@ -72,11 +72,11 @@
     return `<div class="announce">🚚 משלוח חינם בקנייה מעל 149 ₪<span class="sep">·</span>⚡ 6 דגמים במשלוח אקספרס<span class="sep">·</span><a href="track.html">מעקב הזמנה ←</a></div>
     <nav class="nav"><div class="container">
       <a class="brand" href="index.html">${LOGO}<span>איימי <b>סקווישי</b></span></a>
-      <form class="nav-search" onsubmit="event.preventDefault();var q=this.q.value.trim();location.href='shop.html'+(q?'?search='+encodeURIComponent(q):'')" role="search">
-        <span class="ico">🔍</span>
-        <input name="q" type="search" placeholder="חפשו סקווישי... נידו, תמנון, אבטיח" aria-label="חיפוש באתר" autocomplete="off">
-      </form>
       <div class="nav-links" id="navLinks">
+        <form class="nav-search" onsubmit="event.preventDefault();var q=this.q.value.trim();location.href='shop.html'+(q?'?search='+encodeURIComponent(q):'')" role="search">
+          <span class="ico">🔍</span>
+          <input name="q" type="search" placeholder="חפשו סקווישי... נידו, תמנון, אבטיח" aria-label="חיפוש באתר" autocomplete="off">
+        </form>
         ${link("index.html","בית","home")}
         ${link("shop.html","חנות","shop")}
         ${link("blog.html","בלוג","blog")}

@@ -16,12 +16,15 @@ body{
   -webkit-tap-highlight-color:rgba(232,136,158,.18);
   overflow-x:hidden;
   padding-bottom:calc(var(--bottom-nav-h) + env(safe-area-inset-bottom));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
 }
 *{ -webkit-overflow-scrolling:touch; }
 img{ max-width:100%; height:auto; }
 
 .container{ padding-left:16px; padding-right:16px; }
-.sec{ padding:38px 0 !important; }
+.sec{ padding:26px 0 !important; }
 h1{ font-size:2rem !important; line-height:1.15 !important; }
 h2{ font-size:1.5rem !important; }
 h3{ font-size:1.2rem !important; }
@@ -48,16 +51,22 @@ h3{ font-size:1.2rem !important; }
 .menu-toggle{ display:flex !important; min-width:var(--touch); min-height:var(--touch); align-items:center; justify-content:center; }
 .nav-actions .cart-btn{ min-width:var(--touch); min-height:var(--touch); }
 
-/* ---------- Hero ---------- */
-.hero{ padding-top:18px !important; }
-.hero .container{ grid-template-columns:1fr !important; text-align:center; gap:18px; }
+/* ---------- Hero מובייל — קומפקטי, ממוקד-מוצר ---------- */
+.hero{ padding:14px 0 22px !important; min-height:auto !important; }
+.hero .container{ grid-template-columns:1fr !important; text-align:center; gap:14px !important; }
 .hero-copy{ order:2; }
-.hero-amy{ order:1; display:block !important; }
-.hero-amy img{ max-height:300px !important; }
-.hero h1{ font-size:2.1rem !important; }
-.hero-stats{ justify-content:center; gap:22px !important; flex-wrap:wrap; }
-.hero-cta{ justify-content:center; flex-direction:column; gap:12px; }
+.hero-collage{ order:1; display:grid !important; grid-template-columns:1fr 1fr; gap:10px; max-width:300px; margin:0 auto; position:relative; }
+.hero-collage .hc{ border-radius:18px; overflow:hidden; background:var(--white); box-shadow:var(--shadow-sm); aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; padding:8px; }
+.hero-collage .hc img{ width:100%; height:100%; object-fit:contain; }
+.hero-collage .owner-chip{ position:absolute; left:50%; bottom:-14px; transform:translateX(-50%); width:56px; height:56px; border-radius:50%; border:3px solid #fff; box-shadow:var(--shadow-md); overflow:hidden; background:#fff; }
+.hero-collage .owner-chip img{ width:100%; height:100%; object-fit:cover; }
+.hero h1{ font-size:1.9rem !important; line-height:1.12 !important; margin-bottom:8px; }
+.hero-copy .lead, .hero p{ font-size:.98rem !important; line-height:1.55 !important; }
+.hero-bg img{ opacity:.22; }
+.hero-trust{ justify-content:center; gap:14px !important; flex-wrap:wrap; font-size:.78rem !important; margin-top:6px; }
+.hero-cta{ justify-content:center; flex-direction:column; gap:10px; margin-top:14px; }
 .hero-cta .btn{ width:100%; }
+.ship-meter{ max-width:100% !important; }
 
 /* ---------- כפתורים — שטח מגע ---------- */
 .btn, .btn-primary, .btn-pink, .btn-ghost, .add-btn{
@@ -80,7 +89,33 @@ h3{ font-size:1.2rem !important; }
   min-height:42px; padding:0 16px; display:inline-flex; align-items:center;
 }
 
-/* ---------- רשת מוצרים — 2 בשורה, אווריריות ---------- */
+/* ---------- קטגוריות בבית — סליידר אופקי ---------- */
+#categories #cat-grid.cat-grid{
+  display:flex !important; flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  overflow-x:auto; gap:12px !important; padding:4px 16px 14px;
+  margin:0 -16px; scroll-snap-type:x mandatory;
+  -ms-overflow-style:none; scrollbar-width:none;
+}
+#categories #cat-grid::-webkit-scrollbar{ display:none; }
+#categories #cat-grid > *{
+  flex:0 0 auto !important; width:120px !important; scroll-snap-align:start;
+}
+
+/* ---------- מוצרים מובחרים בבית — סליידר אופקי ---------- */
+#featured.prod-grid{
+  display:flex !important; flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  overflow-x:auto; gap:14px !important; padding:4px 16px 16px;
+  margin:0 -16px; scroll-snap-type:x mandatory;
+  -ms-overflow-style:none; scrollbar-width:none;
+}
+#featured.prod-grid::-webkit-scrollbar{ display:none; }
+#featured.prod-grid > *{
+  flex:0 0 auto !important; width:172px !important; scroll-snap-align:start;
+}
+
+/* ---------- רשת מוצרים (קטלוג shop) — 2 בשורה ---------- */
 .prod-grid{ grid-template-columns:repeat(2,1fr) !important; gap:14px !important; }
 .cat-grid{ grid-template-columns:repeat(2,1fr) !important; gap:14px !important; }
 .prod-card{ border-radius:18px; overflow:hidden; }
@@ -92,14 +127,6 @@ h3{ font-size:1.2rem !important; }
 .add-btn{ font-size:.9rem !important; padding:10px !important; min-width:var(--touch); min-height:var(--touch); }
 .quick-add{ min-height:38px; }
 
-/* דירוג כוכבים — חייב להופיע ברשת המובייל */
-.prod-rate{
-  display:flex; align-items:center; gap:5px;
-  font-size:.78rem; margin:6px 0 4px;
-}
-.prod-rate .stars{ color:var(--gold); letter-spacing:.5px; font-size:.85rem; line-height:1; white-space:nowrap; }
-.prod-rate b{ color:var(--ink); font-weight:800; }
-.prod-rate .rev{ color:var(--ink-soft); font-size:.7rem; }
 .ship-tag{ font-size:.7rem !important; }
 
 /* ---------- סינון/מיון — שורה אחת ---------- */
@@ -200,27 +227,25 @@ input, select, textarea{ font-size:16px !important; } /* מונע זום ב-iOS 
 }
 .announce .sep{ margin:0 6px !important; }
 
-/* ---------- Nav search — show on mobile, full-width ---------- */
-.nav-search{
-  display:block !important;
-  max-width:none !important;
-  margin:0 8px !important;
-  flex:1;
-  position:relative;
+/* ---------- Nav search — now lives inside the drawer (.nav-links) on mobile ---------- */
+/* top bar stays clean: logo + cart + hamburger only. search lives in drawer. */
+/* search inside the open drawer is visible & full-width */
+.nav-links .nav-search{
+  display:block !important; order:-1;
+  max-width:none !important; margin:0 0 8px !important;
+  width:100%; position:relative;
 }
-.nav-search input{
-  font-size:15px !important; /* prevent iOS zoom (keep < 16px handled by input rule) */
-  padding:10px 40px 10px 12px !important;
+.nav-links .nav-search input{
+  font-size:16px !important;
+  padding:12px 40px 12px 12px !important; width:100%;
 }
 /* Ensure the overall nav fits — allow tighter layout */
 .nav .container{
   gap:8px !important;
   flex-wrap:nowrap;
+  justify-content:space-between !important;
 }
-/* brand text hidden on narrow screens, logo icon stays */
-@media(max-width:400px){
-  .nav .brand span{ display:none; }
-}
+.nav .brand, .nav .logo{ margin-right:auto; }
 
 /* ---------- Hero — min-height compact on mobile ---------- */
 .hero{ min-height:auto !important; padding:22px 0 28px !important; }
