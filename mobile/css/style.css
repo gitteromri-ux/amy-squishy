@@ -423,10 +423,24 @@ h1{font-weight:800}
 }
 .cat-dark .sec-head p{ color:rgba(20,50,72,.62); }
 
-/* compact, tighter grid → much shorter fold */
+/* compact, tighter grid → exactly 2 rows for 15 categories (8 + 7) */
 .cat-dark .cat-grid{
-  grid-template-columns:repeat(6,1fr) !important;
-  gap:12px !important;
+  grid-template-columns:repeat(8,1fr) !important;
+  gap:10px !important;
+}
+/* At 8 cols the cards are narrow → stack vertically so full Hebrew names fit (no truncation). */
+@media(min-width:1101px){
+  .cat-dark .cat-card{
+    flex-direction:column !important; align-items:center !important; text-align:center !important;
+    gap:8px !important; padding:14px 8px !important; justify-content:flex-start;
+  }
+  .cat-dark .cat-card .emoji{ width:40px; height:40px; flex:0 0 40px; font-size:1.5rem; }
+  .cat-dark .cat-card .cc-meta{ align-items:center; text-align:center; width:100%; }
+  .cat-dark .cat-card h3{
+    -webkit-line-clamp:unset !important; display:block !important; overflow:visible !important;
+    font-size:.84rem; word-break:break-word; overflow-wrap:anywhere;
+  }
+  .cat-dark .cat-card .cc-arrow{ display:none; }
 }
 
 /* 3D glass cards */
