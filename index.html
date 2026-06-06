@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+<script>
+/* ONE-LINK device routing: phones -> mobile layout, desktop stays here. Runs before render, no flash. */
+(function(){try{
+  var q=location.search||"";
+  if(/[?&]desktop=1/.test(q))return; /* manual desktop override */
+  var ua=navigator.userAgent||"";
+  var isPhone=/Android|iPhone|iPod|Windows Phone|BlackBerry|IEMobile|Opera Mini/i.test(ua)||(/iPad|Macintosh/.test(ua)&&navigator.maxTouchPoints>1&&Math.min(screen.width,screen.height)<=820);
+  var narrow=Math.min(window.innerWidth||screen.width,screen.width)<=820;
+  if(isPhone||narrow){location.replace("mobile/index.html?fresh="+Date.now()+location.hash);}
+}catch(e){}})();
+</script>
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
