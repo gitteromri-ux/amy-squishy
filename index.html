@@ -143,13 +143,14 @@
   <div class="ti"><span>🎁</span><div><b>אריזת מתנה</b><small>בכל הזמנה</small></div></div>
 </div></div>
 
-<!-- ============ CATEGORIES ============ -->
-<section class="sec" id="categories">
+<!-- ============ CATEGORIES (premium dark fold) ============ -->
+<section class="sec cat-dark" id="categories">
+  <div class="cat-dark-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="sec-head">
-      <span class="eyebrow">15 קטגוריות רשמיות</span>
+      <span class="eyebrow">17 קטגוריות רשמיות</span>
       <h2>כל עולם הסקווישי <span class="script">במקום אחד</span></h2>
-      <p>מיינו לפי הקטגוריה האהובה עליכם — מהקלאסיקות ועד הדגמים הנדירים ביותר.</p>
+      <p>בחרו קטגוריה וצללו ישר פנימה — 17 עולמות, מהקלאסיקות ועד הדגמים הנדירים ביותר.</p>
     </div>
     <div class="cat-grid" id="cat-grid"></div>
   </div>
@@ -254,11 +255,21 @@
 <script src="js/whatsapp.js"></script>
 <script>
   AmyApp.mountChrome("home");
-  // categories
+  // categories — premium dark 3D cards with per-category accent glow
+  const CAT_ACCENT = {
+    needoh:"#7cc5ff", eyepop:"#ffd166", sand:"#f6a96b", water:"#5ec8e8",
+    butter:"#ffd45e", food:"#ff8a5b", fruit:"#ff6f91", animals:"#9b8cff",
+    chars:"#ffcf4d", sticky:"#ff5e8a", orbiz:"#4d8dff", ice:"#7fe3ff",
+    dessert:"#ffb3c7", kawaii:"#ff9ecf", popup:"#b8b8c8", mini:"#9be8c4", giant:"#7ad0ff"
+  };
   document.getElementById("cat-grid").innerHTML = AMY.CATEGORIES.map(c=>{
     const n = AMY.productsByCat(c.id).length;
-    return `<a href="shop.html#${c.id}" class="cat-card reveal">
-      <div class="emoji">${c.emoji}</div><h3>${c.name}</h3><div class="cnt">${n} דגמים</div></a>`;
+    const ac = CAT_ACCENT[c.id] || "#ff6f91";
+    return `<a href="shop.html#${c.id}" class="cat-card reveal" style="--ac:${ac}">
+      <span class="cc-glow" aria-hidden="true"></span>
+      <span class="emoji">${c.emoji}</span>
+      <span class="cc-meta"><h3>${c.name}</h3><span class="cnt">${n} דגמים</span></span>
+      <span class="cc-arrow" aria-hidden="true">←</span></a>`;
   }).join("");
   // featured — Amy's curated picks: badged + fast models (no fake "best seller" framing)
   const seen = new Set();

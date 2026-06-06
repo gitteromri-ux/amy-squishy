@@ -14,7 +14,9 @@ const CATEGORIES = [
   { id: "fruit",    name: "פירות וירקות",          emoji: "🍉", desc: "אבטיח, מנגו, תות, גזר — קייצי ומרענן" },
   { id: "animals",  name: "בעלי חיים",             emoji: "🐙", desc: "קפיברה, תמנון, פנדה, ארנב וחברים נוספים" },
   { id: "chars",    name: "דמויות וגיבורים",       emoji: "⭐", desc: "סטיץ', פטריק, אנגרי בירדס ועוד דמויות אהובות" },
-  { id: "sticky",   name: "דביק / הזרקה",          emoji: "🎯", desc: "ספלאט, אורביז והטחה לקיר — כיף שלא נגמר" },
+  { id: "sticky",   name: "דביק / הזרקה",          emoji: "🎯", desc: "ספלאט והטחה לקיר — כיף שלא נגמר" },
+  { id: "orbiz",    name: "אורביז",                  emoji: "🔵", desc: "כדורי ג'ל סופגים צבעוניים — מרקם מרגיע ומספק למגע" },
+  { id: "ice",      name: "סקווישי קרח",           emoji: "❄️", desc: "מרקם קריר ומנצנץ — תחושת קרח מרעננת" },
   { id: "dessert",  name: "ארטיק וקינוחים",        emoji: "🍦", desc: "ארטיקים, גלידות ושוקולד מתוקים" },
   { id: "kawaii",   name: "קוואי",                 emoji: "🌸", desc: "עיצובים מתוקים וחמודים בסטייל יפני" },
   { id: "popup",    name: "פופ-אפ ופידג'ט",        emoji: "🔘", desc: "פופ-אפ, קליקרים וצעצועי פידג'ט ממכרים" },
@@ -44,7 +46,7 @@ function P(name, cat, price, opts = {}) {
     source: opts.source || "",
     desc: opts.desc || "",
     emoji: opts.emoji || "🫧",         // אימוג'י ייחודי לכל דגם
-    img: `../assets/products/${id}.png`,  // תמונה ראשית אחידה
+    img: `assets/products/${id}.png`,  // תמונה ראשית אחידה
   };
 }
 
@@ -84,7 +86,7 @@ const PRODUCTS = [
   P("אנגרי בירדס מים", "water", 7.0, { emoji: "🐦",  source: "Pinky Fidgets" }),
   P("עכבר מים", "water", 7.0, { emoji: "🐭",  source: "Pinky Fidgets" }),
   P("תפוז מים", "water", 7.0, { emoji: "🍊",  source: "Pinky Fidgets" }),
-  P("דאמפלינג קרח-מים מנצנץ", "water", 28.9, { emoji: "🥟",  badge: "רב מכר", source: "Gilgi" }),
+  P("דאמפלינג קרח-מים מנצנץ", "ice", 28.9, { emoji: "🥟",  badge: "רב מכר", source: "Gilgi" }),
   P("ענב מים", "water", 7.0, { emoji: "🍇", }),
 
   // ---------- ספוג / חמאה ----------
@@ -118,7 +120,7 @@ const PRODUCTS = [
   P("נידו מנגו פרימיום", "fruit", 29.9, { emoji: "🥭",  badge: "פרימיום", source: "Gilgi" }),
   P("נידו גזר יפני צהוב ענקי", "fruit", 45.0, { emoji: "🥕",  badge: "ענק", source: "Gilgi" }),
   P("מנגו לחיץ", "fruit", 15.0, { emoji: "🥭",  source: "Sindya" }),
-  P("אבטיח גדול אורביז", "fruit", 15.0, { emoji: "🍉",  source: "Sindya" }),
+  P("אבטיח גדול אורביז", "orbiz", 15.0, { emoji: "🍉",  source: "Sindya" }),
   P("נידו גזר ענק מחליף צבע", "fruit", 45.0, { emoji: "🥕",  badge: "ענק", source: "Sindya" }),
   P("אבטיח ענק נידו", "fruit", 45.0, { emoji: "🍉",  badge: "ענק", source: "Sindya" }),
   P("זוג לימונים פרצופים", "fruit", 15.0, { emoji: "🍋",  source: "Sindya" }),
@@ -142,7 +144,7 @@ const PRODUCTS = [
 
   // ---------- דביק / הזרקה ----------
   P("פופ אפ תות דובי ורוד", "sticky", 12.9, { emoji: "🍓",  source: "Pinky Fidgets" }),
-  P("כדור אורביז גדול דביק", "sticky", 20.0, { emoji: "🔵",  source: "Sindya" }),
+  P("כדור אורביז גדול דביק", "orbiz", 20.0, { emoji: "🔵",  source: "Sindya" }),
   P("כדור ספלאט גלגל עין", "sticky", 15.0, { emoji: "💥",  source: "Sindya" }),
 
   // ---------- ארטיק וקינוחים ----------
