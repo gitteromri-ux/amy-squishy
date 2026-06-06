@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>מתנה מושלמת: סקווישי לכל גיל ולכל אירוע · איימי סקווישי</title>
+  <meta name="description" content="מדריך מתנות סקווישי לכל גיל ולכל אירוע — יומולדת, חנוכת בית, סיום שנה ועוד.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .post-hero { min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 0 60px; }
+    .post-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 760px; padding: 0 24px; }
+    .post-hero .cat-tag { display: inline-block; padding: 7px 18px; border-radius: 999px; font-size: .78rem; font-weight: 800; letter-spacing: .05em; margin-bottom: 20px; }
+    .post-hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 20px; color: var(--ink); }
+    .post-hero .post-meta { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: var(--t-sm); color: var(--ink-soft); flex-wrap: wrap; }
+    .post-hero .post-meta .dot { opacity: .4; }
+    .post-hero-emoji { position: absolute; font-size: 14rem; opacity: .08; pointer-events: none; user-select: none; z-index: 1; }
+    .post-hero-emoji.e1 { top: -30px; right: -20px; }
+    .post-hero-emoji.e2 { bottom: -40px; left: -20px; }
+    .grad-6 { background: linear-gradient(135deg, #ffe8d6, #ffb380, #fff3ed); }
+    .post-body { max-width: 720px; margin: 0 auto; padding: 64px 24px 80px; }
+    .post-body h2 { font-size: var(--t-xl); margin: 48px 0 16px; color: var(--ink); }
+    .post-body h3 { font-size: var(--t-lg); margin: 36px 0 12px; color: var(--ink); }
+    .post-body p { font-size: 1.08rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 20px; }
+    .post-body ul, .post-body ol { margin: 16px 0 24px 0; padding-right: 24px; }
+    .post-body li { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); margin-bottom: 8px; }
+    .post-body li::marker { color: var(--pink-deep); font-weight: 700; }
+    .pull-quote { border-right: 5px solid var(--pink-deep); background: var(--pink-tint); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 28px 32px; margin: 36px 0; }
+    .pull-quote p { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.55; margin: 0; }
+    .pull-quote cite { display: block; font-size: var(--t-sm); color: var(--pink-deep); font-style: normal; margin-top: 10px; font-weight: 600; }
+    .post-products { background: var(--pink-tint); border-radius: var(--r-lg); padding: 40px; margin: 48px 0; }
+    .post-products h3 { font-size: var(--t-xl); margin: 0 0 8px; color: var(--ink); }
+    .post-products .sub { color: var(--ink-soft); font-size: var(--t-sm); margin-bottom: 28px; }
+    .post-products .prod-grid { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 600px) { .post-products .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+    .related-section { border-top: 1px solid var(--line); padding-top: 56px; margin-top: 64px; }
+    .related-section h3 { font-size: var(--t-xl); margin-bottom: 28px; color: var(--ink); }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .related-card { display: flex; gap: 18px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; transition: .3s var(--ease); }
+    .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); border-color: var(--pink); }
+    .related-card .rc-emoji { width: 64px; height: 64px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; flex-shrink: 0; }
+    .related-card .rc-text h4 { font-size: var(--t-base); margin-bottom: 5px; line-height: 1.3; }
+    .related-card .rc-text span { font-size: var(--t-xs); color: var(--pink-deep); font-weight: 700; }
+    @media (max-width: 560px) { .related-grid { grid-template-columns: 1fr; } }
+
+    /* Gift guide cards */
+    .gift-guide { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 28px 0; }
+    .gift-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      padding: 22px 24px;
+      transition: .3s var(--ease);
+    }
+    .gift-row:hover { border-color: var(--pink); box-shadow: var(--shadow-sm); }
+    .gift-row .age-badge {
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--r-pill);
+      padding: 8px 16px;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: var(--t-sm);
+      white-space: nowrap;
+      text-align: center;
+    }
+    .gift-row .gift-info h4 { font-size: var(--t-base); margin-bottom: 5px; }
+    .gift-row .gift-info p { font-size: var(--t-sm); color: var(--ink-soft); margin: 0; line-height: 1.5; }
+    .gift-row .gift-price { font-family: var(--font-display); font-weight: 900; color: var(--pink-deep); font-size: 1.1rem; white-space: nowrap; }
+    @media (max-width: 560px) {
+      .gift-row { grid-template-columns: 1fr; }
+      .gift-row .age-badge { width: fit-content; }
+    }
+
+    /* Occasion cards */
+    .occasion-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0; }
+    .occasion-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 22px; text-align: center; transition: .3s; }
+    .occasion-card:hover { border-color: var(--pink); background: var(--pink-tint); }
+    .occasion-card .oe { font-size: 2.2rem; margin-bottom: 10px; }
+    .occasion-card h4 { font-size: var(--t-sm); margin-bottom: 6px; font-weight: 800; }
+    .occasion-card p { font-size: var(--t-xs); color: var(--ink-soft); line-height: 1.5; margin: 0; }
+    @media (max-width: 500px) { .occasion-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<section class="post-hero grad-6">
+  <div class="post-hero-emoji e1">🎁</div>
+  <div class="post-hero-emoji e2">🎀</div>
+  <div class="post-hero-inner">
+    <span class="cat-tag" style="background:var(--ink);color:#fff;">🎁 מדריך מתנות</span>
+    <h1>מתנה מושלמת:<br>סקווישי לכל גיל ולכל אירוע</h1>
+    <div class="post-meta">
+      <span>✍️ מאת צוות איימי</span>
+      <span class="dot">·</span>
+      <span>📅 מרץ 2025</span>
+      <span class="dot">·</span>
+      <span>⏱ קריאה של 4 דקות</span>
+    </div>
+  </div>
+</section>
+
+<article class="post-body">
+
+  <p>מחפשים מתנה שתמיד פוגעת בול? שאין ילד שלא יתרגש ממנה? שמגיעה בכל תקציב ולכל אירוע? ברוכים הבאים לעולם הסקווישי כמתנה — ומדריך הבחירה המלא שלנו.</p>
+
+  <h2>למה סקווישי הוא מתנה גאונית?</h2>
+  <p>תחשבו על זה: מתנה שמרגיעה, מצחיקה, ניתנת לאיסוף, לא שוברת את הכיס ומגיעה בצורות אינסופיות. אין סיכוי שמישהו כבר קיבל אותה בדיוק (הצורות והגדלים מגוונים מדי), ואין מישהו שלא יאהב אותה. סקווישי הוא מה שנקרא "safe gift" — מתנה שתמיד עובדת.</p>
+
+  <div class="pull-quote reveal">
+    <p>"קניתי נידו ענקי ליומולדת של בת 7 של השכנה. שבוע אחר כך, האמא שלה ביקשה ממני את הקישור לחנות. לכולם."</p>
+    <cite>— דנה, לקוחה מראשון לציון</cite>
+  </div>
+
+  <h2>מדריך גיל לבחירה נכונה</h2>
+
+  <div class="gift-guide">
+    <div class="gift-row reveal">
+      <div class="age-badge">גיל 3–5</div>
+      <div class="gift-info">
+        <h4>סקווישי גדול ובטוח</h4>
+        <p>דאמפלינג ענקי, נידו קפיברה או תמנון. גדלים גדולים — אין חלקים קטנים. קל לאחוז ולא נסדק.</p>
+      </div>
+      <div class="gift-price">20–50 ₪</div>
+    </div>
+    <div class="gift-row reveal">
+      <div class="age-badge">גיל 6–9</div>
+      <div class="gift-info">
+        <h4>מוציא עיניים, דמויות, ספלאט</h4>
+        <p>הגיל שאוהב הכל — ויזואלי, מצחיק, דרמטי. מוציא עיניים, ספלאט ודמויות אהובות כמו סטיץ' ופטריק.</p>
+      </div>
+      <div class="gift-price">15–30 ₪</div>
+    </div>
+    <div class="gift-row reveal">
+      <div class="age-badge">גיל 10–14</div>
+      <div class="gift-info">
+        <h4>נידו פרימיום, Mystery Box, אוסף מיני</h4>
+        <p>גיל האספנות. קופסת הפתעות, אוסף מיני ונידו פרימיום — רמת ציפייה גבוהה שמתמלאת בגדול.</p>
+      </div>
+      <div class="gift-price">30–100 ₪</div>
+    </div>
+    <div class="gift-row reveal">
+      <div class="age-badge">מבוגרים</div>
+      <div class="gift-info">
+        <h4>נידו אסתטי, חמאה ענקית, Mystery Box</h4>
+        <p>כן, מבוגרים אוהבים סקווישי — במיוחד אם יש להם שולחן עבודה. נידו אסתטי שישב לצד המחשב.</p>
+      </div>
+      <div class="gift-price">25–100 ₪</div>
+    </div>
+  </div>
+
+  <h2>מתנה לפי אירוע</h2>
+
+  <div class="occasion-grid">
+    <div class="occasion-card reveal">
+      <div class="oe">🎂</div>
+      <h4>יומולדת</h4>
+      <p>נידו ענקי לפי תחביב — קפיברה, כריש, תמנון. יכול לשמש גם כמרכז שולחן.</p>
+    </div>
+    <div class="occasion-card reveal">
+      <div class="oe">🎓</div>
+      <h4>סיום שנה / תעודה</h4>
+      <p>Mystery Box או ערכת מיני — מתנה שאומרת "עשית מדהים, תהנה!"</p>
+    </div>
+    <div class="occasion-card reveal">
+      <div class="oe">🏠</div>
+      <h4>חנוכת בית</h4>
+      <p>חמאה ענקית אסתטית לחדר הילדים — ינצח.</p>
+    </div>
+    <div class="occasion-card reveal">
+      <div class="oe">💼</div>
+      <h4>מתנה לעובד/עמית</h4>
+      <p>נידו קטן על השולחן — גם מצחיק גם מרגיע. ייזכרו לטוב.</p>
+    </div>
+    <div class="occasion-card reveal">
+      <div class="oe">🎄</div>
+      <h4>חגים ופורים</h4>
+      <p>בגד מחופשים עם נידו תואם? או פשוט ערכת סקווישי בצבעי החג.</p>
+    </div>
+    <div class="occasion-card reveal">
+      <div class="oe">💕</div>
+      <h4>סתם כי אוהבים</h4>
+      <p>הסיבה הכי טובה. נידו בצורה שאוהב/ת, עם מסר קטן — יצחיק ויגע בלב.</p>
+    </div>
+  </div>
+
+  <h2>טיפים לעטיפה ויצירת רושם</h2>
+  <p>הסקווישי עצמו כבר מדהים — אבל עטיפה קטנה עושה את ההבדל בין מתנה לחוויה:</p>
+  <ul>
+    <li>שימו בשקית קראפט עם ריבון — פשוט ומרגש</li>
+    <li>הדפיסו קלף קטן עם ציטוט מצחיק על סקווישי</li>
+    <li>לאיסוף? צרו "קופסת אוצרות" עם כמה מינים שונים</li>
+    <li>Mystery Box — אל תפרטו מה בפנים! ההפתעה שווה כסף</li>
+    <li>הוסיפו הוראות טיפול קטנות — מגע אישי שאנשים מעריכים</li>
+  </ul>
+
+  <div class="pull-quote reveal" style="border-color:#ff7a3d;background:#fff3ed;">
+    <p>"המחיר הנמוך הוא חלק מהקסם. אפשר לתת מתנה אמיתית שנראית גדולה — ולא לשבור את הכיס."</p>
+    <cite>— צוות איימי סקווישי</cite>
+  </div>
+
+  <h2>מה לגבי משלוחים לאירועים?</h2>
+  <p>הזמנתם לאירוע מחר? יש לנו משלוח מהיר של 4 ימי עסקים על מוצרים נבחרים — ואפשר לסמן "מתנה" בהזמנה כדי שנעטוף יפה. לאירועים גדולים (מסיבות יומולדת) — צרו קשר עם הצוות שלנו בוואטסאפ ונסדר חבילה עסקית.</p>
+
+  <!-- Products -->
+  <div class="post-products reveal">
+    <h3>🛍️ המתנות שהכי מרשימות אצלנו</h3>
+    <p class="sub">בחרנו את שלושת המתנות שהכי עורכות ווואו אצל הנמענים</p>
+    <div class="prod-grid" id="prods-post6"></div>
+  </div>
+
+  <div class="related-section reveal">
+    <h3>כתבות נוספות שיעניינו אתכם</h3>
+    <div class="related-grid">
+      <a href="post2.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#bfe3f0,#7fc4dd);">🎯</div>
+        <div class="rc-text">
+          <h4>15 קטגוריות הסקווישי — איך לבחור את המתאים לכם</h4>
+          <span>⏱ קריאה של 5 דקות</span>
+        </div>
+      </a>
+      <a href="post1.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#fde8ee,#f7b5c4);">🫧</div>
+        <div class="rc-text">
+          <h4>מה זה בעצם סקווישי? המדריך המלא למתחילים</h4>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("blog");
+  const ids = ["sq-004", "sq-055", "sq-081"];
+  const container = document.getElementById("prods-post6");
+  if (container) {
+    container.innerHTML = ids.map(id => {
+      const p = AMY.productById(id);
+      return p ? AmyApp.prodCard(p) : "";
+    }).join("");
+  }
+  AmyApp.initReveal();
+</script>
+</body>
+</html>

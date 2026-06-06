@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>הבלוג של איימי · איימי סקווישי</title>
+  <meta name="description" content="מאמרים, טיפים ומדריכים על עולם הסקווישי — כל מה שרציתם לדעת על סקווישי נידו, טיפול, בחירה ומתנות.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Blog-specific styles ---- */
+    .blog-hero {
+      background: linear-gradient(135deg, var(--pink-tint) 0%, #e8f5fb 60%, var(--sky) 100%);
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(247,181,196,.35), transparent);
+      pointer-events: none;
+    }
+    .blog-hero .eyebrow { font-size: var(--t-sm); }
+    .blog-hero h1 {
+      font-size: var(--t-2xl);
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+    .blog-hero h1 span { color: var(--pink-deep); }
+    .blog-hero p {
+      font-size: var(--t-lg);
+      color: var(--ink-soft);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .blog-deco {
+      position: absolute;
+      font-size: 6rem;
+      opacity: .07;
+      pointer-events: none;
+      user-select: none;
+    }
+    .blog-deco.d1 { top: -10px; right: 5%; }
+    .blog-deco.d2 { bottom: -20px; left: 3%; font-size: 8rem; }
+
+    /* ---- Blog index layout ---- */
+    .blog-section { padding: 80px 0 100px; }
+
+    /* Featured card */
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 0;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 56px;
+      transition: transform .4s var(--ease), box-shadow .4s;
+    }
+    .featured-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .featured-cover {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9rem;
+      line-height: 1;
+    }
+    .featured-cover .cat-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .featured-body {
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-body .cat-tag { margin-bottom: 18px; }
+    .featured-body h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .featured-body .excerpt {
+      color: var(--ink-soft);
+      font-size: var(--t-base);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: var(--t-sm);
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+    .featured-meta .dot { opacity: .4; }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--pink-deep);
+      font-size: var(--t-base);
+      transition: gap .25s;
+    }
+    .read-more:hover { gap: 14px; }
+
+    /* Category tag pill */
+    .cat-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: var(--r-pill);
+      font-size: var(--t-xs);
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+
+    /* Grid cards */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .article-card {
+      background: var(--white);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      transition: transform .35s var(--ease), box-shadow .35s;
+    }
+    .article-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+    .article-cover {
+      position: relative;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5.5rem;
+      line-height: 1;
+    }
+    .article-cover .cat-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+    }
+    .article-body {
+      padding: 24px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .article-body h3 {
+      font-size: var(--t-lg);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .article-body .excerpt {
+      color: var(--ink-soft);
+      font-size: var(--t-sm);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .article-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: auto;
+    }
+    .article-meta {
+      font-size: var(--t-xs);
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Gradient covers for articles */
+    .grad-1 { background: linear-gradient(135deg, #fde8ee, #f7b5c4, #e8889e); }
+    .grad-2 { background: linear-gradient(135deg, #bfe3f0, #7fc4dd, #4ba8cc); }
+    .grad-3 { background: linear-gradient(135deg, #fff0d0, #ffd580, #f5a623); }
+    .grad-4 { background: linear-gradient(135deg, #d4f0e8, #7fcdb0, #3daa7a); }
+    .grad-5 { background: linear-gradient(135deg, #e8e0f8, #c4aff0, #9b7de8); }
+    .grad-6 { background: linear-gradient(135deg, #ffe8d6, #ffb380, #ff7a3d); }
+
+    /* Newsletter strip */
+    .newsletter-strip {
+      background: var(--ink);
+      border-radius: var(--r-lg);
+      padding: 52px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      margin-top: 72px;
+    }
+    .newsletter-strip h3 {
+      color: var(--white);
+      font-size: var(--t-xl);
+      margin-bottom: 8px;
+    }
+    .newsletter-strip p { color: rgba(255,255,255,.65); font-size: var(--t-base); }
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .newsletter-form input {
+      padding: 14px 20px;
+      border-radius: var(--r-pill);
+      border: none;
+      font-family: var(--font-body);
+      font-size: var(--t-sm);
+      width: 240px;
+      outline: none;
+      direction: rtl;
+    }
+    .newsletter-form input:focus { box-shadow: 0 0 0 3px rgba(247,181,196,.5); }
+
+    @media (max-width: 900px) {
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-cover { min-height: 260px; }
+      .articles-grid { grid-template-columns: repeat(2, 1fr); }
+      .newsletter-strip { flex-direction: column; text-align: center; }
+      .newsletter-form { flex-direction: column; width: 100%; }
+      .newsletter-form input { width: 100%; }
+    }
+    @media (max-width: 560px) {
+      .articles-grid { grid-template-columns: 1fr; }
+      .featured-body { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<!-- Hero -->
+<section class="blog-hero">
+  <div class="blog-deco d1">🌸</div>
+  <div class="blog-deco d2">🫧</div>
+  <div class="container">
+    <span class="eyebrow reveal">✍️ תוכן מקצועי ואוהב</span>
+    <h1 class="reveal">הבלוג של <span>איימי</span></h1>
+    <p class="reveal">צוללים לעולם הסקווישי — מדריכים, טיפים, מדע ורגש.<br>כל מה שצריך לדעת על הצעצוע הכי ממכר בישראל.</p>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section class="blog-section">
+  <div class="container">
+
+    <!-- Featured Article -->
+    <a href="post1.html" class="featured-card reveal" style="display:grid">
+      <div class="featured-cover grad-1">
+        <span class="cat-tag" style="background:var(--ink);color:#fff;">🎓 מדריך</span>
+        🫧
+      </div>
+      <div class="featured-body">
+        <span class="cat-tag" style="background:var(--pink-tint);color:var(--pink-deep);">מדריך למתחילים</span>
+        <h2>מה זה בעצם סקווישי?<br>המדריך המלא למתחילים</h2>
+        <p class="excerpt">לחיצה אחת ואתם מכורים. אבל מה בדיוק הופך את הסקווישי לתופעה עולמית? מהחומרים ועד הסוגים — כל מה שרציתם לדעת מרוכז כאן במדריך אחד מקיף.</p>
+        <div class="featured-meta">
+          <span>✍️ צוות איימי</span>
+          <span class="dot">·</span>
+          <span>📅 ינואר 2025</span>
+          <span class="dot">·</span>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+        <span class="read-more">קראו עכשיו ←</span>
+      </div>
+    </a>
+
+    <!-- Articles Grid -->
+    <div class="articles-grid">
+
+      <!-- Card 2 -->
+      <a href="post2.html" class="article-card reveal">
+        <div class="article-cover grad-2">
+          <span class="cat-tag" style="background:var(--ink);color:#fff;">📋 מדריך</span>
+          🎯
+        </div>
+        <div class="article-body">
+          <h3>15 קטגוריות הסקווישי — איך לבחור את המתאים לכם</h3>
+          <p class="excerpt">מנידו ועד מוציא עיניים, מחול ועד ענק פרימיום — סיור מלא בכל הקטגוריות עם טיפים לבחירה נכונה לכל גיל.</p>
+          <div class="article-foot">
+            <div class="article-meta">
+              <span>⏱ קריאה של 5 דקות</span>
+            </div>
+            <span class="read-more" style="font-size:var(--t-sm)">קראו ←</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="post3.html" class="article-card reveal">
+        <div class="article-cover grad-3">
+          <span class="cat-tag" style="background:var(--ink);color:#fff;">🌟 טרנד</span>
+          🫧
+        </div>
+        <div class="article-body">
+          <h3>סקווישי נידו: למה כולם מכורים?</h3>
+          <p class="excerpt">הנידו הפך לסנסציה עולמית — קצת חומר, הרבה קסם. גלו מה מסתתר בתוך הבלון הסיליקוני הזה ולמה קשה להפסיק ללחוץ.</p>
+          <div class="article-foot">
+            <div class="article-meta">
+              <span>⏱ קריאה של 4 דקות</span>
+            </div>
+            <span class="read-more" style="font-size:var(--t-sm)">קראו ←</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="post4.html" class="article-card reveal">
+        <div class="article-cover grad-4">
+          <span class="cat-tag" style="background:var(--ink);color:#fff;">🧠 מדע</span>
+          🧘
+        </div>
+        <div class="article-body">
+          <h3>סקווישי להרגעת חרדה ומתח — מה אומר המדע</h3>
+          <p class="excerpt">זה לא רק כיף — לסקווישי יש יתרונות פסיכולוגיים אמיתיים. מה חוקרים גילו על לחיצת כדורים, ריכוז וניהול רגשות.</p>
+          <div class="article-foot">
+            <div class="article-meta">
+              <span>⏱ קריאה של 5 דקות</span>
+            </div>
+            <span class="read-more" style="font-size:var(--t-sm)">קראו ←</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 5 -->
+      <a href="post5.html" class="article-card reveal">
+        <div class="article-cover grad-5">
+          <span class="cat-tag" style="background:var(--ink);color:#fff;">🛠 טיפול</span>
+          ✨
+        </div>
+        <div class="article-body">
+          <h3>איך לשמור על הסקווישי שלכם שיחזיק שנים</h3>
+          <p class="excerpt">הסקווישי שלכם חייב לכם טיפול נכון! מניקוי ועד אחסון — המדריך המלא לשמירה על הסקווישי רענן, רך וחיוכי לאורך זמן.</p>
+          <div class="article-foot">
+            <div class="article-meta">
+              <span>⏱ קריאה של 4 דקות</span>
+            </div>
+            <span class="read-more" style="font-size:var(--t-sm)">קראו ←</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 6 -->
+      <a href="post6.html" class="article-card reveal">
+        <div class="article-cover grad-6">
+          <span class="cat-tag" style="background:var(--ink);color:#fff;">🎁 מתנות</span>
+          🎀
+        </div>
+        <div class="article-body">
+          <h3>מתנה מושלמת: סקווישי לכל גיל ולכל אירוע</h3>
+          <p class="excerpt">יומולדת, חגיגה, תעודה או סתם כי אוהבים — סקווישי הוא המתנה שמכה בול. מדריך בחירה לפי גיל, אירוע ותקציב.</p>
+          <div class="article-foot">
+            <div class="article-meta">
+              <span>⏱ קריאה של 4 דקות</span>
+            </div>
+            <span class="read-more" style="font-size:var(--t-sm)">קראו ←</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /articles-grid -->
+
+    <!-- Newsletter strip -->
+    <div class="newsletter-strip reveal">
+      <div>
+        <h3>רוצים עדכונים על כתבות חדשות? 💌</h3>
+        <p>הירשמו לניוזלטר ונשלח לכם את הכתבות הטובות ישירות לתיבה</p>
+      </div>
+      <form class="newsletter-form" onsubmit="return false">
+        <input type="email" placeholder="האימייל שלכם" dir="rtl">
+        <button type="submit" class="btn btn-pink">הרשמה</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("blog");
+  AmyApp.initReveal();
+</script>
+</body>
+</html>

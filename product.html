@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>מוצר · איימי סקווישי</title>
+  <meta name="description" content="סקווישי איכותי — לחיצה, הרגעת מתחים, מתנה מושלמת. איימי סקווישי — המגוון הגדול בישראל.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Product page layout ---- */
+    .prod-page {
+      padding: 48px 0 80px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--t-sm);
+      color: var(--ink-soft);
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--ink-soft); transition: color .2s; }
+    .breadcrumb a:hover { color: var(--pink-deep); }
+    .breadcrumb .sep { opacity: .4; }
+
+    /* ---- Two-column layout ---- */
+    .prod-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ---- Gallery column ---- */
+    .gallery-col {}
+
+    /* Main image frame — uniform proportions */
+    .gallery-main {
+      position: relative;
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 38%, var(--pink-tint), var(--sky-deep) 320%);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1.5px solid var(--line);
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: box-shadow .3s;
+    }
+    .gallery-main:hover { box-shadow: var(--shadow-lg); }
+    .gallery-main .main-emoji {
+      font-size: 9rem;
+      line-height: 1;
+      filter: drop-shadow(0 18px 28px rgba(0,0,0,.14));
+      transition: transform .5s var(--ease);
+      display: block;
+      user-select: none;
+    }
+    .gallery-main img.product-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Thumbnail row — identical size/zoom/proportions */
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .gallery-thumb {
+      aspect-ratio: 1/1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 38%, var(--pink-tint), var(--sky-deep) 320%);
+      border-radius: var(--r-sm);
+      border: 2px solid var(--line);
+      cursor: pointer;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      overflow: hidden;
+      padding: 6px 4px 4px;
+      position: relative;
+    }
+    .gallery-thumb:hover {
+      border-color: var(--pink);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+    .gallery-thumb.active {
+      border-color: var(--pink-deep);
+      box-shadow: 0 0 0 3px rgba(232,136,158,.25);
+    }
+    .gallery-thumb .thumb-emoji {
+      font-size: 1.9rem;
+      line-height: 1;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,.12));
+      transition: transform .4s var(--ease);
+    }
+    .gallery-thumb:hover .thumb-emoji { transform: scale(1.15); }
+    .gallery-thumb .thumb-label {
+      font-size: .62rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      margin-top: 5px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* ---- Info column ---- */
+    .info-col {}
+
+    .prod-cat-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--t-sm);
+      font-weight: 700;
+      color: var(--pink-deep);
+      background: var(--pink-soft);
+      padding: 5px 14px;
+      border-radius: var(--r-pill);
+      margin-bottom: 14px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .prod-cat-label:hover { background: var(--pink); }
+
+    .prod-title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .price-big {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 2.4rem;
+      color: var(--ink);
+    }
+    .price-big .currency { font-size: .65em; font-weight: 700; color: var(--ink-soft); }
+
+    .badge-inline {
+      background: var(--ink);
+      color: #fff;
+      font-size: var(--t-xs);
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: var(--r-pill);
+    }
+    .badge-inline.fast { background: var(--sky-deep); color: var(--ink); }
+
+    /* Ship line */
+    .ship-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--t-sm);
+      font-weight: 600;
+      color: var(--ink-soft);
+      padding: 12px 16px;
+      background: var(--pink-tint);
+      border-radius: var(--r-sm);
+      margin-bottom: 22px;
+      border: 1px solid var(--line);
+    }
+    .ship-line.fast {
+      background: #e8f7fb;
+      border-color: var(--sky);
+      color: #2a7d9b;
+    }
+    .ship-line .lightning { font-size: 1.2rem; }
+
+    /* Description */
+    .prod-desc {
+      font-size: var(--t-base);
+      color: var(--ink-soft);
+      line-height: 1.75;
+      margin-bottom: 26px;
+    }
+
+    /* Divider */
+    .info-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 22px 0;
+    }
+
+    /* Quantity selector */
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+    .qty-label {
+      font-size: var(--t-sm);
+      font-weight: 700;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1.5px solid var(--line);
+      border-radius: var(--r-pill);
+      overflow: hidden;
+      background: var(--white);
+    }
+    .qty-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      background: none;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      border: none;
+      font-family: inherit;
+    }
+    .qty-btn:hover { background: var(--pink-tint); color: var(--pink-deep); }
+    .qty-num {
+      min-width: 52px;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--t-lg);
+      color: var(--ink);
+      border: none;
+      outline: none;
+      background: none;
+      cursor: default;
+    }
+
+    /* CTA buttons */
+    .cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-add-cart {
+      width: 100%;
+      padding: 16px;
+      font-size: var(--t-lg);
+      font-weight: 800;
+      border-radius: var(--r-pill);
+      background: var(--ink);
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: background .3s var(--ease), transform .3s var(--ease), box-shadow .3s;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-add-cart:hover {
+      background: var(--pink-deep);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-quick-buy {
+      width: 100%;
+      padding: 14px;
+      font-size: var(--t-base);
+      font-weight: 700;
+      border-radius: var(--r-pill);
+      background: var(--pink-tint);
+      color: var(--ink);
+      cursor: pointer;
+      border: 1.5px solid var(--pink);
+      font-family: inherit;
+      transition: background .25s, border-color .25s, transform .25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-quick-buy:hover {
+      background: var(--pink);
+      border-color: var(--pink-deep);
+      transform: translateY(-2px);
+    }
+
+    /* ---- Product info accordion ---- */
+    .prod-info-section {
+      margin-top: 64px;
+    }
+    .prod-info-section h2 {
+      font-size: var(--t-xl);
+      margin-bottom: 24px;
+    }
+    .accordion {
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      overflow: hidden;
+    }
+    .accordion-item {
+      border-bottom: 1px solid var(--line);
+    }
+    .accordion-item:last-child { border-bottom: none; }
+    .accordion-header {
+      width: 100%;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: var(--t-base);
+      font-family: var(--font-display);
+      background: var(--white);
+      cursor: pointer;
+      border: none;
+      text-align: right;
+      transition: background .2s;
+      color: var(--ink);
+    }
+    .accordion-header:hover { background: var(--pink-tint); }
+    .accordion-header .arrow {
+      transition: transform .3s var(--ease);
+      font-size: 1.1rem;
+      color: var(--pink-deep);
+      flex-shrink: 0;
+      margin-right: auto;
+      margin-left: 0;
+    }
+    .accordion-item.open .accordion-header .arrow { transform: rotate(180deg); }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s var(--ease);
+      background: var(--cream);
+    }
+    .accordion-item.open .accordion-body { max-height: 600px; }
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      padding: 20px 22px;
+      display: block;
+    }
+    .info-table tr { display: grid; grid-template-columns: 140px 1fr; gap: 12px; padding: 10px 22px; border-bottom: 1px solid var(--line); }
+    .info-table tr:last-child { border-bottom: none; }
+    .info-table th {
+      font-size: var(--t-sm);
+      font-weight: 700;
+      color: var(--pink-deep);
+      text-align: right;
+    }
+    .info-table td {
+      font-size: var(--t-sm);
+      color: var(--ink-soft);
+    }
+
+    /* ---- Related products ---- */
+    .related-section {
+      margin-top: 72px;
+    }
+    .related-section h2 {
+      font-size: var(--t-xl);
+      margin-bottom: 30px;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* ---- Not found ---- */
+    .not-found {
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .not-found .icon { font-size: 5rem; margin-bottom: 20px; }
+    .not-found h1 { font-size: var(--t-2xl); margin-bottom: 14px; }
+    .not-found p { color: var(--ink-soft); font-size: var(--t-lg); margin-bottom: 30px; }
+
+    /* ---- Responsive ---- */
+    @media(max-width:900px) {
+      .prod-layout { grid-template-columns: 1fr; gap: 36px; }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media(max-width:480px) {
+      .gallery-thumbs { gap: 7px; }
+      .gallery-thumb .thumb-label { font-size: .55rem; }
+      .related-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+
+<main class="prod-page">
+  <div class="container">
+    <div id="prodContent"></div>
+  </div>
+</main>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("shop");
+
+  /* ---- Angle transforms for the 5 gallery frames ---- */
+  const ANGLE_TRANSFORMS = [
+    "scale(1) rotate(0deg)",          // חזית
+    "scale(1.08) rotate(-10deg)",      // זווית
+    "scale(1) rotate(180deg)",         // מאחור
+    "scale(1.15) rotate(5deg)",        // פירוט מרקם
+    "scale(0.95) rotate(8deg)"         // בשימוש
+  ];
+
+  /* ---- Generate Hebrew description ---- */
+  function genDesc(p) {
+    if (p.desc) return p.desc;
+    const cat = AMY.catById(p.cat);
+    const who = p.price > 40
+      ? "מתאים לאספנים ולמחפשים את הטוב ביותר"
+      : p.price < 15
+      ? "מושלם למתנה קטנה ולהוסיף לאוסף"
+      : "אידיאלי לכל גיל — לילדים, לנוער ולמבוגרים";
+    return `${p.name} הוא ${cat.name.split(" ")[0]} ייחודי עם מרקם רך ונעים לכף היד. ${cat.desc}. ${who}. חומר איכותי, עמיד ובטוח לשימוש חוזר ונשנה.`;
+  }
+
+  /* ---- Generate product page HTML ---- */
+  function renderProduct(p) {
+    const cat = AMY.catById(p.cat);
+    const desc = genDesc(p);
+    const shipText = AMY.shipText(p);
+    const related = AMY.productsByCat(p.cat).filter(r => r.id !== p.id).slice(0, 4);
+
+    /* ---- Gallery thumbnails ---- */
+    const thumbsHTML = AMY.ANGLES.map((label, i) => `
+      <button class="gallery-thumb${i === 0 ? " active" : ""}"
+              data-angle="${i}"
+              aria-label="תמונה: ${label}"
+              onclick="switchAngle(${i}, '${p.emoji||cat.emoji}')">
+        <span class="thumb-emoji" style="transform:${ANGLE_TRANSFORMS[i]}">${p.emoji||cat.emoji}</span>
+        <span class="thumb-label">${label}</span>
+      </button>`).join("");
+
+    /* ---- Ship line ---- */
+    const shipLineHTML = p.fast
+      ? `<div class="ship-line fast">
+           <span class="lightning">⚡</span>
+           <span>משלוח אקספרס — <strong>4 ימי עסקים</strong> לכל הארץ</span>
+         </div>`
+      : `<div class="ship-line">
+           <span>🚚</span>
+           <span>זמן אספקה: <strong>${shipText}</strong></span>
+         </div>`;
+
+    /* ---- Badge ---- */
+    const badgeHTML = p.badge
+      ? `<span class="badge-inline">${p.badge}</span>`
+      : p.fast
+      ? `<span class="badge-inline fast">⚡ משלוח מהיר</span>`
+      : "";
+
+    /* ---- Related ---- */
+    const relatedHTML = related.length > 0 ? `
+      <section class="related-section reveal">
+        <h2>מוצרים דומים</h2>
+        <div class="related-grid">
+          ${related.map(r => AmyApp.prodCard(r)).join("")}
+        </div>
+      </section>` : "";
+
+    return `
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="ניווט עמוד">
+        <a href="index.html">בית</a>
+        <span class="sep">›</span>
+        <a href="shop.html">חנות</a>
+        <span class="sep">›</span>
+        <a href="shop.html#${p.cat}">${cat.emoji} ${cat.name}</a>
+        <span class="sep">›</span>
+        <span>${p.name}</span>
+      </nav>
+
+      <!-- Two-column product layout -->
+      <div class="prod-layout reveal">
+
+        <!-- Gallery column -->
+        <div class="gallery-col">
+          <div class="gallery-main" id="galleryMain" aria-label="תמונה ראשית">
+            <span class="main-emoji" id="mainEmoji">${p.emoji||cat.emoji}</span>
+          </div>
+          <div class="gallery-thumbs" id="galleryThumbs">
+            ${thumbsHTML}
+          </div>
+        </div>
+
+        <!-- Info column -->
+        <div class="info-col">
+          <a href="shop.html#${p.cat}" class="prod-cat-label">${cat.emoji} ${cat.name}</a>
+
+          <h1 class="prod-title">${p.name}</h1>
+
+          <div class="price-row">
+            <span class="price-big"><span class="currency">₪</span>${p.price.toFixed(2).replace(/\.00$/, "")}</span>
+            ${badgeHTML}
+          </div>
+
+          ${shipLineHTML}
+
+          <p class="prod-desc">${desc}</p>
+
+          <div class="info-divider"></div>
+
+          <!-- Quantity selector -->
+          <div class="qty-row">
+            <span class="qty-label">כמות:</span>
+            <div class="qty-control" role="group" aria-label="בחר כמות">
+              <button class="qty-btn" id="qtyMinus" aria-label="הפחת כמות" onclick="changeQty(-1)">−</button>
+              <span class="qty-num" id="qtyDisplay" aria-live="polite">1</span>
+              <button class="qty-btn" id="qtyPlus" aria-label="הוסף כמות" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="cta-row">
+            <button class="btn-add-cart" id="btnAddCart" onclick="doAddCart()">
+              🛍️ הוספה לעגלה
+            </button>
+            <button class="btn-quick-buy" id="btnQuickBuy" onclick="doQuickBuy()">
+              ⚡ קנייה מהירה
+            </button>
+          </div>
+
+          <!-- Trust chips -->
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+            <span style="font-size:var(--t-xs);color:var(--ink-soft);display:flex;align-items:center;gap:5px">✅ מוצר מקורי מאומת</span>
+            <span style="font-size:var(--t-xs);color:var(--ink-soft);display:flex;align-items:center;gap:5px">🔄 החזרה חינם עד 14 יום</span>
+            <span style="font-size:var(--t-xs);color:var(--ink-soft);display:flex;align-items:center;gap:5px">🇮🇱 משלוח לכל הארץ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full product info accordion -->
+      <section class="prod-info-section reveal">
+        <h2>מידע מוצר מלא</h2>
+        <div class="accordion" id="infoAccordion">
+
+          <div class="accordion-item open">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>פרטי המוצר</span>
+              <span class="arrow">▾</span>
+            </button>
+            <div class="accordion-body">
+              <table class="info-table">
+                <tr><th>חומר</th><td>סיליקון רך / TPR איכותי</td></tr>
+                <tr><th>גיל מומלץ</th><td>3+ (אינו מתאים לגיל מתחת ל-3 — חלקים קטנים)</td></tr>
+                <tr><th>גודל</th><td>בינוני (7–12 ס"מ בהתאם לדגם)</td></tr>
+                <tr><th>מתאים ל</th><td>הרגעת מתחים, אספנות, מתנה לחברים ומשפחה</td></tr>
+                <tr><th>צבעים</th><td>כמתואר — צבעים עשויים להשתנות מעט בין צוות לצוות</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>טיפול וניקוי</span>
+              <span class="arrow">▾</span>
+            </button>
+            <div class="accordion-body">
+              <table class="info-table">
+                <tr><th>הוראות ניקוי</th><td>ניתן לנגב עם מטלית לחה וסבון עדין. אין להשרות במים ממושכים.</td></tr>
+                <tr><th>אחסון</th><td>רחוק מחום ישיר ואור שמש ישיר לשמירה על המרקם.</td></tr>
+                <tr><th>עמידות</th><td>עמיד ללחיצות חוזרות ונשנות — לא נקרע בשימוש רגיל.</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>משלוח ומקור</span>
+              <span class="arrow">▾</span>
+            </button>
+            <div class="accordion-body">
+              <table class="info-table">
+                <tr><th>מקור</th><td>${p.source || "איימי סקווישי — ייבוא ישיר"}</td></tr>
+                <tr><th>זמן אספקה</th><td>${shipText} לכל הארץ</td></tr>
+                <tr><th>אריזה</th><td>נשלח באריזה מוגנת למניעת נזק בדרך</td></tr>
+                <tr><th>מדיניות החזרה</th><td>החזרה חינם עד 14 יום מקבלת המשלוח</td></tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Related products -->
+      ${relatedHTML}
+    `;
+  }
+
+  /* ---- Not found page ---- */
+  function renderNotFound() {
+    return `
+      <div class="not-found">
+        <div class="icon">🔍</div>
+        <h1>המוצר לא נמצא</h1>
+        <p>נראה שהמוצר שחיפשת לא קיים או שהקישור שגוי.</p>
+        <a href="shop.html" class="btn btn-primary">חזרה לחנות</a>
+      </div>`;
+  }
+
+  /* ---- Quantity logic ---- */
+  let qty = 1;
+  function changeQty(delta) {
+    qty = Math.max(1, qty + delta);
+    document.getElementById("qtyDisplay").textContent = qty;
+    document.getElementById("qtyMinus").style.opacity = qty <= 1 ? ".35" : "1";
+  }
+
+  /* ---- Cart actions ---- */
+  let currentPid = null;
+  function doAddCart() {
+    if (!currentPid) return;
+    AmyApp.addToCart(currentPid, qty);
+    const btn = document.getElementById("btnAddCart");
+    btn.textContent = "✓ נוסף לעגלה!";
+    btn.style.background = "var(--pink-deep)";
+    setTimeout(() => {
+      btn.innerHTML = "🛍️ הוספה לעגלה";
+      btn.style.background = "";
+    }, 1600);
+  }
+  function doQuickBuy() {
+    if (!currentPid) return;
+    AmyApp.addToCart(currentPid, qty);
+    setTimeout(() => { location.href = "cart.html"; }, 300);
+  }
+
+  /* ---- Gallery angle switching ---- */
+  function switchAngle(idx, emoji) {
+    const mainEmoji = document.getElementById("mainEmoji");
+    if (mainEmoji) {
+      mainEmoji.style.transform = ANGLE_TRANSFORMS[idx];
+    }
+    document.querySelectorAll(".gallery-thumb").forEach((t, i) => {
+      t.classList.toggle("active", i === idx);
+    });
+  }
+
+  /* ---- Accordion toggle ---- */
+  function toggleAccordion(header) {
+    const item = header.closest(".accordion-item");
+    const isOpen = item.classList.contains("open");
+    // Close all
+    document.querySelectorAll(".accordion-item").forEach(i => i.classList.remove("open"));
+    // Open clicked if it was closed
+    if (!isOpen) item.classList.add("open");
+  }
+
+  /* ---- Init: read ?id= from URL ---- */
+  (function init() {
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    const content = document.getElementById("prodContent");
+
+    if (!id) {
+      content.innerHTML = renderNotFound();
+      AmyApp.initReveal();
+      return;
+    }
+
+    const p = AMY.productById(id);
+    if (!p) {
+      content.innerHTML = renderNotFound();
+      AmyApp.initReveal();
+      return;
+    }
+
+    // Update page title & meta
+    document.title = `${p.name} · איימי סקווישי`;
+    document.querySelector("meta[name=description]").setAttribute(
+      "content",
+      `${p.name} — ${genDesc(p).slice(0, 120)}`
+    );
+
+    currentPid = p.id;
+    content.innerHTML = renderProduct(p);
+
+    // Reset qty display
+    qty = 1;
+    const minus = document.getElementById("qtyMinus");
+    if (minus) minus.style.opacity = ".35";
+
+    AmyApp.initReveal();
+  })();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>סקווישי נידו: למה כולם מכורים? · איימי סקווישי</title>
+  <meta name="description" content="הנידו הפך לסנסציה עולמית — מה מסתתר בתוך הבלון הסיליקוני הזה ולמה קשה להפסיק ללחוץ?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .post-hero { min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 0 60px; }
+    .post-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 760px; padding: 0 24px; }
+    .post-hero .cat-tag { display: inline-block; padding: 7px 18px; border-radius: 999px; font-size: .78rem; font-weight: 800; letter-spacing: .05em; margin-bottom: 20px; }
+    .post-hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 20px; color: var(--ink); }
+    .post-hero .post-meta { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: var(--t-sm); color: var(--ink-soft); flex-wrap: wrap; }
+    .post-hero .post-meta .dot { opacity: .4; }
+    .post-hero-emoji { position: absolute; font-size: 14rem; opacity: .08; pointer-events: none; user-select: none; z-index: 1; }
+    .post-hero-emoji.e1 { top: -30px; right: -20px; }
+    .post-hero-emoji.e2 { bottom: -40px; left: -20px; }
+    .grad-3 { background: linear-gradient(135deg, #fff0d0, #ffd580, #fffaed); }
+    .post-body { max-width: 720px; margin: 0 auto; padding: 64px 24px 80px; }
+    .post-body h2 { font-size: var(--t-xl); margin: 48px 0 16px; color: var(--ink); }
+    .post-body h3 { font-size: var(--t-lg); margin: 36px 0 12px; color: var(--ink); }
+    .post-body p { font-size: 1.08rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 20px; }
+    .post-body ul, .post-body ol { margin: 16px 0 24px 0; padding-right: 24px; }
+    .post-body li { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); margin-bottom: 8px; }
+    .post-body li::marker { color: var(--pink-deep); font-weight: 700; }
+    .pull-quote { border-right: 5px solid var(--pink-deep); background: var(--pink-tint); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 28px 32px; margin: 36px 0; }
+    .pull-quote p { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.55; margin: 0; }
+    .pull-quote cite { display: block; font-size: var(--t-sm); color: var(--pink-deep); font-style: normal; margin-top: 10px; font-weight: 600; }
+    .post-products { background: var(--pink-tint); border-radius: var(--r-lg); padding: 40px; margin: 48px 0; }
+    .post-products h3 { font-size: var(--t-xl); margin: 0 0 8px; color: var(--ink); }
+    .post-products .sub { color: var(--ink-soft); font-size: var(--t-sm); margin-bottom: 28px; }
+    .post-products .prod-grid { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 600px) { .post-products .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+    .related-section { border-top: 1px solid var(--line); padding-top: 56px; margin-top: 64px; }
+    .related-section h3 { font-size: var(--t-xl); margin-bottom: 28px; color: var(--ink); }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .related-card { display: flex; gap: 18px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; transition: .3s var(--ease); }
+    .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); border-color: var(--pink); }
+    .related-card .rc-emoji { width: 64px; height: 64px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; flex-shrink: 0; }
+    .related-card .rc-text h4 { font-size: var(--t-base); margin-bottom: 5px; line-height: 1.3; }
+    .related-card .rc-text span { font-size: var(--t-xs); color: var(--pink-deep); font-weight: 700; }
+    @media (max-width: 560px) { .related-grid { grid-template-columns: 1fr; } }
+
+    /* Nee-Doh types grid */
+    .needoh-types { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0; }
+    .needoh-type-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 22px; transition: .3s; }
+    .needoh-type-card:hover { border-color: var(--pink); box-shadow: var(--shadow-sm); }
+    .needoh-type-card .nt-emoji { font-size: 2.4rem; margin-bottom: 10px; }
+    .needoh-type-card h4 { font-size: var(--t-base); margin-bottom: 8px; }
+    .needoh-type-card p { font-size: var(--t-sm); color: var(--ink-soft); line-height: 1.55; margin: 0; }
+    @media (max-width: 560px) { .needoh-types { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<section class="post-hero grad-3">
+  <div class="post-hero-emoji e1">🫧</div>
+  <div class="post-hero-emoji e2">💛</div>
+  <div class="post-hero-inner">
+    <span class="cat-tag" style="background:var(--ink);color:#fff;">🌟 טרנד וסגנון</span>
+    <h1>סקווישי נידו:<br>למה כולם מכורים?</h1>
+    <div class="post-meta">
+      <span>✍️ מאת צוות איימי</span>
+      <span class="dot">·</span>
+      <span>📅 פברואר 2025</span>
+      <span class="dot">·</span>
+      <span>⏱ קריאה של 4 דקות</span>
+    </div>
+  </div>
+</section>
+
+<article class="post-body">
+
+  <p>יש דברים שקשה להסביר עד שמנסים אותם. הנידו הוא אחד מהם. אתם שומעים עליו, לוחצים פעם אחת — ופתאום מבינים למה כולם מדברים עליו. מה הסוד? מה הופך את הנידו לסקווישי שאף אחד לא יכול להפסיק ללחוץ?</p>
+
+  <h2>מה זה בכלל נידו?</h2>
+  <p>נידו הוא שם מותג שהפך לשם כולל לסוג של סקווישי סיליקוני איכותי. המוצר מורכב מקרום סיליקון חיצוני רך ואיכותי, שמסתיר בתוכו מילוי ג'ל או חרוזים, שמרגיש כמו לחיצה על כרית ענן. המרקם שונה לחלוטין מהסקווישי הפוליאוריתן הפשוט — יש לו עומק, גמישות ותחושה שממכרת.</p>
+
+  <h2>המדע מאחורי ה"ממכרות"</h2>
+  <p>בצורה פשוטה: ידינו אוהבות קלט חושי. כשאנחנו לוחצים את הנידו, המוח מקבל גירוי פרופריוצפטיבי — מידע על כוח, התנגדות ומרקם — שמרגיע את מערכת העצבים. זה דומה לאיך שאנחנו אוהבים ללחוץ בועות בניילון, רק עם הרבה יותר סיפוק.</p>
+  <p>בנוסף, תנועת לחיצה-ושחרור חוזרת יוצרת תחושת שליטה קטנה שמרגיעה מתח ומחזירה אותנו לרגע הנוכחי.</p>
+
+  <div class="pull-quote reveal">
+    <p>"כשלחצתי נידו לראשונה בחנות, סירבתי לשחרר אותו. הילד שלי היה צריך לנרמל לי את המצב."</p>
+    <cite>— לקוחה של איימי סקווישי, תל אביב</cite>
+  </div>
+
+  <h2>הצורות שעושות את ההבדל</h2>
+  <p>חלק גדול מהקסם של הנידו הוא הצורות המצחיקות והחמודות שהוא מגיע בהן. לא עוד כדור סתמי — יש כאן עולם שלם:</p>
+
+  <div class="needoh-types">
+    <div class="needoh-type-card reveal">
+      <div class="nt-emoji">🥟</div>
+      <h4>דאמפלינג נידו</h4>
+      <p>הכי פופולרי — צורת הכופתה הסינית יוצרת תחושת לחיצה ייחודית עם "כנפיים" לאחיזה.</p>
+    </div>
+    <div class="needoh-type-card reveal">
+      <div class="nt-emoji">🐙</div>
+      <h4>תמנון נידו</h4>
+      <p>רגליים קטנות שאפשר ללחוץ ולמתוח בנפרד — חוויה מרובה.</p>
+    </div>
+    <div class="needoh-type-card reveal">
+      <div class="nt-emoji">🍎</div>
+      <h4>תפוח נידו</h4>
+      <p>כמו תפוח אמיתי בתחושה, עם הפתעה בצבעים מתחת לקרום.</p>
+    </div>
+    <div class="needoh-type-card reveal">
+      <div class="nt-emoji">🐻</div>
+      <h4>ראשי חיות</h4>
+      <p>קפיברה, דובי ועוד — דמויות חמודות שנמתחות ומרגיעות בו-זמנית.</p>
+    </div>
+  </div>
+
+  <h2>נידו מיני לעומת ענק — מה לבחור?</h2>
+  <p>זה תלוי בשימוש:</p>
+  <ul>
+    <li><strong>נידו מיני (13–18 ₪):</strong> מושלם לקלמר, לכיס, לאיסוף. קל לנשיאה בכל מקום.</li>
+    <li><strong>נידו סטנדרטי (20–35 ₪):</strong> גודל שהכי נוח ללחיצה בידיים של מבוגר. הגודל המושלם לשימוש יומיומי.</li>
+    <li><strong>נידו ענק (40–65 ₪):</strong> חוויית לחיצה עמוקה ומלאה. מושלם כמתנה או לשימוש בבית. כאשר אוחזים בדאמפלינג ענקי — קשה להניח אותו.</li>
+  </ul>
+
+  <h2>האם הנידו מחזיק לאורך זמן?</h2>
+  <p>בהחלט. הסיליקון האיכותי של נידו אינו נסדק ואינו "מתעייף" כמו פוליאוריתן. בתנאי שמירה נכונים (ראו את המאמר על שמירת סקווישי), נידו יכול ללוות אתכם שנים. אל תשאירו אותו בחום קיצוני, נקו אותו מדי פעם עם מטלית לחה, ותהנו ממנו כמה שיותר.</p>
+
+  <!-- Products -->
+  <div class="post-products reveal">
+    <h3>🛍️ הנידואים הכי אהובים אצלנו</h3>
+    <p class="sub">בחרנו את שלושת הנידואים שלקוחות איימי הכי ממליצים עליהם</p>
+    <div class="prod-grid" id="prods-post3"></div>
+  </div>
+
+  <h2>למה הנידו ניצח את כל הסקווישים האחרים?</h2>
+  <p>שאלה שחוזרת כל הזמן. התשובה פשוטה: שילוב של עמידות, מגוון, תחושה ומחיר הוגן. הנידו אינו מתרסק, אינו מצהיב ואינו מאבד את הצורה. זה מוצר שמרגיש כמו "השקעה" קטנה שנותנת תשואה גדולה — בשמחה, בריכוז ובהרגעה. לא מפתיע שהוא הפך לנציג הרשמי של עולם הסקווישי.</p>
+
+  <div class="related-section reveal">
+    <h3>כתבות נוספות שיעניינו אתכם</h3>
+    <div class="related-grid">
+      <a href="post4.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#d4f0e8,#7fcdb0);">🧘</div>
+        <div class="rc-text">
+          <h4>סקווישי להרגעת חרדה ומתח — מה אומר המדע</h4>
+          <span>⏱ קריאה של 5 דקות</span>
+        </div>
+      </a>
+      <a href="post5.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#e8e0f8,#c4aff0);">✨</div>
+        <div class="rc-text">
+          <h4>איך לשמור על הסקווישי שלכם שיחזיק שנים</h4>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("blog");
+  const ids = ["sq-004", "sq-011", "sq-013"];
+  const container = document.getElementById("prods-post3");
+  if (container) {
+    container.innerHTML = ids.map(id => {
+      const p = AMY.productById(id);
+      return p ? AmyApp.prodCard(p) : "";
+    }).join("");
+  }
+  AmyApp.initReveal();
+</script>
+</body>
+</html>

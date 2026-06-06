@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>מה זה בעצם סקווישי? המדריך המלא למתחילים · איימי סקווישי</title>
+  <meta name="description" content="מה זה סקווישי, מאיפה זה הגיע, מה החומרים ולמה כולם מכורים — המדריך המלא למתחילים.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Shared article styles ---- */
+    .post-hero {
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 60px;
+    }
+    .post-hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 760px;
+      padding: 0 24px;
+    }
+    .post-hero .cat-tag {
+      display: inline-block;
+      padding: 7px 18px;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      margin-bottom: 20px;
+    }
+    .post-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--ink);
+    }
+    .post-hero .post-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      font-size: var(--t-sm);
+      color: var(--ink-soft);
+      flex-wrap: wrap;
+    }
+    .post-hero .post-meta .dot { opacity: .4; }
+    .post-hero-emoji {
+      position: absolute;
+      font-size: 14rem;
+      opacity: .08;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+    .post-hero-emoji.e1 { top: -30px; right: -20px; }
+    .post-hero-emoji.e2 { bottom: -40px; left: -20px; }
+
+    /* ---- Article body ---- */
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+    .post-body h2 {
+      font-size: var(--t-xl);
+      margin: 48px 0 16px;
+      color: var(--ink);
+    }
+    .post-body h3 {
+      font-size: var(--t-lg);
+      margin: 36px 0 12px;
+      color: var(--ink);
+    }
+    .post-body p {
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+    }
+    .post-body ul, .post-body ol {
+      margin: 16px 0 24px 0;
+      padding-right: 24px;
+    }
+    .post-body li {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+    .post-body li::marker { color: var(--pink-deep); font-weight: 700; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-right: 5px solid var(--pink-deep);
+      background: var(--pink-tint);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      padding: 28px 32px;
+      margin: 36px 0;
+    }
+    .pull-quote p {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .pull-quote cite {
+      display: block;
+      font-size: var(--t-sm);
+      color: var(--pink-deep);
+      font-style: normal;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    /* Products section */
+    .post-products {
+      background: var(--pink-tint);
+      border-radius: var(--r-lg);
+      padding: 40px;
+      margin: 48px 0;
+    }
+    .post-products h3 {
+      font-size: var(--t-xl);
+      margin: 0 0 8px;
+      color: var(--ink);
+    }
+    .post-products .sub {
+      color: var(--ink-soft);
+      font-size: var(--t-sm);
+      margin-bottom: 28px;
+    }
+    .post-products .prod-grid { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 600px) {
+      .post-products .prod-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Related posts */
+    .related-section {
+      border-top: 1px solid var(--line);
+      padding-top: 56px;
+      margin-top: 64px;
+    }
+    .related-section h3 {
+      font-size: var(--t-xl);
+      margin-bottom: 28px;
+      color: var(--ink);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .related-card {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      padding: 20px;
+      transition: .3s var(--ease);
+    }
+    .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); border-color: var(--pink); }
+    .related-card .rc-emoji {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      flex-shrink: 0;
+    }
+    .related-card .rc-text h4 { font-size: var(--t-base); margin-bottom: 5px; line-height: 1.3; }
+    .related-card .rc-text span { font-size: var(--t-xs); color: var(--pink-deep); font-weight: 700; }
+    @media (max-width: 560px) {
+      .related-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Hero gradient overrides per post */
+    .grad-1 { background: linear-gradient(135deg, #fde8ee, #f7b5c4, #ffeef4); }
+    .grad-2 { background: linear-gradient(135deg, #bfe3f0, #7fc4dd, #e8f5fb); }
+    .grad-3 { background: linear-gradient(135deg, #fff0d0, #ffd580, #fffaed); }
+    .grad-4 { background: linear-gradient(135deg, #d4f0e8, #7fcdb0, #edfaf3); }
+    .grad-5 { background: linear-gradient(135deg, #e8e0f8, #c4aff0, #f3f0fd); }
+    .grad-6 { background: linear-gradient(135deg, #ffe8d6, #ffb380, #fff3ed); }
+  </style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<!-- Hero -->
+<section class="post-hero grad-1">
+  <div class="post-hero-emoji e1">🫧</div>
+  <div class="post-hero-emoji e2">✨</div>
+  <div class="post-hero-inner">
+    <span class="cat-tag" style="background:var(--ink);color:#fff;">🎓 מדריך למתחילים</span>
+    <h1>מה זה בעצם סקווישי?<br>המדריך המלא למתחילים</h1>
+    <div class="post-meta">
+      <span>✍️ מאת צוות איימי</span>
+      <span class="dot">·</span>
+      <span>📅 ינואר 2025</span>
+      <span class="dot">·</span>
+      <span>⏱ קריאה של 4 דקות</span>
+    </div>
+  </div>
+</section>
+
+<!-- Article Body -->
+<article class="post-body">
+
+  <p>לחיצה אחת — ואתם כבר מכורים. אם ניסיתם פעם לחוץ על כדור נידו רך, על ספוג חמאה מרהיב או על דאמפלינג סיליקוני קטן, אתם יודעים בדיוק על מה אנחנו מדברים. אבל מה זה בעצם <strong>סקווישי</strong>? מאיפה זה הגיע? ולמה כל כך קשה להפסיק ללחוץ? ברוכים הבאים למדריך המלא.</p>
+
+  <h2>מה זה סקווישי?</h2>
+  <p>המילה "סקווישי" (מאנגלית: <em>squishy</em>) מתארת צעצוע רך שניתן ללחוץ, למעוך ולמתוח — ואז הוא חוזר לצורתו המקורית. הסקווישי מיוצר מחומרים אלסטיים כמו סיליקון, פוליאוריתן, ג'ל מים ועוד, ובא באינספור צורות: בעלי חיים, פירות, אוכל, דמויות אהובות, ורבים אחרים.</p>
+
+  <h2>מהיכן זה התחיל?</h2>
+  <p>הסקווישי נולד ביפן בשנות ה-2000 כאביזר לסמארטפון — ניקי ספוג שצמוד לטלפון. אבל הוא מהר מאוד גדל לממדים אחרים. ב-2016-2017 התפוצץ הטרנד ביוטיוב, כשאנשים העלו סרטוני "ספיז" (מעיכה איטית של הסקווישי). מיליוני צפיות מאוחר יותר — הסקווישי כבש את העולם.</p>
+
+  <div class="pull-quote reveal">
+    <p>"יש משהו פרימיטיבי בעונג של לחיצת חפץ רך. זה מרגיע, מספק ומשחרר מתח — וזה לגמרי לגיטימי לכל גיל."</p>
+    <cite>— צוות המחקר של איימי סקווישי</cite>
+  </div>
+
+  <h2>סוגי הסקווישי — מה ההבדל?</h2>
+  <p>לא כל הסקווישים נולדו שווים. להלן הסוגים העיקריים:</p>
+  <ul>
+    <li><strong>סיליקון (נידו):</strong> הנפוץ ביותר. אלסטי, עמיד, עם מרקם חלק ומהנה. מחזיק שנים.</li>
+    <li><strong>ג'ל מים:</strong> מרגיש כמו כדור מים קריר. כיף מיוחד לימי קיץ.</li>
+    <li><strong>חול קינטי:</strong> מרקם חולי ייחודי שנמס בין האצבעות — חוויה אחרת לחלוטין.</li>
+    <li><strong>ספוג פוליאוריתן:</strong> הסקווישי הקלאסי הרך — חמאה, ספוג, קיש. עדין ומרגיע.</li>
+    <li><strong>דביק (ספלאט):</strong> נדבק לקירות, מתפשט בפגיעה ומתכווץ חזרה. הכי דרמטי.</li>
+  </ul>
+
+  <h2>למי מתאים סקווישי?</h2>
+  <p>זו השאלה הגדולה — ותשובתה פשוטה: <strong>לכולם</strong>. ילדים מגיל 3 ומעלה מוצאים בו שעשוע וחקירה חושית. מתבגרים משתמשים בו לריכוז ולהפגת לחץ בלימודים. מבוגרים? לא מעטים מחזיקים נידו על השולחן לצד המחשב ולוחצים בין פגישות. גם לקשישים יש יתרונות תרפויטיים בתרגיל הלחיצה.</p>
+
+  <h3>מה לגבי גיל?</h3>
+  <p>עבור ילדים מתחת לגיל 3, חשוב לבחור מוצרים ללא חלקים קטנים שניתן לנתק. מגיל 3 ומעלה, כמעט כל סקווישי מתאים. מוצרים עם חרוזי אורביז או כדורים מיני דורשים פיקוח.</p>
+
+  <h2>איך לבחור את הראשון שלכם?</h2>
+  <p>לא יודעים מאיפה להתחיל? הנה המלצה פשוטה: תתחילו עם נידו קלאסי. זה הכי עמיד, הכי מהנה למגוון גילאים, ועם טווח מחירים נוח של 12–50 ₪. אם אתם קונים לילד קטן — תעדיפו גדלים גדולים יותר ומוצרים ללא חלקים ניתנים לניתוק.</p>
+
+  <!-- Products -->
+  <div class="post-products reveal">
+    <h3>🛍️ מוצרים שיעזרו לכם להתחיל</h3>
+    <p class="sub">הנידואים המושלמים לצלילה ראשונה לעולם הסקווישי</p>
+    <div class="prod-grid" id="prods-post1"></div>
+  </div>
+
+  <h2>האם סקווישי בטוח?</h2>
+  <p>המוצרים שנמכרים בחנויות מוכרות עוברים בדיקות בטיחות. חשוב לוודא שהמוצר לא נסדק ולא נשפך — אם נידו נקרע, יש להפסיק את השימוש. מוצרים מסיליקון איכותי בדרך כלל חיים שנים רבות ללא בעיה.</p>
+
+  <div class="pull-quote reveal" style="border-color:var(--sky-deep);background:#edf8fd;">
+    <p>"הכלל הפשוט: מוצר שנקרע או נשפך — לפח. שאר הזמן? לחצו, מתחו ותהנו!"</p>
+    <cite>— טיפ בטיחות מצוות איימי</cite>
+  </div>
+
+  <h2>לסיכום — מדוע כולם מכורים</h2>
+  <p>הסקווישי הוא שילוב מנצח של מגע מרגיע, עיצוב חמוד ועונג שאי אפשר להסביר עד שמנסים. הוא עוזר להפחית מתח, לשפר ריכוז ולהעניק רגע קטן של שמחה ביום עמוס. ועכשיו שאתם יודעים הכל — הגיע הזמן לבחור את הסקווישי שלכם.</p>
+
+  <!-- Related Posts -->
+  <div class="related-section reveal">
+    <h3>כתבות נוספות שיעניינו אתכם</h3>
+    <div class="related-grid">
+      <a href="post3.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#fff0d0,#ffd580);">🫧</div>
+        <div class="rc-text">
+          <h4>סקווישי נידו: למה כולם מכורים?</h4>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+      </a>
+      <a href="post4.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#d4f0e8,#7fcdb0);">🧘</div>
+        <div class="rc-text">
+          <h4>סקווישי להרגעת חרדה ומתח — מה אומר המדע</h4>
+          <span>⏱ קריאה של 5 דקות</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("blog");
+
+  // Render 3 relevant products
+  const ids = ["sq-001", "sq-004", "sq-014"];
+  const container = document.getElementById("prods-post1");
+  if (container) {
+    container.innerHTML = ids.map(id => {
+      const p = AMY.productById(id);
+      return p ? AmyApp.prodCard(p) : "";
+    }).join("");
+  }
+
+  AmyApp.initReveal();
+</script>
+</body>
+</html>

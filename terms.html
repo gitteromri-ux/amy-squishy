@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>תקנון ותנאי שימוש · איימי סקווישי</title>
+<meta name="description" content="תקנון ותנאי שימוש של איימי סקווישי — מדיניות הזמנות, משלוחים, החזרות, ביטולים, פרטיות ועוד.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* ===== TERMS PAGE ===== */
+
+  .terms-hero {
+    background: linear-gradient(140deg, var(--ink) 0%, #2a1f26 100%);
+    color: var(--white);
+    padding: 72px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .terms-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 20% 50%, rgba(247,181,196,.08) 0%, transparent 60%);
+  }
+  .terms-hero .container { position: relative; z-index: 1; }
+  .terms-hero h1 {
+    font-size: var(--t-2xl);
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .terms-hero .meta {
+    color: rgba(255,255,255,.55);
+    font-size: var(--t-sm);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .terms-hero .meta span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .terms-hero .meta .badge-pill {
+    background: rgba(247,181,196,.15);
+    border: 1px solid rgba(247,181,196,.3);
+    color: var(--pink);
+    padding: 4px 14px;
+    border-radius: var(--r-pill);
+    font-size: var(--t-xs);
+    font-weight: 700;
+  }
+
+  /* Layout */
+  .terms-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 48px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 24px 100px;
+  }
+
+  /* TOC Sidebar */
+  .toc-sidebar {
+    position: sticky;
+    top: calc(var(--nav-h) + 24px);
+    background: var(--white);
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .toc-sidebar h3 {
+    font-size: var(--t-sm);
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .toc-list a {
+    display: block;
+    padding: 9px 12px;
+    border-radius: var(--r-sm);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--ink-soft);
+    transition: background .2s, color .2s;
+    line-height: 1.4;
+  }
+  .toc-list a:hover {
+    background: var(--pink-tint);
+    color: var(--pink-deep);
+  }
+  .toc-list a.active {
+    background: var(--pink-tint);
+    color: var(--pink-deep);
+  }
+  .toc-list .toc-num {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: var(--line);
+    border-radius: 50%;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 20px;
+    margin-left: 8px;
+    flex-shrink: 0;
+    color: var(--ink-soft);
+    vertical-align: middle;
+  }
+  .toc-list a:hover .toc-num,
+  .toc-list a.active .toc-num {
+    background: var(--pink);
+    color: var(--ink);
+  }
+
+  /* Content */
+  .terms-content {
+    min-width: 0;
+  }
+  .terms-section {
+    margin-bottom: 62px;
+    scroll-margin-top: calc(var(--nav-h) + 32px);
+  }
+  .terms-section:last-child { margin-bottom: 0; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--line);
+  }
+  .section-header .sec-num {
+    width: 40px;
+    height: 40px;
+    background: var(--pink-tint);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--t-sm);
+    color: var(--pink-deep);
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: var(--t-xl);
+    font-weight: 800;
+    letter-spacing: -.01em;
+  }
+  .terms-section p {
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 16px;
+    font-size: 1.02rem;
+  }
+  .terms-section p:last-child { margin-bottom: 0; }
+  .terms-section ul, .terms-section ol {
+    margin: 16px 0 16px 0;
+    padding-right: 22px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+  }
+  .terms-section li {
+    margin-bottom: 10px;
+    font-size: 1.02rem;
+  }
+  .terms-section strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* Info boxes */
+  .info-box {
+    border-radius: var(--r-md);
+    padding: 20px 24px;
+    margin: 22px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: var(--t-sm);
+    line-height: 1.7;
+  }
+  .info-box.pink {
+    background: var(--pink-tint);
+    border: 1px solid rgba(232,136,158,.25);
+  }
+  .info-box.sky {
+    background: #f0f8fd;
+    border: 1px solid rgba(127,196,221,.3);
+  }
+  .info-box.ink {
+    background: rgba(26,21,24,.04);
+    border: 1px solid rgba(26,21,24,.1);
+  }
+  .info-box .ib-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 1px; }
+  .info-box .ib-text strong { display: block; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+
+  /* Shipping table */
+  .ship-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: var(--t-sm);
+  }
+  .ship-table th {
+    background: var(--ink);
+    color: var(--white);
+    padding: 12px 18px;
+    text-align: right;
+    font-weight: 700;
+    font-size: var(--t-sm);
+  }
+  .ship-table th:first-child { border-radius: 0 var(--r-sm) 0 0; }
+  .ship-table th:last-child { border-radius: var(--r-sm) 0 0 0; }
+  .ship-table td {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-soft);
+    vertical-align: middle;
+  }
+  .ship-table tr:last-child td { border-bottom: none; }
+  .ship-table tr:nth-child(even) td { background: var(--pink-tint); }
+  .ship-tag-fast {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--sky);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: var(--t-xs);
+    padding: 3px 10px;
+    border-radius: var(--r-pill);
+  }
+  .ship-tag-std {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--pink-tint);
+    color: var(--pink-deep);
+    font-weight: 700;
+    font-size: var(--t-xs);
+    padding: 3px 10px;
+    border-radius: var(--r-pill);
+  }
+
+  /* Contact card */
+  .contact-card {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: var(--r-lg);
+    padding: 36px 32px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .contact-card .cc-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .contact-card .cc-icon {
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    background: rgba(247,181,196,.12);
+    border-radius: var(--r-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(247,181,196,.2);
+    flex-shrink: 0;
+  }
+  .contact-card .cc-label {
+    font-size: var(--t-xs);
+    color: rgba(255,255,255,.5);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .contact-card .cc-val {
+    font-weight: 700;
+    color: var(--pink);
+    font-size: var(--t-base);
+  }
+  .contact-card .cc-val a { color: var(--pink); }
+  .contact-card .cc-val a:hover { text-decoration: underline; }
+
+  /* Mobile responsive */
+  @media(max-width: 900px) {
+    .terms-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 32px 20px 80px;
+    }
+    .toc-sidebar {
+      position: static;
+    }
+  }
+  @media(max-width: 600px) {
+    .terms-hero { padding: 52px 0 44px; }
+    .terms-hero h1 { font-size: var(--t-xl); }
+    .contact-card { flex-direction: column; gap: 20px; }
+    .ship-table { font-size: var(--t-xs); }
+    .ship-table td, .ship-table th { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<!-- HERO -->
+<section class="terms-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--pink)">מסמך משפטי</span>
+    <h1>תקנון ותנאי שימוש</h1>
+    <p style="color:rgba(255,255,255,.65);max-width:560px;margin-top:14px;font-size:var(--t-base);line-height:1.7">
+      תקנון זה מסדיר את תנאי השימוש באתר איימי סקווישי ואת מדיניות הרכישה, המשלוח, ההחזרות והפרטיות.
+    </p>
+    <div class="meta">
+      <span><span style="font-size:1.1rem">📅</span> עודכן לאחרונה: ינואר 2025</span>
+      <span class="badge-pill">גרסה 2.1</span>
+      <span><span style="font-size:1.1rem">📜</span> בהתאם לחוק הגנת הצרכן הישראלי</span>
+    </div>
+  </div>
+</section>
+
+<!-- LAYOUT: TOC + CONTENT -->
+<div class="terms-layout">
+
+  <!-- ===== TOC SIDEBAR ===== -->
+  <aside class="toc-sidebar" id="toc">
+    <h3>📋 תוכן העניינים</h3>
+    <ul class="toc-list">
+      <li>
+        <a href="#general" onclick="smoothTo('general')">
+          <span class="toc-num">1</span> כללי והקדמה
+        </a>
+      </li>
+      <li>
+        <a href="#orders" onclick="smoothTo('orders')">
+          <span class="toc-num">2</span> הזמנות ורכישה
+        </a>
+      </li>
+      <li>
+        <a href="#pricing" onclick="smoothTo('pricing')">
+          <span class="toc-num">3</span> מחירים ותשלום
+        </a>
+      </li>
+      <li>
+        <a href="#ship" onclick="smoothTo('ship')">
+          <span class="toc-num">4</span> משלוחים והחזרות
+        </a>
+      </li>
+      <li>
+        <a href="#cancel" onclick="smoothTo('cancel')">
+          <span class="toc-num">5</span> ביטול עסקה
+        </a>
+      </li>
+      <li>
+        <a href="#warranty" onclick="smoothTo('warranty')">
+          <span class="toc-num">6</span> אחריות ומדיניות מוצר
+        </a>
+      </li>
+      <li>
+        <a href="#privacy" onclick="smoothTo('privacy')">
+          <span class="toc-num">7</span> פרטיות ואבטחת מידע
+        </a>
+      </li>
+      <li>
+        <a href="#ip" onclick="smoothTo('ip')">
+          <span class="toc-num">8</span> קניין רוחני
+        </a>
+      </li>
+      <li>
+        <a href="#contact" onclick="smoothTo('contact')">
+          <span class="toc-num">9</span> יצירת קשר
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="terms-content">
+
+    <!-- 1. כללי -->
+    <section class="terms-section" id="general">
+      <div class="section-header">
+        <div class="sec-num">1</div>
+        <h2>כללי והקדמה</h2>
+      </div>
+      <p>ברוכים הבאים לאתר <strong>איימי סקווישי</strong> (להלן: "האתר" או "החנות"). האתר מופעל על ידי איימי סקווישי (להלן: "החברה" / "אנחנו"), ומיועד למכירת מוצרי סקווישי ומשחקי לחיצה לצרכנים פרטיים בישראל.</p>
+      <p>השימוש באתר ו/או ביצוע רכישה מהווים הסכמה מלאה ובלתי מסויגת לתנאי תקנון זה. אם אינכם מסכימים לאיזה מהתנאים המפורטים להלן, אנא הימנעו משימוש באתר.</p>
+      <p>תקנון זה מנוסח בלשון זכר מטעמי נוחות בלבד, אך מתייחס לכל המינים. תקנון זה מהווה הסכם משפטי מחייב בין המשתמש לבין החברה, ועשוי להתעדכן מעת לעת. המשך שימוש באתר לאחר עדכון התקנון מהווה הסכמה לגרסתו המעודכנת.</p>
+
+      <div class="info-box pink">
+        <span class="ib-icon">💡</span>
+        <div class="ib-text">
+          <strong>חשוב לדעת</strong>
+          לכל שאלה בנוגע לתנאים אלו ניתן לפנות אלינו בכל עת דרך הבוט בוואטסאפ, בטלפון 03-555-0199 או במייל hi@amysquishy.co.il. אנחנו כאן לעזור.
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. הזמנות -->
+    <section class="terms-section" id="orders">
+      <div class="section-header">
+        <div class="sec-num">2</div>
+        <h2>הזמנות ורכישה</h2>
+      </div>
+      <p>ביצוע הזמנה באתר מחייב מילוי כל שדות החובה בטופס ההזמנה, לרבות: שם מלא, כתובת למשלוח, מספר טלפון, וכתובת דואר אלקטרוני תקינה. כל הפרטים שיסופקו חייבים להיות מדויקים ועדכניים.</p>
+      <p>הזמנה מתבצעת בשלבים הבאים:</p>
+      <ol>
+        <li>בחירת המוצרים והוספתם לעגלת הקניות.</li>
+        <li>מעבר לדף התשלום ומילוי פרטי המשלוח.</li>
+        <li>בחירת שיטת תשלום ואישור ההזמנה.</li>
+        <li>קבלת אישור הזמנה למייל שצוין תוך מספר דקות.</li>
+        <li>עיבוד ומשלוח ההזמנה בהתאם לזמני האספקה המפורטים בסעיף 4.</li>
+      </ol>
+      <p>החברה שומרת לעצמה את הזכות לבטל הזמנה או לסרב לה במקרים של חשד להונאה, שגיאה מהותית במחיר, או אזילת מלאי בלתי צפויה. במקרה כזה יקבל הלקוח הודעה ויזוכה במלואו.</p>
+      <p>אישור ההזמנה בדוא"ל אינו מהווה אישור סופי לזמינות המוצר. אישור סופי יינתן בתוך יום עסקים אחד. אם מוצר אזל מהמלאי לאחר ביצוע ההזמנה, תוצע ללקוח חלופה מתאימה או ביטול עם זיכוי מלא.</p>
+
+      <div class="info-box sky">
+        <span class="ib-icon">📧</span>
+        <div class="ib-text">
+          <strong>אישור הזמנה</strong>
+          לאחר ביצוע הזמנה, תקבלו אישור אוטומטי לכתובת המייל שהזנתם. אם לא קיבלתם אישור תוך 15 דקות — בדקו את תיקיית הספאם, או צרו קשר עמנו.
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. מחירים ותשלום -->
+    <section class="terms-section" id="pricing">
+      <div class="section-header">
+        <div class="sec-num">3</div>
+        <h2>מחירים ותשלום</h2>
+      </div>
+      <p>כל המחירים המוצגים באתר הם <strong>בשקלים חדשים (₪)</strong> וכוללים <strong>מע"מ</strong> בהתאם לחוק הישראלי. המחירים אינם כוללים דמי משלוח, אלא אם צוין אחרת.</p>
+      <p>התשלום באתר מאובטח באמצעות תקן SSL מסוג 256-bit, ומבוצע דרך ספקי תשלום מורשים ומוכרים בישראל. פרטי כרטיס האשראי אינם נשמרים על שרתי החברה.</p>
+      <p>אמצעי תשלום מקובלים:</p>
+      <ul>
+        <li>כרטיסי אשראי ישראליים ובינלאומיים (ויזה, מאסטרקארד, אמריקן אקספרס, דיינרס)</li>
+        <li>ביט</li>
+        <li>PayPal</li>
+        <li>עסקאות תשלומים (בהתאם לתנאי ספק התשלום)</li>
+      </ul>
+      <p>החברה שומרת לעצמה את הזכות לשנות מחירים ללא הודעה מוקדמת. המחיר הרלוונטי הוא המחיר שהוצג בעת ביצוע ההזמנה, כפי שמפורט בדף אישור ההזמנה.</p>
+
+      <div class="info-box pink">
+        <span class="ib-icon">🔒</span>
+        <div class="ib-text">
+          <strong>אבטחת תשלומים</strong>
+          האתר עומד בתקן PCI-DSS לאבטחת נתוני כרטיסי אשראי. כל עסקה מוצפנת ומאובטחת. אנחנו אף פעם לא רואים את מספר הכרטיס המלא שלכם.
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. משלוחים והחזרות -->
+    <section class="terms-section" id="ship">
+      <div class="section-header">
+        <div class="sec-num">4</div>
+        <h2>משלוחים והחזרות</h2>
+      </div>
+      <p>החברה מבצעת משלוחים <strong>לכל רחבי ישראל</strong>, כולל אזורים מרוחקים. לא מתבצעים משלוחים לחו"ל בשלב זה.</p>
+      <p>זמני האספקה מחושבים מיום אישור ההזמנה ועיבודה, בימי עסקים (ראשון–חמישי, לא כולל חגים וימי שישי).</p>
+
+      <table class="ship-table">
+        <thead>
+          <tr>
+            <th>סוג משלוח</th>
+            <th>זמן אספקה</th>
+            <th>עלות</th>
+            <th>זכאות</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>⚡ אקספרס</td>
+            <td><span class="ship-tag-fast">⚡ 4 ימי עסקים</span></td>
+            <td>₪29</td>
+            <td>6 דגמים נבחרים (מסומנים בתווית ⚡)</td>
+          </tr>
+          <tr>
+            <td>🚚 רגיל</td>
+            <td><span class="ship-tag-std">14–21 ימי עסקים</span></td>
+            <td>₪29</td>
+            <td>כל שאר הדגמים</td>
+          </tr>
+          <tr>
+            <td>🎁 משלוח חינם</td>
+            <td>בהתאם לסוג המוצר</td>
+            <td><strong>חינם</strong></td>
+            <td>הזמנות מעל ₪149 (לפני מע"מ)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>זמני האספקה הנ"ל הם הערכות ואינם ימים מובטחים. עיכובים עקב נסיבות בלתי צפויות (שביתות, מזג אוויר קיצוני, כוח עליון) אינם מזכים בפיצוי.</p>
+
+      <h3 style="font-size:var(--t-base);margin:28px 0 14px;font-weight:700">🔍 מעקב הזמנה</h3>
+      <p>לאחר משלוח ההזמנה, ישלח אליכם מייל עם מספר מעקב. ניתן לעקוב אחר ההזמנה גם דרך <a href="track.html" style="color:var(--pink-deep);font-weight:700">פורטל המעקב של איימי</a> בכל עת.</p>
+
+      <h3 style="font-size:var(--t-base);margin:28px 0 14px;font-weight:700">↩️ מדיניות החזרות</h3>
+      <p>לקוח זכאי להחזיר מוצר תוך <strong>14 יום</strong> מיום קבלתו, בהתאם לחוק הגנת הצרכן (תיקון מס' 4), תשע"א–2010.</p>
+      <p>תנאים להחזרה:</p>
+      <ul>
+        <li>המוצר חייב להיות במצב תקין, ללא שימוש משמעותי, ובאריזתו המקורית.</li>
+        <li>יש לצרף חשבונית קנייה או פרטי הזמנה.</li>
+        <li>ייזום החזרה מתבצע דרך פנייה לשירות הלקוחות בוואטסאפ, בטלפון 03-555-0199 או במייל hi@amysquishy.co.il.</li>
+        <li>עלויות המשלוח החוזר חלות על הלקוח, אלא אם ההחזרה נובעת מפגם במוצר או טעות של החברה.</li>
+      </ul>
+      <p>לאחר קבלת המוצר ובדיקתו, הזיכוי יינתן תוך 3–7 ימי עסקים לאמצעי התשלום המקורי.</p>
+
+      <div class="info-box sky">
+        <span class="ib-icon">📦</span>
+        <div class="ib-text">
+          <strong>אריזת מתנה</strong>
+          כל ההזמנות מגיעות ארוזות יפה כמתנה. אם תרצו לכלול ברכה אישית, ציינו זאת בהערות ההזמנה — ואיימי תדאג לשאר.
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ביטול עסקה -->
+    <section class="terms-section" id="cancel">
+      <div class="section-header">
+        <div class="sec-num">5</div>
+        <h2>ביטול עסקה</h2>
+      </div>
+      <p>ביטול עסקה נעשה בהתאם להוראות <strong>חוק הגנת הצרכן, תשמ"א–1981</strong> ותקנות הגנת הצרכן (ביטול עסקה), תשע"א–2010.</p>
+      <p>לקוח רשאי לבטל עסקה:</p>
+      <ul>
+        <li>עד <strong>14 יום</strong> מיום ביצוע ההזמנה — אם המוצר טרם נשלח.</li>
+        <li>עד <strong>14 יום</strong> מיום קבלת המוצר — בצירוף החזרתו.</li>
+        <li>לקוח עם מוגבלות, אזרח ותיק (65+) או עולה חדש (תוך 5 שנים מעלייה) — זכאי ל-4 חודשים לביטול.</li>
+      </ul>
+
+      <h3 style="font-size:var(--t-base);margin:22px 0 12px;font-weight:700">אופן הביטול</h3>
+      <p>ביטול מתבצע בכתב (מייל, וואטסאפ, או טופס ייעודי באתר) תוך ציון שם, מספר הזמנה, ואסמכתא.</p>
+
+      <h3 style="font-size:var(--t-base);margin:22px 0 12px;font-weight:700">זיכויים בביטול</h3>
+      <ul>
+        <li><strong>ביטול לפני משלוח:</strong> החזר מלא של סכום ההזמנה.</li>
+        <li><strong>ביטול לאחר קבלת המוצר:</strong> החזר מלא בניכוי דמי ביטול בשיעור של 5% ממחיר המוצר או ₪100, לפי הנמוך מביניהם.</li>
+        <li><strong>ביטול עקב פגם:</strong> החזר מלא ללא כל דמי ביטול.</li>
+      </ul>
+      <p>הזיכוי יינתן לאמצעי התשלום המקורי תוך 14 ימי עסקים מיום הביטול / קבלת המוצר החזרה.</p>
+
+      <div class="info-box ink">
+        <span class="ib-icon">⚖️</span>
+        <div class="ib-text">
+          <strong>זכויות צרכן</strong>
+          מדיניות הביטולים שלנו עומדת בדרישות חוק הגנת הצרכן הישראלי. לכל שאלה משפטית, ניתן לפנות לרשות להגנת הצרכן ולסחר הוגן בטלפון 1700-70-77-77.
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. אחריות מוצר -->
+    <section class="terms-section" id="warranty">
+      <div class="section-header">
+        <div class="sec-num">6</div>
+        <h2>אחריות ומדיניות מוצר</h2>
+      </div>
+      <p>איימי סקווישי מתחייבת למכור מוצרים <strong>עומדים בסטנדרט איכות</strong> שנקבע על ידינו. כל מוצר עובר בדיקה לפני משלוח.</p>
+      <p>המוצרים מיועדים לשימוש כצעצועי לחיצה לכיף ולהרגעה. הם <strong>אינם מיועדים לילדים מתחת לגיל 3</strong> (סכנת חנק). יש לפקח על ילדים קטנים בעת שימוש.</p>
+      <p>אחריות לפגמים:</p>
+      <ul>
+        <li>מוצר שהתקבל פגום יוחלף ללא עלות, בהצגת תמונות ואסמכתא.</li>
+        <li>פגם שהתגלה תוך 30 יום מקבלת ההזמנה — החברה תישא בכל עלות ההחלפה.</li>
+        <li>נזק שנגרם עקב שימוש לא נכון, חשיפה לחום קיצוני, לחות או שבירה מכנית — אינו מכוסה באחריות.</li>
+      </ul>
+      <p>החברה אינה אחראית לנזקים עקיפים, ישירים או תוצאתיים הנובעים משימוש לא תקין במוצר.</p>
+    </section>
+
+    <!-- 7. פרטיות -->
+    <section class="terms-section" id="privacy">
+      <div class="section-header">
+        <div class="sec-num">7</div>
+        <h2>פרטיות ואבטחת מידע</h2>
+      </div>
+      <p>החברה מחויבת לשמירת פרטיותכם בהתאם לחוק הגנת הפרטיות, תשמ"א–1981, ולתקנות הרלוונטיות.</p>
+
+      <h3 style="font-size:var(--t-base);margin:20px 0 12px;font-weight:700">איזה מידע אנו אוספים?</h3>
+      <ul>
+        <li><strong>מידע זיהויי:</strong> שם, מייל, טלפון, כתובת למשלוח.</li>
+        <li><strong>מידע עסקי:</strong> היסטוריית הזמנות, העדפות מוצרים.</li>
+        <li><strong>מידע טכני:</strong> כתובת IP, סוג דפדפן, דפים שנצפו (אנונימי).</li>
+      </ul>
+
+      <h3 style="font-size:var(--t-base);margin:20px 0 12px;font-weight:700">כיצד אנו משתמשים במידע?</h3>
+      <ul>
+        <li>עיבוד והשלמת הזמנות ומשלוחים.</li>
+        <li>תקשורת שירות לקוחות.</li>
+        <li>שיפור האתר ומוצרי החנות.</li>
+        <li>שיווק ישיר — אך ורק לאחר קבלת הסכמה מפורשת.</li>
+      </ul>
+
+      <h3 style="font-size:var(--t-base);margin:20px 0 12px;font-weight:700">שיתוף מידע עם צדדים שלישיים</h3>
+      <p>החברה לא תמכור, תשאיל או תעביר את פרטיכם לגורמים חיצוניים לצרכי שיווק ללא הסכמתכם. מידע יועבר רק לגופים הנדרשים לצורך אספקת השירות (חברת שילוח, ספק תשלום).</p>
+
+      <h3 style="font-size:var(--t-base);margin:20px 0 12px;font-weight:700">עוגיות (Cookies)</h3>
+      <p>האתר משתמש בעוגיות לשיפור חוויית הגלישה ולניתוח תנועה. ניתן להגדיר את הדפדפן לחסום עוגיות, אך הדבר עלול לפגוע בחלק מפונקציות האתר.</p>
+
+      <h3 style="font-size:var(--t-base);margin:20px 0 12px;font-weight:700">זכות לעיין, לתקן ולמחוק מידע</h3>
+      <p>בכל עת ניתן לפנות אלינו לעיון, תיקון, או מחיקת המידע האישי שלכם. פנייה תטופל תוך 30 יום.</p>
+
+      <div class="info-box pink">
+        <span class="ib-icon">🛡️</span>
+        <div class="ib-text">
+          <strong>אבטחת מידע</strong>
+          כל הנתונים האישיים מוצפנים ומאוחסנים בשרתים מאובטחים. אנחנו לא שומרים פרטי כרטיסי אשראי ואין לנו גישה אליהם.
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. קניין רוחני -->
+    <section class="terms-section" id="ip">
+      <div class="section-header">
+        <div class="sec-num">8</div>
+        <h2>קניין רוחני</h2>
+      </div>
+      <p>כל התכנים המופיעים באתר — לרבות לוגו, שם המותג "איימי סקווישי", דמות איימי, עיצובים, תמונות, טקסטים, קוד מקור ומבנה האתר — הם רכושה הבלעדי של החברה ומוגנים בזכויות יוצרים.</p>
+      <p>אין להעתיק, לשכפל, להפיץ, לשנות, לפרסם מחדש, או לעשות כל שימוש מסחרי בתכנים ללא אישור כתוב מפורש מהחברה.</p>
+      <p>שימוש לא מורשה יהווה הפרת זכויות יוצרים ועלול לגרור פעולות משפטיות.</p>
+      <p>לשאלות בנוגע לשימוש בתכנים לצרכי תקשורת, אנא פנו אלינו במייל hi@amysquishy.co.il.</p>
+    </section>
+
+    <!-- 9. יצירת קשר -->
+    <section class="terms-section" id="contact">
+      <div class="section-header">
+        <div class="sec-num">9</div>
+        <h2>יצירת קשר</h2>
+      </div>
+      <p>לכל שאלה, בקשה, תלונה או בירור בנוגע לתקנון זה, למדיניות האתר, להזמנה שלכם, או לכל נושא אחר — צוות איימי כאן בשבילכם:</p>
+
+      <div class="contact-card">
+        <div class="cc-item">
+          <div class="cc-icon">📞</div>
+          <div>
+            <span class="cc-label">טלפון</span>
+            <div class="cc-val"><a href="tel:035550199">03-555-0199</a></div>
+          </div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">✉️</div>
+          <div>
+            <span class="cc-label">דואר אלקטרוני</span>
+            <div class="cc-val"><a href="mailto:hi@amysquishy.co.il">hi@amysquishy.co.il</a></div>
+          </div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">💬</div>
+          <div>
+            <span class="cc-label">וואטסאפ</span>
+            <div class="cc-val">זמין 24/7 בבוט</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:28px">החברה תשתדל להשיב לפניות בתוך <strong>יום עסקים אחד</strong>. פניות שנשלחות בימי שישי, שבת, חג, או שעות לא שגרתיות — יטופלו בתחילת יום העסקים הבא.</p>
+      <p>כתובת הדואר: איימי סקווישי, ת.ד. 5000, ישראל.</p>
+      <p style="color:rgba(26,21,24,.4);font-size:var(--t-xs);margin-top:30px;padding-top:20px;border-top:1px solid var(--line)">
+        תקנון זה עודכן לאחרונה בינואר 2025. כל השינויים מהגרסה הקודמת הסומנו ועמדו לעיון הציבור. גרסאות קודמות זמינות לבקשה. תקנון זה כפוף לדין הישראלי, וכל סכסוך ידון בבית משפט המוסמך בתל אביב.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("about");
+  AmyApp.initReveal();
+
+  // Smooth scroll for TOC links
+  function smoothTo(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Update active TOC link
+      document.querySelectorAll('.toc-list a').forEach(a => a.classList.remove('active'));
+      const active = document.querySelector('.toc-list a[href="#' + id + '"]');
+      if (active) active.classList.add('active');
+    }
+    return false;
+  }
+
+  // Highlight active TOC section on scroll
+  (function(){
+    const sections = document.querySelectorAll('.terms-section');
+    const links = document.querySelectorAll('.toc-list a');
+    function onScroll(){
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top <= 120) current = sec.id;
+      });
+      links.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', onScroll, {passive: true});
+    onScroll();
+  })();
+</script>
+</body>
+</html>

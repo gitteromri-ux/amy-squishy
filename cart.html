@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>עגלת הקניות · איימי סקווישי</title>
+  <meta name="description" content="עגלת הקניות שלך באיימי סקווישי — בדקי את הפריטים שבחרת וסיימי את ההזמנה בקלות.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Checkout layout ── */
+    .checkout-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── Progress steps ── */
+    .steps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 48px;
+      padding: 0 8px;
+    }
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      max-width: 180px;
+      position: relative;
+    }
+    .step-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--line);
+      z-index: 0;
+    }
+    .step-item.done:not(:last-child)::after,
+    .step-item.active:not(:last-child)::after {
+      background: linear-gradient(to left, var(--line), var(--pink-deep));
+    }
+    .step-item.done:not(:last-child)::after {
+      background: var(--pink-deep);
+    }
+    .step-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      z-index: 1;
+      transition: all .35s var(--ease);
+      position: relative;
+    }
+    .step-item.active .step-dot {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(26,21,24,.2);
+    }
+    .step-item.done .step-dot {
+      background: var(--pink-deep);
+      border-color: var(--pink-deep);
+      color: var(--white);
+    }
+    .step-label {
+      font-size: var(--t-sm);
+      font-weight: 700;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    .step-item.active .step-label { color: var(--ink); }
+    .step-item.done .step-label { color: var(--pink-deep); }
+
+    /* ── Step panels ── */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    /* ── Cart layout ── */
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px;
+      align-items: start;
+    }
+    @media(max-width: 900px) {
+      .cart-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Cart item ── */
+    .cart-items-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .cart-box-head {
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-box-head h2 {
+      font-size: var(--t-lg);
+      font-weight: 800;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--line);
+      transition: background .2s;
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item:hover { background: var(--pink-tint); }
+    .ci-img {
+      width: 68px;
+      height: 68px;
+      flex-shrink: 0;
+      border-radius: var(--r-md);
+      background: radial-gradient(circle at 50% 38%, var(--pink-tint), var(--sky-deep) 320%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+    }
+    .ci-info { flex: 1; min-width: 0; }
+    .ci-cat {
+      font-size: var(--t-xs);
+      color: var(--pink-deep);
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .ci-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--t-base);
+      line-height: 1.3;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ci-price-unit {
+      font-size: var(--t-sm);
+      color: var(--ink-soft);
+    }
+    .qty-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1.5px solid var(--line);
+      border-radius: var(--r-pill);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .qty-btn {
+      width: 36px;
+      height: 36px;
+      background: none;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      transition: background .2s, color .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qty-btn:hover { background: var(--pink-tint); color: var(--pink-deep); }
+    .qty-val {
+      width: 36px;
+      text-align: center;
+      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: var(--t-base);
+      background: none;
+      border: none;
+    }
+    .ci-line-total {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      min-width: 72px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .ci-remove {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r-pill);
+      background: none;
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      transition: background .2s, color .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ci-remove:hover { background: #fee2e8; color: #e03060; }
+
+    /* ── Empty state ── */
+    .empty-cart {
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .empty-cart .empty-emoji { font-size: 5rem; margin-bottom: 16px; display: block; }
+    .empty-cart h2 { font-size: var(--t-xl); margin-bottom: 12px; }
+    .empty-cart p { color: var(--ink-soft); margin-bottom: 28px; font-size: var(--t-lg); }
+
+    /* ── Summary box ── */
+    .summary-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 28px;
+      position: sticky;
+      top: calc(var(--nav-h) + 16px);
+    }
+    .summary-box h3 {
+      font-size: var(--t-lg);
+      font-weight: 800;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--t-base);
+      margin-bottom: 12px;
+    }
+    .summary-row.total {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      padding-top: 14px;
+      margin-top: 6px;
+      border-top: 2px solid var(--line);
+      margin-bottom: 0;
+    }
+    .summary-row.total .price-big { color: var(--pink-deep); font-size: 1.4rem; }
+    .free-ship-label {
+      font-size: var(--t-xs);
+      font-weight: 700;
+      color: var(--pink-deep);
+      text-align: center;
+      margin: 14px 0 6px;
+    }
+    .free-ship-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--line);
+      border-radius: var(--r-pill);
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .free-ship-fill {
+      height: 100%;
+      background: linear-gradient(to left, var(--pink-deep), var(--pink));
+      border-radius: var(--r-pill);
+      transition: width .5s var(--ease);
+    }
+    .free-ship-note {
+      font-size: var(--t-xs);
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    .ship-est {
+      margin-top: 16px;
+      padding: 12px 14px;
+      background: var(--pink-tint);
+      border-radius: var(--r-md);
+      font-size: var(--t-sm);
+      font-weight: 600;
+      color: var(--ink);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .ship-est.fast { background: #e8f7fc; color: var(--sky-deep); }
+    .summary-cta {
+      margin-top: 22px;
+      width: 100%;
+      padding: 16px;
+      font-size: var(--t-base);
+      border-radius: var(--r-pill);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: var(--t-sm);
+      font-weight: 700;
+      color: var(--ink-soft);
+      cursor: pointer;
+      padding: 8px 0;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--pink-deep); }
+
+    /* ── Shipping form ── */
+    .shipping-form-wrap {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+      align-items: start;
+    }
+    @media(max-width: 900px) {
+      .shipping-form-wrap { grid-template-columns: 1fr; }
+    }
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 36px 32px;
+    }
+    .form-card h2 {
+      font-size: var(--t-xl);
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .form-card .subtitle {
+      color: var(--ink-soft);
+      font-size: var(--t-base);
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media(max-width: 560px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      display: block;
+      font-size: var(--t-sm);
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .form-label .req { color: var(--pink-deep); }
+    .form-input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid var(--line);
+      border-radius: var(--r-md);
+      font-family: var(--font-body);
+      font-size: var(--t-base);
+      color: var(--ink);
+      background: var(--white);
+      transition: border-color .25s, box-shadow .25s;
+      direction: rtl;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--pink-deep);
+      box-shadow: 0 0 0 3px rgba(232,136,158,.15);
+    }
+    .form-input.error {
+      border-color: #e03060;
+      box-shadow: 0 0 0 3px rgba(224,48,96,.1);
+    }
+    .form-input::placeholder { color: #bbb; }
+    .field-error {
+      color: #e03060;
+      font-size: var(--t-xs);
+      font-weight: 600;
+      margin-top: 5px;
+      display: none;
+    }
+    .field-error.show { display: block; }
+    select.form-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231A1518' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: left 14px center; padding-left: 36px; }
+    .israel-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #e8f7fc;
+      border-radius: var(--r-md);
+      padding: 12px 16px;
+      font-size: var(--t-sm);
+      font-weight: 600;
+      color: #1a6e8e;
+      margin-bottom: 24px;
+    }
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 28px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Payment step ── */
+    .payment-wrap {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+      align-items: start;
+    }
+    @media(max-width: 900px) {
+      .payment-wrap { grid-template-columns: 1fr; }
+    }
+
+    /* ── Credit card visual ── */
+    .cc-visual {
+      background: linear-gradient(135deg, var(--ink) 0%, #3a2e36 100%);
+      border-radius: 20px;
+      padding: 28px 28px 24px;
+      color: #fff;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+      min-height: 180px;
+      box-shadow: 0 16px 48px rgba(26,21,24,.25);
+    }
+    .cc-visual::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(247,181,196,.12);
+    }
+    .cc-visual::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      right: -20px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(191,227,240,.08);
+    }
+    .cc-chip {
+      width: 42px;
+      height: 30px;
+      background: linear-gradient(135deg, #d4a843, #f0c860);
+      border-radius: 6px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .cc-number {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      margin-bottom: 18px;
+      direction: ltr;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+      min-height: 1.6em;
+      color: rgba(255,255,255,.9);
+    }
+    .cc-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      position: relative;
+      z-index: 1;
+    }
+    .cc-field-label {
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      opacity: .6;
+      margin-bottom: 3px;
+    }
+    .cc-field-val {
+      font-family: var(--font-display);
+      font-size: .9rem;
+      font-weight: 700;
+      min-height: 1.2em;
+    }
+    .cc-network {
+      font-size: 1.8rem;
+      opacity: .85;
+    }
+
+    /* ── Secure badge ── */
+    .secure-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #e8f8f0;
+      border-radius: var(--r-md);
+      padding: 12px 16px;
+      font-size: var(--t-sm);
+      font-weight: 600;
+      color: #1a7a4a;
+      margin-bottom: 24px;
+    }
+
+    /* ── Payment fields ── */
+    .pay-form-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 36px 32px;
+    }
+    .pay-form-card h2 {
+      font-size: var(--t-xl);
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    /* ── Order summary compact (steps 2 & 3) ── */
+    .mini-summary {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 24px;
+      position: sticky;
+      top: calc(var(--nav-h) + 16px);
+    }
+    .mini-summary h3 {
+      font-size: var(--t-base);
+      font-weight: 800;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .mini-items { margin-bottom: 16px; }
+    .mini-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .mini-item-img {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-sm);
+      background: radial-gradient(circle at 50% 38%, var(--pink-tint), var(--sky-deep) 320%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .mini-item-info { flex: 1; min-width: 0; }
+    .mini-item-name {
+      font-size: var(--t-sm);
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mini-item-qty { font-size: var(--t-xs); color: var(--ink-soft); }
+    .mini-item-price { font-weight: 800; font-size: var(--t-sm); flex-shrink: 0; }
+    .mini-divider { border: none; border-top: 1px solid var(--line); margin: 12px 0; }
+    .mini-row { display: flex; justify-content: space-between; font-size: var(--t-sm); margin-bottom: 8px; }
+    .mini-total { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: var(--pink-deep); }
+
+    /* ── Success screen ── */
+    #successScreen {
+      display: none;
+      text-align: center;
+      padding: 60px 24px 80px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .success-anim {
+      font-size: 5.5rem;
+      display: block;
+      margin-bottom: 16px;
+      animation: popIn .6s var(--ease) both;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      70% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .success-title {
+      font-family: var(--font-display);
+      font-size: var(--t-2xl);
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .success-sub {
+      font-size: var(--t-lg);
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
+    .order-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 28px;
+      margin: 0 auto 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .order-num {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--pink-deep);
+      letter-spacing: .05em;
+      margin-bottom: 8px;
+    }
+    .order-delivery {
+      font-size: var(--t-base);
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+    .success-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Page hero ── */
+    .cart-hero {
+      background: linear-gradient(135deg, var(--pink-tint), var(--sky) 200%);
+      padding: 36px 24px 32px;
+      text-align: center;
+    }
+    .cart-hero h1 {
+      font-size: var(--t-2xl);
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .cart-hero p {
+      color: var(--ink-soft);
+      font-size: var(--t-base);
+    }
+
+    /* ── Page title ── */
+    .step-title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .step-title-bar h2 {
+      font-size: var(--t-xl);
+      font-weight: 800;
+    }
+
+    /* ── Responsive tweaks ── */
+    @media(max-width: 600px) {
+      .checkout-wrap { padding: 24px 16px 60px; }
+      .form-card, .pay-form-card { padding: 24px 18px; }
+      .summary-box { position: static; }
+      .mini-summary { position: static; }
+      .cart-item { padding: 16px; gap: 10px; }
+      .ci-line-total { min-width: 56px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<!-- Page hero -->
+<div class="cart-hero">
+  <h1>🛍️ עגלת הקניות</h1>
+  <p>בדקי את הפריטים שלך וסיימי את ההזמנה</p>
+</div>
+
+<!-- Checkout container -->
+<div class="checkout-wrap">
+
+  <!-- Progress steps -->
+  <div class="steps" id="stepsBar">
+    <div class="step-item active" id="stepItem1">
+      <div class="step-dot">1</div>
+      <div class="step-label">עגלה</div>
+    </div>
+    <div class="step-item" id="stepItem2">
+      <div class="step-dot">2</div>
+      <div class="step-label">פרטי משלוח</div>
+    </div>
+    <div class="step-item" id="stepItem3">
+      <div class="step-dot">3</div>
+      <div class="step-label">תשלום</div>
+    </div>
+  </div>
+
+  <!-- ════════════ STEP 1 — עגלה ════════════ -->
+  <div class="step-panel active" id="panel1">
+    <div class="step-title-bar">
+      <h2>הפריטים שלך</h2>
+      <a href="shop.html" class="back-link">← המשך קנייה</a>
+    </div>
+
+    <div class="cart-layout">
+      <!-- Items column -->
+      <div>
+        <!-- Empty state (shown when cart is empty) -->
+        <div class="cart-items-box" id="emptyState" style="display:none">
+          <div class="empty-cart">
+            <span class="empty-emoji">🤍</span>
+            <h2>העגלה שלך ריקה</h2>
+            <p>נראה שעוד לא בחרת פריטים<br>גלי את כל הסקווישי שלנו!</p>
+            <a href="shop.html" class="btn btn-primary">לחנות 🛍️</a>
+          </div>
+        </div>
+
+        <!-- Items list -->
+        <div class="cart-items-box" id="cartItemsList">
+          <div class="cart-box-head">
+            <h2 id="cartItemCount">... פריטים בעגלה</h2>
+            <button class="back-link" id="clearCartBtn" style="color:#e03060">הסר הכל 🗑️</button>
+          </div>
+          <div id="cartLinesContainer"></div>
+        </div>
+      </div>
+
+      <!-- Summary column -->
+      <div class="summary-box" id="summaryBox">
+        <h3>סיכום הזמנה</h3>
+
+        <div class="summary-row">
+          <span>סכום ביניים</span>
+          <span id="subtotalVal">₪0</span>
+        </div>
+        <div class="summary-row">
+          <span>משלוח</span>
+          <span id="shippingVal">₪29</span>
+        </div>
+
+        <div id="freeShipProgress">
+          <div class="free-ship-label" id="freeShipLabel"></div>
+          <div class="free-ship-bar">
+            <div class="free-ship-fill" id="freeShipFill" style="width:0%"></div>
+          </div>
+          <div class="free-ship-note" id="freeShipNote"></div>
+        </div>
+
+        <div class="summary-row total">
+          <span>סה"כ לתשלום</span>
+          <span class="price-big" id="totalVal">₪0</span>
+        </div>
+
+        <div class="ship-est" id="shipEstBox">🚚 14-21 ימי עסקים</div>
+
+        <button class="btn btn-primary summary-cta" id="toStep2Btn">
+          המשך לתשלום ←
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ STEP 2 — פרטי משלוח ════════════ -->
+  <div class="step-panel" id="panel2">
+    <div class="shipping-form-wrap">
+      <!-- Form -->
+      <div class="form-card">
+        <h2>פרטי משלוח</h2>
+        <p class="subtitle">ממלאים את הפרטים ואנחנו נדאג לשאר</p>
+
+        <div class="israel-note">
+          <span>🇮🇱</span>
+          <span>אנחנו שולחים לכל רחבי ישראל</span>
+        </div>
+
+        <form id="shippingForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fullName">שם מלא <span class="req">*</span></label>
+              <input class="form-input" type="text" id="fullName" placeholder="ישראל ישראלי" autocomplete="name">
+              <div class="field-error" id="errFullName">נא להזין שם מלא</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">טלפון <span class="req">*</span></label>
+              <input class="form-input" type="tel" id="phone" placeholder="05X-XXXXXXX" autocomplete="tel" dir="ltr" style="text-align:right">
+              <div class="field-error" id="errPhone">נא להזין מספר טלפון תקין</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">אימייל <span class="req">*</span></label>
+            <input class="form-input" type="email" id="email" placeholder="you@example.com" autocomplete="email" dir="ltr" style="text-align:right">
+            <div class="field-error" id="errEmail">נא להזין כתובת אימייל תקינה</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="city">עיר <span class="req">*</span></label>
+              <select class="form-input" id="city">
+                <option value="">בחרי עיר...</option>
+                <option>תל אביב-יפו</option>
+                <option>ירושלים</option>
+                <option>חיפה</option>
+                <option>ראשון לציון</option>
+                <option>פתח תקווה</option>
+                <option>אשדוד</option>
+                <option>נתניה</option>
+                <option>באר שבע</option>
+                <option>בני ברק</option>
+                <option>רמת גן</option>
+                <option>הרצליה</option>
+                <option>כפר סבא</option>
+                <option>רחובות</option>
+                <option>בת ים</option>
+                <option>מודיעין</option>
+                <option>חולון</option>
+                <option>לוד</option>
+                <option>רמלה</option>
+                <option>עכו</option>
+                <option>נצרת</option>
+                <option>אחר</option>
+              </select>
+              <div class="field-error" id="errCity">נא לבחור עיר</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="zip">מיקוד</label>
+              <input class="form-input" type="text" id="zip" placeholder="1234567" maxlength="7" dir="ltr" style="text-align:right">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="address">רחוב ומספר בית <span class="req">*</span></label>
+            <input class="form-input" type="text" id="address" placeholder="רחוב הורד 12, דירה 5" autocomplete="street-address">
+            <div class="field-error" id="errAddress">נא להזין כתובת מלאה</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notes">הערות למשלוח</label>
+            <input class="form-input" type="text" id="notes" placeholder="קוד כניסה, קומה, הנחיות מיוחדות...">
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="back-link" id="backToCart">← חזרה לעגלה</button>
+            <button type="submit" class="btn btn-primary">המשך לתשלום ←</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Mini summary -->
+      <div class="mini-summary" id="miniSummary2">
+        <h3>סיכום הזמנה</h3>
+        <div class="mini-items" id="miniItems2"></div>
+        <hr class="mini-divider">
+        <div class="mini-row"><span>סכום ביניים</span><span id="ms2sub">₪0</span></div>
+        <div class="mini-row"><span>משלוח</span><span id="ms2ship">₪0</span></div>
+        <hr class="mini-divider">
+        <div class="mini-row mini-total"><span>סה"כ</span><span id="ms2total">₪0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ STEP 3 — תשלום ════════════ -->
+  <div class="step-panel" id="panel3">
+    <div class="payment-wrap">
+      <!-- Payment form -->
+      <div class="pay-form-card">
+        <h2>💳 פרטי תשלום</h2>
+
+        <!-- Credit card visual -->
+        <div class="cc-visual" id="ccVisual">
+          <div class="cc-chip"></div>
+          <div class="cc-number" id="ccNumDisplay">•••• •••• •••• ••••</div>
+          <div class="cc-bottom">
+            <div>
+              <div class="cc-field-label">שם בעל הכרטיס</div>
+              <div class="cc-field-val" id="ccNameDisplay">שם מלא</div>
+            </div>
+            <div>
+              <div class="cc-field-label">בתוקף עד</div>
+              <div class="cc-field-val" id="ccExpDisplay">MM/YY</div>
+            </div>
+            <div class="cc-network" id="ccNetwork">💳</div>
+          </div>
+        </div>
+
+        <div class="secure-note">
+          <span>🔒</span>
+          <span>תשלום מאובטח — דמו בלבד. פרטי כרטיס לא נשמרים.</span>
+        </div>
+
+        <form id="paymentForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="ccNum">מספר כרטיס <span class="req">*</span></label>
+            <input class="form-input" type="text" id="ccNum" placeholder="1234 5678 9012 3456" maxlength="19" dir="ltr" style="text-align:right" autocomplete="cc-number">
+            <div class="field-error" id="errCcNum">נא להזין מספר כרטיס תקין (16 ספרות)</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="ccExp">תאריך תפוגה <span class="req">*</span></label>
+              <input class="form-input" type="text" id="ccExp" placeholder="MM/YY" maxlength="5" dir="ltr" style="text-align:right" autocomplete="cc-exp">
+              <div class="field-error" id="errCcExp">נא להזין תאריך תפוגה תקין</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="ccCvv">קוד CVV <span class="req">*</span></label>
+              <input class="form-input" type="text" id="ccCvv" placeholder="•••" maxlength="4" dir="ltr" style="text-align:right" autocomplete="cc-csc">
+              <div class="field-error" id="errCcCvv">נא להזין קוד CVV תקין</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="ccName">שם בעל הכרטיס <span class="req">*</span></label>
+            <input class="form-input" type="text" id="ccName" placeholder="ישראל ישראלי" autocomplete="cc-name">
+            <div class="field-error" id="errCcName">נא להזין את שם בעל הכרטיס</div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="back-link" id="backToShipping">← חזרה לפרטי משלוח</button>
+            <button type="submit" class="btn btn-primary" style="gap:12px">
+              <span>🔒</span> סיום הזמנה ושליחה
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Mini summary -->
+      <div class="mini-summary" id="miniSummary3">
+        <h3>סיכום הזמנה</h3>
+        <div class="mini-items" id="miniItems3"></div>
+        <hr class="mini-divider">
+        <div class="mini-row"><span>סכום ביניים</span><span id="ms3sub">₪0</span></div>
+        <div class="mini-row"><span>משלוח</span><span id="ms3ship">₪0</span></div>
+        <hr class="mini-divider">
+        <div class="mini-row mini-total"><span>סה"כ לתשלום</span><span id="ms3total">₪0</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /checkout-wrap -->
+
+<!-- ════════════ SUCCESS SCREEN ════════════ -->
+<div id="successScreen">
+  <span class="success-anim">🎉</span>
+  <h1 class="success-title">ההזמנה התקבלה!</h1>
+  <p class="success-sub">תודה רבה על הקנייה — איימי שמחה לשלוח אלייך ❤️</p>
+  <div class="order-card">
+    <div class="order-num" id="orderNum">AMY-000000</div>
+    <div class="order-delivery" id="orderDelivery">זמן אספקה משוער: 14-21 ימי עסקים</div>
+    <div style="font-size:var(--t-sm);color:var(--ink-soft);margin-top:4px">אישור ישלח לאימייל שמסרת</div>
+  </div>
+  <div class="success-actions">
+    <a id="trackOrderBtn" href="track.html" class="btn btn-primary">מעקב אחר ההזמנה 📦</a>
+    <a href="shop.html" class="btn btn-ghost">חזרה לחנות 🛍️</a>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("shop");
+
+  /* ─────────── State ─────────── */
+  let currentStep = 1;
+  let generatedOrderNum = null;
+  const FREE_SHIP_THRESHOLD = 149;
+  const SHIP_COST = 29;
+
+  /* ─────────── Helpers ─────────── */
+  function fmtPrice(n) {
+    return "₪" + n.toFixed(2).replace(/\.00$/, "");
+  }
+
+  function calcShipping(subtotal) {
+    return subtotal >= FREE_SHIP_THRESHOLD ? 0 : SHIP_COST;
+  }
+
+  function hasFastItem() {
+    const cart = AmyApp.getCart();
+    return cart.some(i => {
+      const p = AMY.productById(i.id);
+      return p && p.fast;
+    });
+  }
+
+  /* ─────────── Step navigation ─────────── */
+  function goToStep(n) {
+    // Hide all panels
+    document.querySelectorAll(".step-panel").forEach(p => p.classList.remove("active"));
+    document.getElementById("panel" + n).classList.add("active");
+
+    // Update step indicators
+    for (let i = 1; i <= 3; i++) {
+      const item = document.getElementById("stepItem" + i);
+      item.classList.remove("active", "done");
+      if (i < n) item.classList.add("done");
+      else if (i === n) item.classList.add("active");
+    }
+
+    currentStep = n;
+
+    // Refresh summary in the relevant panel
+    if (n === 2) renderMiniSummary("2");
+    if (n === 3) renderMiniSummary("3");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  /* ─────────── Cart rendering ─────────── */
+  function renderCart() {
+    const cart = AmyApp.getCart();
+    const emptyState = document.getElementById("emptyState");
+    const itemsList = document.getElementById("cartItemsList");
+    const summaryBox = document.getElementById("summaryBox");
+    const toStep2Btn = document.getElementById("toStep2Btn");
+
+    if (!cart || cart.length === 0) {
+      emptyState.style.display = "block";
+      itemsList.style.display = "none";
+      summaryBox.style.opacity = "0.4";
+      summaryBox.style.pointerEvents = "none";
+      toStep2Btn.disabled = true;
+      updateSummary(0);
+      return;
+    }
+
+    emptyState.style.display = "none";
+    itemsList.style.display = "block";
+    summaryBox.style.opacity = "1";
+    summaryBox.style.pointerEvents = "";
+    toStep2Btn.disabled = false;
+
+    // Count
+    const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+    document.getElementById("cartItemCount").textContent =
+      totalItems + (totalItems === 1 ? " פריט בעגלה" : " פריטים בעגלה");
+
+    // Lines
+    const container = document.getElementById("cartLinesContainer");
+    container.innerHTML = cart.map(item => {
+      const p = AMY.productById(item.id);
+      if (!p) return "";
+      const cat = AMY.catById(p.cat);
+      const lineTotal = p.price * item.qty;
+      return `
+        <div class="cart-item" id="ci-${p.id}">
+          <div class="ci-img">${cat ? cat.emoji : "🎀"}</div>
+          <div class="ci-info">
+            <div class="ci-cat">${cat ? cat.emoji + " " + cat.name.split(" ")[0] : ""}</div>
+            <div class="ci-name">${p.name}</div>
+            <div class="ci-price-unit">${fmtPrice(p.price)} ליחידה</div>
+          </div>
+          <div class="qty-stepper">
+            <button class="qty-btn" data-qminus="${p.id}" aria-label="פחות">−</button>
+            <span class="qty-val" id="qval-${p.id}">${item.qty}</span>
+            <button class="qty-btn" data-qplus="${p.id}" aria-label="יותר">+</button>
+          </div>
+          <div class="ci-line-total" id="ltotal-${p.id}">${fmtPrice(lineTotal)}</div>
+          <button class="ci-remove" data-remove="${p.id}" aria-label="הסר מהעגלה">🗑️</button>
+        </div>`;
+    }).join("");
+
+    // Subtotal
+    const subtotal = AmyApp.cartTotal();
+    updateSummary(subtotal);
+  }
+
+  function updateSummary(subtotal) {
+    const ship = calcShipping(subtotal);
+    const total = subtotal + ship;
+
+    document.getElementById("subtotalVal").textContent = fmtPrice(subtotal);
+    document.getElementById("shippingVal").textContent = ship === 0 ? "חינם 🎁" : fmtPrice(ship);
+    document.getElementById("totalVal").textContent = fmtPrice(total);
+
+    // Free shipping progress
+    const prog = Math.min(subtotal / FREE_SHIP_THRESHOLD, 1);
+    document.getElementById("freeShipFill").style.width = (prog * 100) + "%";
+
+    if (ship === 0) {
+      document.getElementById("freeShipLabel").textContent = "✓ קיבלת משלוח חינם!";
+      document.getElementById("freeShipNote").textContent = "";
+    } else {
+      const remaining = (FREE_SHIP_THRESHOLD - subtotal).toFixed(2).replace(/\.00$/, "");
+      document.getElementById("freeShipLabel").textContent = "🚚 משלוח חינם החל מ-₪" + FREE_SHIP_THRESHOLD;
+      document.getElementById("freeShipNote").textContent = "עוד ₪" + remaining + " למשלוח חינם";
+    }
+
+    // Shipping estimate
+    const shipEstBox = document.getElementById("shipEstBox");
+    if (hasFastItem()) {
+      shipEstBox.textContent = "⚡ כולל פריטים במשלוח אקספרס (4 ימי עסקים)";
+      shipEstBox.className = "ship-est fast";
+    } else {
+      shipEstBox.textContent = "🚚 " + AMY.SHIP_STD;
+      shipEstBox.className = "ship-est";
+    }
+  }
+
+  /* ─────────── Mini summary ─────────── */
+  function renderMiniSummary(suffix) {
+    const cart = AmyApp.getCart();
+    const container = document.getElementById("miniItems" + suffix);
+    container.innerHTML = cart.map(item => {
+      const p = AMY.productById(item.id);
+      if (!p) return "";
+      const cat = AMY.catById(p.cat);
+      return `
+        <div class="mini-item">
+          <div class="mini-item-img">${cat ? cat.emoji : "🎀"}</div>
+          <div class="mini-item-info">
+            <div class="mini-item-name">${p.name}</div>
+            <div class="mini-item-qty">כמות: ${item.qty}</div>
+          </div>
+          <div class="mini-item-price">${fmtPrice(p.price * item.qty)}</div>
+        </div>`;
+    }).join("");
+
+    const subtotal = AmyApp.cartTotal();
+    const ship = calcShipping(subtotal);
+    const total = subtotal + ship;
+
+    document.getElementById("ms" + suffix + "sub").textContent = fmtPrice(subtotal);
+    document.getElementById("ms" + suffix + "ship").textContent = ship === 0 ? "חינם 🎁" : fmtPrice(ship);
+    document.getElementById("ms" + suffix + "total").textContent = fmtPrice(total);
+  }
+
+  /* ─────────── Cart event delegation ─────────── */
+  document.getElementById("cartLinesContainer").addEventListener("click", function(e) {
+    const minusBtn = e.target.closest("[data-qminus]");
+    const plusBtn = e.target.closest("[data-qplus]");
+    const removeBtn = e.target.closest("[data-remove]");
+
+    if (minusBtn) {
+      const id = minusBtn.getAttribute("data-qminus");
+      const cart = AmyApp.getCart();
+      const item = cart.find(i => i.id === id);
+      if (item && item.qty > 1) {
+        AmyApp.setQty(id, item.qty - 1);
+      } else if (item && item.qty === 1) {
+        AmyApp.removeFromCart(id);
+      }
+      renderCart();
+    }
+
+    if (plusBtn) {
+      const id = plusBtn.getAttribute("data-qplus");
+      const cart = AmyApp.getCart();
+      const item = cart.find(i => i.id === id);
+      if (item) {
+        AmyApp.setQty(id, item.qty + 1);
+        document.getElementById("qval-" + id).textContent = item.qty + 1;
+        const p = AMY.productById(id);
+        if (p) document.getElementById("ltotal-" + id).textContent = fmtPrice(p.price * (item.qty + 1));
+      }
+      renderCart();
+    }
+
+    if (removeBtn) {
+      const id = removeBtn.getAttribute("data-remove");
+      const el = document.getElementById("ci-" + id);
+      if (el) {
+        el.style.transition = "opacity .25s, transform .25s";
+        el.style.opacity = "0";
+        el.style.transform = "translateX(30px)";
+        setTimeout(() => {
+          AmyApp.removeFromCart(id);
+          renderCart();
+        }, 260);
+      }
+    }
+  });
+
+  document.getElementById("clearCartBtn").addEventListener("click", function() {
+    if (confirm("להסיר את כל הפריטים מהעגלה?")) {
+      AmyApp.saveCart([]);
+      renderCart();
+    }
+  });
+
+  /* ─────────── Step 1 → Step 2 ─────────── */
+  document.getElementById("toStep2Btn").addEventListener("click", function() {
+    if (AmyApp.getCart().length === 0) return;
+    goToStep(2);
+  });
+
+  /* ─────────── Back links ─────────── */
+  document.getElementById("backToCart").addEventListener("click", function() {
+    goToStep(1);
+  });
+  document.getElementById("backToShipping").addEventListener("click", function() {
+    goToStep(2);
+  });
+
+  /* ─────────── Shipping form validation ─────────── */
+  function showErr(id, show) {
+    const el = document.getElementById(id);
+    const inp = document.getElementById(id.replace("err", "").charAt(0).toLowerCase() + id.replace("err", "").slice(1));
+    el.classList.toggle("show", show);
+    if (inp) inp.classList.toggle("error", show);
+  }
+
+  function validateShipping() {
+    let ok = true;
+    const fullName = document.getElementById("fullName").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const city = document.getElementById("city").value;
+    const address = document.getElementById("address").value.trim();
+
+    showErr("errFullName", fullName.length < 2);
+    if (fullName.length < 2) ok = false;
+
+    const phoneOk = /^[\d\-\+\s]{9,}$/.test(phone);
+    showErr("errPhone", !phoneOk);
+    if (!phoneOk) ok = false;
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    showErr("errEmail", !emailOk);
+    if (!emailOk) ok = false;
+
+    showErr("errCity", !city);
+    if (!city) ok = false;
+
+    showErr("errAddress", address.length < 4);
+    if (address.length < 4) ok = false;
+
+    return ok;
+  }
+
+  document.getElementById("shippingForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    if (validateShipping()) {
+      goToStep(3);
+    }
+  });
+
+  /* ─────────── Credit card live preview ─────────── */
+  const ccNumEl   = document.getElementById("ccNum");
+  const ccExpEl   = document.getElementById("ccExp");
+  const ccNameEl  = document.getElementById("ccName");
+
+  ccNumEl.addEventListener("input", function() {
+    // Format with spaces every 4 digits
+    let v = this.value.replace(/\D/g, "").substring(0, 16);
+    let formatted = v.replace(/(.{4})/g, "$1 ").trim();
+    this.value = formatted;
+    // Display
+    let display = formatted.padEnd(19, "•").substring(0, 19);
+    // Replace trailing non-digit groups with bullets
+    let raw = v;
+    let masked = "";
+    for (let i = 0; i < 16; i++) {
+      masked += raw[i] ? raw[i] : "•";
+      if (i === 3 || i === 7 || i === 11) masked += " ";
+    }
+    document.getElementById("ccNumDisplay").textContent = masked;
+    // Network icon
+    const net = document.getElementById("ccNetwork");
+    if (v.startsWith("4")) net.textContent = "💙";
+    else if (v.startsWith("5")) net.textContent = "🟧";
+    else if (v.startsWith("3")) net.textContent = "🟢";
+    else net.textContent = "💳";
+  });
+
+  ccExpEl.addEventListener("input", function() {
+    let v = this.value.replace(/\D/g, "").substring(0, 4);
+    if (v.length >= 3) v = v.substring(0, 2) + "/" + v.substring(2);
+    this.value = v;
+    document.getElementById("ccExpDisplay").textContent = v || "MM/YY";
+  });
+
+  ccNameEl.addEventListener("input", function() {
+    document.getElementById("ccNameDisplay").textContent = this.value || "שם מלא";
+  });
+
+  /* ─────────── Payment form validation ─────────── */
+  function validatePayment() {
+    let ok = true;
+
+    const num = document.getElementById("ccNum").value.replace(/\s/g, "");
+    const numOk = /^\d{16}$/.test(num);
+    showErr("errCcNum", !numOk);
+    if (!numOk) ok = false;
+
+    const exp = document.getElementById("ccExp").value;
+    const expOk = /^\d{2}\/\d{2}$/.test(exp);
+    showErr("errCcExp", !expOk);
+    if (!expOk) ok = false;
+
+    const cvv = document.getElementById("ccCvv").value;
+    const cvvOk = /^\d{3,4}$/.test(cvv);
+    showErr("errCcCvv", !cvvOk);
+    if (!cvvOk) ok = false;
+
+    const name = document.getElementById("ccName").value.trim();
+    const nameOk = name.length >= 2;
+    showErr("errCcName", !nameOk);
+    if (!nameOk) ok = false;
+
+    return ok;
+  }
+
+  /* ─────────── Order submission ─────────── */
+  document.getElementById("paymentForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    if (!validatePayment()) return;
+
+    // Generate order number
+    const rand = Math.floor(100000 + Math.random() * 900000);
+    generatedOrderNum = "AMY-" + rand;
+
+    // Determine delivery estimate
+    const fast = hasFastItem();
+    const deliveryText = fast ? "4 ימי עסקים (אקספרס ⚡)" : "14-21 ימי עסקים";
+
+    // Set success screen content
+    document.getElementById("orderNum").textContent = generatedOrderNum;
+    document.getElementById("orderDelivery").textContent = "זמן אספקה משוער: " + deliveryText;
+    document.getElementById("trackOrderBtn").href = "track.html?order=" + generatedOrderNum;
+
+    // Clear cart
+    AmyApp.saveCart([]);
+
+    // Hide checkout, show success
+    document.querySelector(".checkout-wrap").style.display = "none";
+    document.querySelector(".cart-hero").style.display = "none";
+    document.getElementById("stepsBar") && (document.getElementById("stepsBar").style.display = "none");
+    const success = document.getElementById("successScreen");
+    success.style.display = "block";
+    success.scrollIntoView({ behavior: "smooth" });
+  });
+
+  /* ─────────── Init ─────────── */
+  renderCart();
+  AmyApp.initReveal();
+</script>
+</body>
+</html>

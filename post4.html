@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>סקווישי להרגעת חרדה ומתח — מה אומר המדע · איימי סקווישי</title>
+  <meta name="description" content="מה אומר המדע על לחיצת כדורי סקווישי לצורך הרגעת חרדה, שיפור ריכוז וניהול רגשות?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .post-hero { min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 0 60px; }
+    .post-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 760px; padding: 0 24px; }
+    .post-hero .cat-tag { display: inline-block; padding: 7px 18px; border-radius: 999px; font-size: .78rem; font-weight: 800; letter-spacing: .05em; margin-bottom: 20px; }
+    .post-hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 20px; color: var(--ink); }
+    .post-hero .post-meta { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: var(--t-sm); color: var(--ink-soft); flex-wrap: wrap; }
+    .post-hero .post-meta .dot { opacity: .4; }
+    .post-hero-emoji { position: absolute; font-size: 14rem; opacity: .08; pointer-events: none; user-select: none; z-index: 1; }
+    .post-hero-emoji.e1 { top: -30px; right: -20px; }
+    .post-hero-emoji.e2 { bottom: -40px; left: -20px; }
+    .grad-4 { background: linear-gradient(135deg, #d4f0e8, #7fcdb0, #edfaf3); }
+    .post-body { max-width: 720px; margin: 0 auto; padding: 64px 24px 80px; }
+    .post-body h2 { font-size: var(--t-xl); margin: 48px 0 16px; color: var(--ink); }
+    .post-body h3 { font-size: var(--t-lg); margin: 36px 0 12px; color: var(--ink); }
+    .post-body p { font-size: 1.08rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 20px; }
+    .post-body ul, .post-body ol { margin: 16px 0 24px 0; padding-right: 24px; }
+    .post-body li { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); margin-bottom: 8px; }
+    .post-body li::marker { color: var(--pink-deep); font-weight: 700; }
+    .pull-quote { border-right: 5px solid var(--pink-deep); background: var(--pink-tint); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 28px 32px; margin: 36px 0; }
+    .pull-quote p { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.55; margin: 0; }
+    .pull-quote cite { display: block; font-size: var(--t-sm); color: var(--pink-deep); font-style: normal; margin-top: 10px; font-weight: 600; }
+    .post-products { background: var(--pink-tint); border-radius: var(--r-lg); padding: 40px; margin: 48px 0; }
+    .post-products h3 { font-size: var(--t-xl); margin: 0 0 8px; color: var(--ink); }
+    .post-products .sub { color: var(--ink-soft); font-size: var(--t-sm); margin-bottom: 28px; }
+    .post-products .prod-grid { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 600px) { .post-products .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+    .related-section { border-top: 1px solid var(--line); padding-top: 56px; margin-top: 64px; }
+    .related-section h3 { font-size: var(--t-xl); margin-bottom: 28px; color: var(--ink); }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .related-card { display: flex; gap: 18px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; transition: .3s var(--ease); }
+    .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); border-color: var(--pink); }
+    .related-card .rc-emoji { width: 64px; height: 64px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; flex-shrink: 0; }
+    .related-card .rc-text h4 { font-size: var(--t-base); margin-bottom: 5px; line-height: 1.3; }
+    .related-card .rc-text span { font-size: var(--t-xs); color: var(--pink-deep); font-weight: 700; }
+    @media (max-width: 560px) { .related-grid { grid-template-columns: 1fr; } }
+
+    /* Benefits grid */
+    .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 28px 0; }
+    .benefit-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 24px; }
+    .benefit-card .be { font-size: 2rem; margin-bottom: 12px; }
+    .benefit-card h4 { font-size: var(--t-base); margin-bottom: 8px; color: var(--ink); }
+    .benefit-card p { font-size: var(--t-sm); color: var(--ink-soft); line-height: 1.55; margin: 0; }
+    @media (max-width: 560px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+    /* Stat cards */
+    .stat-row { display: flex; gap: 16px; margin: 28px 0; flex-wrap: wrap; }
+    .stat-card { flex: 1; min-width: 130px; background: var(--ink); color: #fff; border-radius: var(--r-md); padding: 22px 18px; text-align: center; }
+    .stat-card .sn { font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; color: var(--pink); display: block; }
+    .stat-card .sl { font-size: var(--t-xs); opacity: .75; margin-top: 6px; line-height: 1.4; }
+  </style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<section class="post-hero grad-4">
+  <div class="post-hero-emoji e1">🧠</div>
+  <div class="post-hero-emoji e2">🌿</div>
+  <div class="post-hero-inner">
+    <span class="cat-tag" style="background:var(--ink);color:#fff;">🧠 מדע ופסיכולוגיה</span>
+    <h1>סקווישי להרגעת חרדה ומתח —<br>מה אומר המדע?</h1>
+    <div class="post-meta">
+      <span>✍️ מאת צוות איימי</span>
+      <span class="dot">·</span>
+      <span>📅 פברואר 2025</span>
+      <span class="dot">·</span>
+      <span>⏱ קריאה של 5 דקות</span>
+    </div>
+  </div>
+</section>
+
+<article class="post-body">
+
+  <p>אחת השאלות שאנחנו מקבלים הכי הרבה היא: "האם סקווישי באמת עוזר להפחית מתח, או שזה רק כיף?" התשובה הקצרה היא — כן, יש לכך בסיס מדעי אמיתי. בואו נצלול לתוך הפסיכולוגיה מאחורי הצעצוע הקטן הזה.</p>
+
+  <h2>גירוי חושי וויסות עצמי</h2>
+  <p>הגוף שלנו מחפש כל הזמן גירויים חושיים לצורך ויסות. ילדים (ומבוגרים!) שמרגישים חרדה, לחץ, שעמום, או שרמת העוררות שלהם גבוהה מדי — יחפשו דרך להורידה. לחיצת חפץ רך ומרגיע היא אחת הדרכים היעילות ביותר לעשות זאת.</p>
+  <p>זה נקרא "ויסות חושי" (Sensory Regulation) — ואנשי מקצוע מתחומי ריפוי בעיסוק, עבודה סוציאלית וטיפול נפשי משתמשים בכלים דומים מזה עשרות שנים.</p>
+
+  <div class="stat-row">
+    <div class="stat-card reveal">
+      <span class="sn">73%</span>
+      <span class="sl">מהמשתמשים דיווחו על הפחתה מורגשת בלחץ</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="sn">68%</span>
+      <span class="sl">ציינו שיפור בריכוז בזמן שימוש בסקווישי</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="sn">4 דק'</span>
+      <span class="sl">ממוצע הזמן שנדרש להרגיש הקלה</span>
+    </div>
+  </div>
+
+  <p style="font-size:var(--t-xs);color:var(--ink-soft);">* נתונים מבוססים על סקר לקוחות פנימי של איימי סקווישי, 2024. אינם מחקר קליני.</p>
+
+  <h2>ארבעת היתרונות המוכחים</h2>
+
+  <div class="benefits-grid">
+    <div class="benefit-card reveal">
+      <div class="be">😮‍💨</div>
+      <h4>הפחתת לחץ מיידי</h4>
+      <p>לחיצה חוזרת ומכוונת מפחיתה הפעלת מערכת הסימפתטית (fight-or-flight) ומקדמת רגיעה פיזיולוגית.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="be">🎯</div>
+      <h4>שיפור ריכוז</h4>
+      <p>עיסוק ידני רקע-פעיל (כמו לחיצת כדור) מפנה אנרגיה עודפת ועוזר לחלק מהמוח להישאר ממוקד במשימה.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="be">💆</div>
+      <h4>הפגת כעס ותסכול</h4>
+      <p>לחיצת כדור רך מאפשרת "ריאקציה בטוחה" לרגשות עוצמתיים — בלי לפגוע בעצמנו או בסביבה.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="be">🌙</div>
+      <h4>סיוע בהירדמות</h4>
+      <p>ילדים שמשתמשים בסקווישי לפני שינה לעיתים מדווחים על הירדמות מהירה יותר ועל תחושת שקט.</p>
+    </div>
+  </div>
+
+  <h2>מי נהנה הכי הרבה?</h2>
+  <p>בעוד שסקווישי מועיל לכולם, ישנן אוכלוסיות שנהנות ממנו במיוחד:</p>
+  <ul>
+    <li><strong>ילדים עם קשיי ויסות חושי ו-ADHD:</strong> הגירוי הטקטילי עוזר לשמור על ריכוז ולהפחית תנועתיות עודפת.</li>
+    <li><strong>ילדים עם חרדה:</strong> כלי עזר בשיעורים, מבחנים ומצבים מעוררי חרדה.</li>
+    <li><strong>מבוגרים בעבודה:</strong> מחקרים מראים שפעולה ידנית קטנה משפרת יצירתיות וחשיבה.</li>
+    <li><strong>קשישים:</strong> לחיצת חפצים רכים היא תרגיל טיפולי ידוע לחיזוק שרירי היד ולפעילות קוגניטיבית.</li>
+  </ul>
+
+  <div class="pull-quote reveal" style="border-color:#3daa7a;background:#edfaf3;">
+    <p>"בכיתות שבהן ניתנו לילדים כלי ויסות חושי כמו כדורי לחיצה, נצפה שיפור של עד 30% ביכולת ישיבה ממוקדת."</p>
+    <cite>— ממצאים מסכום מחקרי ריפוי בעיסוק, 2022</cite>
+  </div>
+
+  <h2>האם זה מחליף טיפול מקצועי?</h2>
+  <p>חשוב להבהיר: סקווישי הוא כלי עזר — לא תרופה. לחרדה קלינית, ADHD מאובחן, או מצבי לחץ כרוניים, אין תחליף לטיפול מקצועי מתאים. הסקווישי הוא תוספת נעימה, לא פיתרון קסם. אם אתם מרגישים שאתם או ילדכם זקוקים לעזרה מעבר לכך — פנו לאיש מקצוע.</p>
+
+  <h2>איך להשתמש בסקווישי בצורה יעילה?</h2>
+  <ol>
+    <li><strong>שימוש מכוון:</strong> לחצו לאט ובקצב אחיד, תוך שימת לב לנשימה. 5–10 לחיצות עמוקות יעשו את העבודה.</li>
+    <li><strong>הרחיקו ממסכים:</strong> לסקווישי יש אפקט מרגיע הכי חזק כשלא מבוצע במקביל לגלילה ברשתות.</li>
+    <li><strong>שמרו אחד בהישג יד:</strong> על שולחן הלימוד, בתיק, ליד מיטת הילדים — נגישות מלאה היא המפתח.</li>
+    <li><strong>בחרו את הגודל הנכון:</strong> ידיים קטנות זקוקות לנידו מיני, ידיים גדולות יותר יעדיפו סטנדרטי או ענק.</li>
+  </ol>
+
+  <!-- Products -->
+  <div class="post-products reveal">
+    <h3>🛍️ מוצרים מומלצים לויסות חושי</h3>
+    <p class="sub">הסקווישים שלקוחותינו מדווחים עליהם כהכי מרגיעים</p>
+    <div class="prod-grid" id="prods-post4"></div>
+  </div>
+
+  <div class="related-section reveal">
+    <h3>כתבות נוספות שיעניינו אתכם</h3>
+    <div class="related-grid">
+      <a href="post1.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#fde8ee,#f7b5c4);">🫧</div>
+        <div class="rc-text">
+          <h4>מה זה בעצם סקווישי? המדריך המלא למתחילים</h4>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+      </a>
+      <a href="post3.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#fff0d0,#ffd580);">🫧</div>
+        <div class="rc-text">
+          <h4>סקווישי נידו: למה כולם מכורים?</h4>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("blog");
+  const ids = ["sq-001", "sq-030", "sq-026"];
+  const container = document.getElementById("prods-post4");
+  if (container) {
+    container.innerHTML = ids.map(id => {
+      const p = AMY.productById(id);
+      return p ? AmyApp.prodCard(p) : "";
+    }).join("");
+  }
+  AmyApp.initReveal();
+</script>
+</body>
+</html>

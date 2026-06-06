@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>איך לשמור על הסקווישי שלכם שיחזיק שנים · איימי סקווישי</title>
+  <meta name="description" content="המדריך המלא לניקוי, אחסון ושמירה על הסקווישי — כך תשמרו אותו רענן ורך לאורך שנים.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .post-hero { min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 0 60px; }
+    .post-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 760px; padding: 0 24px; }
+    .post-hero .cat-tag { display: inline-block; padding: 7px 18px; border-radius: 999px; font-size: .78rem; font-weight: 800; letter-spacing: .05em; margin-bottom: 20px; }
+    .post-hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 20px; color: var(--ink); }
+    .post-hero .post-meta { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: var(--t-sm); color: var(--ink-soft); flex-wrap: wrap; }
+    .post-hero .post-meta .dot { opacity: .4; }
+    .post-hero-emoji { position: absolute; font-size: 14rem; opacity: .08; pointer-events: none; user-select: none; z-index: 1; }
+    .post-hero-emoji.e1 { top: -30px; right: -20px; }
+    .post-hero-emoji.e2 { bottom: -40px; left: -20px; }
+    .grad-5 { background: linear-gradient(135deg, #e8e0f8, #c4aff0, #f3f0fd); }
+    .post-body { max-width: 720px; margin: 0 auto; padding: 64px 24px 80px; }
+    .post-body h2 { font-size: var(--t-xl); margin: 48px 0 16px; color: var(--ink); }
+    .post-body h3 { font-size: var(--t-lg); margin: 36px 0 12px; color: var(--ink); }
+    .post-body p { font-size: 1.08rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 20px; }
+    .post-body ul, .post-body ol { margin: 16px 0 24px 0; padding-right: 24px; }
+    .post-body li { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); margin-bottom: 8px; }
+    .post-body li::marker { color: var(--pink-deep); font-weight: 700; }
+    .pull-quote { border-right: 5px solid var(--pink-deep); background: var(--pink-tint); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 28px 32px; margin: 36px 0; }
+    .pull-quote p { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.55; margin: 0; }
+    .pull-quote cite { display: block; font-size: var(--t-sm); color: var(--pink-deep); font-style: normal; margin-top: 10px; font-weight: 600; }
+    .post-products { background: var(--pink-tint); border-radius: var(--r-lg); padding: 40px; margin: 48px 0; }
+    .post-products h3 { font-size: var(--t-xl); margin: 0 0 8px; color: var(--ink); }
+    .post-products .sub { color: var(--ink-soft); font-size: var(--t-sm); margin-bottom: 28px; }
+    .post-products .prod-grid { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 600px) { .post-products .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+    .related-section { border-top: 1px solid var(--line); padding-top: 56px; margin-top: 64px; }
+    .related-section h3 { font-size: var(--t-xl); margin-bottom: 28px; color: var(--ink); }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .related-card { display: flex; gap: 18px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; transition: .3s var(--ease); }
+    .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); border-color: var(--pink); }
+    .related-card .rc-emoji { width: 64px; height: 64px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; flex-shrink: 0; }
+    .related-card .rc-text h4 { font-size: var(--t-base); margin-bottom: 5px; line-height: 1.3; }
+    .related-card .rc-text span { font-size: var(--t-xs); color: var(--pink-deep); font-weight: 700; }
+    @media (max-width: 560px) { .related-grid { grid-template-columns: 1fr; } }
+
+    /* Do/Don't table */
+    .dos-donts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0; }
+    .dos-donts .col { border-radius: var(--r-md); padding: 24px; }
+    .dos-donts .dos { background: #edfaf3; border: 1px solid #3daa7a33; }
+    .dos-donts .donts { background: #fff0f0; border: 1px solid #e8889e33; }
+    .dos-donts h4 { font-size: var(--t-base); margin-bottom: 14px; }
+    .dos-donts .dos h4 { color: #2a8a5c; }
+    .dos-donts .donts h4 { color: var(--pink-deep); }
+    .dos-donts ul { padding-right: 20px; margin: 0; }
+    .dos-donts li { font-size: var(--t-sm); line-height: 1.65; color: var(--ink-soft); margin-bottom: 8px; }
+    .dos-donts .dos li::marker { color: #3daa7a; }
+    .dos-donts .donts li::marker { color: var(--pink-deep); }
+    @media (max-width: 540px) { .dos-donts { grid-template-columns: 1fr; } }
+
+    /* Steps */
+    .steps { counter-reset: step; margin: 24px 0; }
+    .step { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 28px; }
+    .step-num { counter-increment: step; width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: #fff; font-family: var(--font-display); font-weight: 900; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-body h4 { font-size: var(--t-base); margin-bottom: 6px; }
+    .step-body p { font-size: var(--t-sm); color: var(--ink-soft); line-height: 1.6; margin: 0; }
+  </style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<section class="post-hero grad-5">
+  <div class="post-hero-emoji e1">✨</div>
+  <div class="post-hero-emoji e2">🧼</div>
+  <div class="post-hero-inner">
+    <span class="cat-tag" style="background:var(--ink);color:#fff;">🛠 טיפול ואחסון</span>
+    <h1>איך לשמור על הסקווישי שלכם<br>שיחזיק שנים</h1>
+    <div class="post-meta">
+      <span>✍️ מאת צוות איימי</span>
+      <span class="dot">·</span>
+      <span>📅 מרץ 2025</span>
+      <span class="dot">·</span>
+      <span>⏱ קריאה של 4 דקות</span>
+    </div>
+  </div>
+</section>
+
+<article class="post-body">
+
+  <p>קניתם סקווישי מדהים — ועכשיו אתם רוצים שהוא יישאר מדהים גם עוד שנתיים, ולא ייראה כמו שרוול ישן. הבשורה הטובה: עם טיפול נכון, הסקווישי שלכם יחזיק הרבה זמן ויישאר רענן, רך ומהנה. אז איך עושים את זה?</p>
+
+  <h2>הבדל בין סוגים — כי לא כולם שווים</h2>
+  <p>הטיפול הנכון תלוי בסוג הסקווישי שיש לכם:</p>
+  <ul>
+    <li><strong>סיליקון (נידו):</strong> הכי עמיד. עמיד לשמן, עמיד לכלוך, עמיד לזמן. ניקוי קל בלבד.</li>
+    <li><strong>פוליאוריתן (חמאה, ספוג):</strong> עדין יותר. נוטה להצהיב ולהתפורר אם נחשף לשמש ממושכת.</li>
+    <li><strong>ג'ל מים:</strong> יש להרחיק ממקור חום. גם קרע קטן = זליגה.</li>
+    <li><strong>דביק וספלאט:</strong> חד-פעמי למעשה. ליהנות ממנו כמה שיותר לפני שמחליפים.</li>
+  </ul>
+
+  <h2>כללי הזהב לשמירה</h2>
+
+  <div class="dos-donts">
+    <div class="col dos reveal">
+      <h4>✅ כן לעשות</h4>
+      <ul>
+        <li>לנגב מדי פעם עם מטלית לחה</li>
+        <li>לאחסן בקופסה או שקית במקום קריר</li>
+        <li>לשמור הרחק מאנימלים חיים (נשיכה!)</li>
+        <li>לתת לילדים לשחק — זה הייעוד שלו</li>
+        <li>לבדוק מדי חודש שאין סדקים</li>
+      </ul>
+    </div>
+    <div class="col donts reveal">
+      <h4>❌ אסור לעשות</h4>
+      <ul>
+        <li>להשאיר בחום של מכונית ביום שמש</li>
+        <li>לשפוך עליו חומרי ניקוי חריפים</li>
+        <li>למשוך חזק מדי — במיוחד נידו מיני</li>
+        <li>להניח על אמבטיה נוטפת לאורך זמן</li>
+        <li>לצבוע עם צבעי אצבעות (מכתים!)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>שלבי ניקוי מושלם לנידו</h2>
+
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>הכינו מים פושרים עם טיפת סבון כלים</h4>
+        <p>לא חמים מדי ולא קרים מדי. כמות קטנה של סבון עדין מספיקה — אין צורך בחומרי חיטוי.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>נגבו בעדינות עם ספוג רך</h4>
+        <p>אל תשפצפו בחוזקה — ניגוב עדין על כל הפנים של הנידו מסיר עפר ושמן מהידיים.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>שטפו במים נקיים ויבשו</h4>
+        <p>שטיפה יסודית להסרת שאריות הסבון. לאחר מכן יבשו עם מגבת נייר או מטלית נקייה, ותנו לאוויר לסיים את העבודה.</p>
+      </div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>אחסנו בשקית רשת בזמן אי-שימוש</h4>
+        <p>שקית בד רשת מאפשרת לנידו לנשום בלי להיצמד לאבק. תלו אותה על מדף בחדר הילדים.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull-quote reveal">
+    <p>"הנידו שלי בן שלוש שנים ועדיין נראה כאילו קניתי אותו אתמול. הסוד? פשוט שוטפים אחת לשבוע."</p>
+    <cite>— רחל, לקוחה ותיקה מחיפה</cite>
+  </div>
+
+  <h2>מה לגבי כתמים?</h2>
+  <p>קרה שנידו לך על שטיח? או שילד צייר עליו בעט? לכתמים עקשניים על סיליקון, אפשר להשתמש בכדור קטן של מחיקת לבן (כזה שמשתמשים בו למגנטים) — הוא מסיר כתמים בלי לפגוע בסיליקון. לחלופין, כדורון קטן של חמר-עיפרון לבן גם עובד מצוין.</p>
+
+  <h2>מתי להחליף?</h2>
+  <p>גם הסקווישי הטוב ביותר לא נמשך לנצח. הגיע הזמן להיפרד כשיש:</p>
+  <ul>
+    <li>סדק גלוי בקרום הסיליקון</li>
+    <li>דליפה של חומר פנימי</li>
+    <li>ריח לא נעים שלא עובר בניקוי</li>
+    <li>שינוי מרקם קיצוני (הפך יצוק מדי או רפה מדי)</li>
+  </ul>
+  <p>המוצר עשה את שלו — תודו לו ועברו לחדש. זה גם הזדמנות מצוינת לנסות גרסה מוגדלת! 🫧</p>
+
+  <!-- Products -->
+  <div class="post-products reveal">
+    <h3>🛍️ הגיע הזמן לחדש את האוסף?</h3>
+    <p class="sub">הנידואים הכי איכותיים שישמרו לכם את הזמן</p>
+    <div class="prod-grid" id="prods-post5"></div>
+  </div>
+
+  <div class="related-section reveal">
+    <h3>כתבות נוספות שיעניינו אתכם</h3>
+    <div class="related-grid">
+      <a href="post4.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#d4f0e8,#7fcdb0);">🧘</div>
+        <div class="rc-text">
+          <h4>סקווישי להרגעת חרדה ומתח — מה אומר המדע</h4>
+          <span>⏱ קריאה של 5 דקות</span>
+        </div>
+      </a>
+      <a href="post6.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#ffe8d6,#ffb380);">🎀</div>
+        <div class="rc-text">
+          <h4>מתנה מושלמת: סקווישי לכל גיל ולכל אירוע</h4>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("blog");
+  const ids = ["sq-001", "sq-011", "sq-025"];
+  const container = document.getElementById("prods-post5");
+  if (container) {
+    container.innerHTML = ids.map(id => {
+      const p = AMY.productById(id);
+      return p ? AmyApp.prodCard(p) : "";
+    }).join("");
+  }
+  AmyApp.initReveal();
+</script>
+</body>
+</html>

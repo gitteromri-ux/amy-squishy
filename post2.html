@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>15 קטגוריות הסקווישי — איך לבחור את המתאים לכם · איימי סקווישי</title>
+  <meta name="description" content="סיור מלא בכל 15 קטגוריות הסקווישי שקיימות — מנידו ועד ענק פרימיום, עם טיפים מעשיים לבחירה.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .post-hero { min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 0 60px; }
+    .post-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 760px; padding: 0 24px; }
+    .post-hero .cat-tag { display: inline-block; padding: 7px 18px; border-radius: 999px; font-size: .78rem; font-weight: 800; letter-spacing: .05em; margin-bottom: 20px; }
+    .post-hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 20px; color: var(--ink); }
+    .post-hero .post-meta { display: flex; align-items: center; justify-content: center; gap: 18px; font-size: var(--t-sm); color: var(--ink-soft); flex-wrap: wrap; }
+    .post-hero .post-meta .dot { opacity: .4; }
+    .post-hero-emoji { position: absolute; font-size: 14rem; opacity: .08; pointer-events: none; user-select: none; z-index: 1; }
+    .post-hero-emoji.e1 { top: -30px; right: -20px; }
+    .post-hero-emoji.e2 { bottom: -40px; left: -20px; }
+    .grad-2 { background: linear-gradient(135deg, #bfe3f0, #7fc4dd, #e8f5fb); }
+
+    .post-body { max-width: 720px; margin: 0 auto; padding: 64px 24px 80px; }
+    .post-body h2 { font-size: var(--t-xl); margin: 48px 0 16px; color: var(--ink); }
+    .post-body h3 { font-size: var(--t-lg); margin: 36px 0 12px; color: var(--ink); }
+    .post-body p { font-size: 1.08rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 20px; }
+    .post-body ul, .post-body ol { margin: 16px 0 24px 0; padding-right: 24px; }
+    .post-body li { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); margin-bottom: 8px; }
+    .post-body li::marker { color: var(--pink-deep); font-weight: 700; }
+    .pull-quote { border-right: 5px solid var(--pink-deep); background: var(--pink-tint); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 28px 32px; margin: 36px 0; }
+    .pull-quote p { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.55; margin: 0; }
+    .pull-quote cite { display: block; font-size: var(--t-sm); color: var(--pink-deep); font-style: normal; margin-top: 10px; font-weight: 600; }
+    .post-products { background: var(--pink-tint); border-radius: var(--r-lg); padding: 40px; margin: 48px 0; }
+    .post-products h3 { font-size: var(--t-xl); margin: 0 0 8px; color: var(--ink); }
+    .post-products .sub { color: var(--ink-soft); font-size: var(--t-sm); margin-bottom: 28px; }
+    .post-products .prod-grid { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 600px) { .post-products .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+    .related-section { border-top: 1px solid var(--line); padding-top: 56px; margin-top: 64px; }
+    .related-section h3 { font-size: var(--t-xl); margin-bottom: 28px; color: var(--ink); }
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .related-card { display: flex; gap: 18px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; transition: .3s var(--ease); }
+    .related-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); border-color: var(--pink); }
+    .related-card .rc-emoji { width: 64px; height: 64px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; flex-shrink: 0; }
+    .related-card .rc-text h4 { font-size: var(--t-base); margin-bottom: 5px; line-height: 1.3; }
+    .related-card .rc-text span { font-size: var(--t-xs); color: var(--pink-deep); font-weight: 700; }
+    @media (max-width: 560px) { .related-grid { grid-template-columns: 1fr; } }
+
+    /* Category chips */
+    .cat-chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 32px; }
+    .cat-chip { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: var(--r-pill); background: var(--white); border: 1.5px solid var(--line); font-size: var(--t-sm); font-weight: 700; transition: .25s; }
+    .cat-chip:hover { border-color: var(--pink); background: var(--pink-tint); }
+    .cat-chip .e { font-size: 1.2rem; }
+
+    /* Category breakdown table */
+    .cat-table { width: 100%; border-collapse: collapse; margin: 28px 0; }
+    .cat-table th { background: var(--ink); color: #fff; padding: 12px 16px; text-align: right; font-size: var(--t-sm); font-weight: 700; }
+    .cat-table td { padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: var(--t-sm); vertical-align: top; }
+    .cat-table tr:nth-child(even) td { background: var(--pink-tint); }
+    .cat-table td:first-child { font-weight: 700; white-space: nowrap; }
+  </style>
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<section class="post-hero grad-2">
+  <div class="post-hero-emoji e1">🎯</div>
+  <div class="post-hero-emoji e2">🌸</div>
+  <div class="post-hero-inner">
+    <span class="cat-tag" style="background:var(--ink);color:#fff;">📋 מדריך קטגוריות</span>
+    <h1>15 קטגוריות הסקווישי —<br>איך לבחור את המתאים לכם</h1>
+    <div class="post-meta">
+      <span>✍️ מאת צוות איימי</span>
+      <span class="dot">·</span>
+      <span>📅 ינואר 2025</span>
+      <span class="dot">·</span>
+      <span>⏱ קריאה של 5 דקות</span>
+    </div>
+  </div>
+</section>
+
+<article class="post-body">
+
+  <p>עולם הסקווישי גדול ומגוון בצורה שתפתיע אתכם. בחנות של איימי סקווישי תמצאו לא פחות מ-15 קטגוריות שונות — כל אחת עם אופי, מרקם ועונג משלה. אז איך בוחרים? קראו, התאהבו, ובחרו נכון.</p>
+
+  <div class="cat-chips">
+    <span class="cat-chip"><span class="e">🫧</span> נידו</span>
+    <span class="cat-chip"><span class="e">👀</span> מוציא עיניים</span>
+    <span class="cat-chip"><span class="e">🏖️</span> חול</span>
+    <span class="cat-chip"><span class="e">💧</span> מים</span>
+    <span class="cat-chip"><span class="e">🧈</span> חמאה/ספוג</span>
+    <span class="cat-chip"><span class="e">🍔</span> אוכל</span>
+    <span class="cat-chip"><span class="e">🍉</span> פירות</span>
+    <span class="cat-chip"><span class="e">🐙</span> בעלי חיים</span>
+    <span class="cat-chip"><span class="e">⭐</span> דמויות</span>
+    <span class="cat-chip"><span class="e">🎯</span> דביק</span>
+    <span class="cat-chip"><span class="e">🍦</span> קינוחים</span>
+    <span class="cat-chip"><span class="e">🌸</span> קוואי</span>
+    <span class="cat-chip"><span class="e">🔘</span> פופ-אפ</span>
+    <span class="cat-chip"><span class="e">🤏</span> מיני</span>
+    <span class="cat-chip"><span class="e">💎</span> ענק</span>
+  </div>
+
+  <h2>1. נידו — המלך שלא זזה מהכס</h2>
+  <p>הנידו (Nee-Doh) הוא הסקווישי הפופולרי ביותר בישראל. מיוצר מסיליקון רך ואיכותי, הנידו נמתח, נלחץ ומתגלגל — וחוזר לצורתו המושלמת. קיים בגדלים מיני, סטנדרטי וענק, ובצורות כמו דאמפלינג, כדור, תפוח, צ'יפס ועוד.</p>
+  <p><strong>מתאים ל:</strong> כל הגילאים. עמיד מאוד. המוצר הראשון המושלם לכל מי שנכנס לעולם הסקווישי.</p>
+
+  <h2>2. מוציא עיניים — הדרמה הקטנה שכולם אוהבים</h2>
+  <p>לחיצה חזקה — והעיניים של הדמות קופצות החוצה בצורה קצת מפחידה, קצת מגוחכת, ומאוד מהנה. הילדים? מתגלגלים מצחוק. ההורים? לוחצים בלי לעצור. הדגמים הפופולריים כוללים ארנב, צפרדע וחתול.</p>
+  <p><strong>מתאים ל:</strong> גילאי 4 ומעלה. מצחיק במיוחד.</p>
+
+  <h2>3. סקווישי חול — חוויה קינטית ייחודית</h2>
+  <p>הסקווישי החולי הוא חוויה אחרת לגמרי. החומר מרגיש כמו חול שנמס בין האצבעות — מסקרן, טקטילי ומרגיע בדרך שקשה להסביר. קיים בצורות כדור, לב וכוכב.</p>
+
+  <h2>4. סקווישי מים — קריר ומרגיע</h2>
+  <p>ג'ל מים בתוך קרום רך. המרקם הנוזלי והקריר מיוחד במינו. מושלם לימי קיץ ישראלי חם כשרוצים משהו שיקרר את הראש (ואת הידיים). הדגמים הפופולריים: אנגרי בירדס, תפוז, ענב ודאמפלינג מנצנץ.</p>
+
+  <div class="pull-quote reveal">
+    <p>"בחרתי נידו בשביל הילד שלי ובסוף אני לוחצת את זה כל היום מול המחשב. לא התכוונתי לזה."</p>
+    <cite>— אמא מלקוחות איימי</cite>
+  </div>
+
+  <h2>5. ספוג וחמאה — הרגעה ביתית</h2>
+  <p>ספוגי החמאה הם הסקווישי הקלאסי ביותר — רכים, עדינים ופשוט נעימים ללחיצה. הם מגיעים כמקלות, קוביות ועוד, בגדלים מ-13 ס"מ ועד ענק של 40+ ס"מ.</p>
+
+  <h2>6–7. אוכל ופירות — הסקווישי הכי חמוד</h2>
+  <p>המבורגרים, צ'יפס, דאמפלינג, פרייד צ'יקן — כן, גם אלה קיימים כסקווישי ואפשר ממש לשחק עם האוכל. לצד זה, קטגוריית הפירות מציעה אבטיחים, מנגו, תותים וגזרים — צבעוניים, קייציים ומשמחים.</p>
+
+  <h2>8–9. בעלי חיים ודמויות — לאוהבי הסטייל</h2>
+  <p>מי שאוהב דמויות אהובות ימצא כאן גן עדן: קפיברה, כריש, תמנון, פנדה, סטיץ', פטריק ועוד. כל דמות בסגנון הנידו הייחודי.</p>
+
+  <h2>10. דביק וספלאט — הכי דרמטי</h2>
+  <p>הסקווישי הדביק הוא כזה שנדבק לקירות ולמשטחים. אפשר לזרוק אותו, הוא מתפשט ואז מתכווץ חזרה. זה הוא שמצחיק את הכיתה וגורם להורים לעצב עיניים — בחיבה.</p>
+
+  <h2>11–14. קינוחים, קוואי, פופ-אפ ומיני</h2>
+  <p>ארטיקים, גלידות, שוקולד ורובי — קטגוריית הקינוחים היא חלום לבעלי שן מתוקה. הקוואי מציעה עיצובים יפניים-חמודים. הפופ-אפ והפידג'ט מתאימים לאוהבי הקליק. והמיני? בשביל אלה שאוהבים אוסף — קטן אבל מושלם.</p>
+
+  <h2>15. ענק ופרימיום — לתשוקה הגדולה</h2>
+  <p>נידו בוטן XXL, שקיות הפתעות ו-Mystery Box — הקטגוריה הזו היא לאוהדים הכי גדולים. מחיר גבוה יותר, עונג כפול.</p>
+
+  <!-- Products -->
+  <div class="post-products reveal">
+    <h3>🛍️ מוצרים שיעזרו לכם לגלות את הקטגוריה המועדפת</h3>
+    <p class="sub">בחרנו נציגים מובהקים מהקטגוריות הפופולריות ביותר</p>
+    <div class="prod-grid" id="prods-post2"></div>
+  </div>
+
+  <h2>אז איך בוחרים?</h2>
+  <p>שאלו את עצמכם: מה אתם מחפשים — הרגעה, כיף, אספנות, או מתנה? אם הרגעה — נידו או חמאה. אם כיף ועונג — מוציא עיניים או ספלאט. אם מתנה — ענק או Mystery Box. ואם לא יודעים — תמיד אפשר לפנות לצוות איימי בוואטסאפ.</p>
+
+  <div class="related-section reveal">
+    <h3>כתבות נוספות שיעניינו אתכם</h3>
+    <div class="related-grid">
+      <a href="post1.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#fde8ee,#f7b5c4);">🫧</div>
+        <div class="rc-text">
+          <h4>מה זה בעצם סקווישי? המדריך המלא למתחילים</h4>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+      </a>
+      <a href="post6.html" class="related-card">
+        <div class="rc-emoji" style="background:linear-gradient(135deg,#ffe8d6,#ffb380);">🎀</div>
+        <div class="rc-text">
+          <h4>מתנה מושלמת: סקווישי לכל גיל ולכל אירוע</h4>
+          <span>⏱ קריאה של 4 דקות</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<div id="footer-mount"></div>
+<div id="wa-mount"></div>
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/whatsapp.js"></script>
+<script>
+  AmyApp.mountChrome("blog");
+  const ids = ["sq-001", "sq-019", "sq-026"];
+  const container = document.getElementById("prods-post2");
+  if (container) {
+    container.innerHTML = ids.map(id => {
+      const p = AMY.productById(id);
+      return p ? AmyApp.prodCard(p) : "";
+    }).join("");
+  }
+  AmyApp.initReveal();
+</script>
+</body>
+</html>
