@@ -877,3 +877,45 @@ h1{font-weight:800}
   .pb{ flex:1; min-width:140px; }
   .mq-item{ width:84px; height:84px; }
 }
+/* === DESKTOP HERO+DOG POLISH === */
+@media(min-width:881px){
+  /* FULL-FRAME hero: background image bleeds the entire width, no empty right margin.
+     The container only constrains the text/visual columns. */
+  .hero{ min-height:90vh; }
+  .hero .container{
+    grid-template-columns:1fr minmax(0,600px) !important;
+    max-width:1320px; padding-inline:48px;
+    gap:48px;
+  }
+  /* RTL: copy is the SECOND grid track = right side. Push it to the true right edge. */
+  .hero-copy{ justify-self:start !important; max-width:600px; }
+  .hero h1{ font-size:clamp(2.7rem,4.6vw,3.7rem); }
+  .hero p{ max-width:540px; }
+  /* RTL scrim: image (girl) sits on the LEFT, so keep left clear & build opacity toward the right
+     where the text lives. Direction: transparent(left) -> solid(right). */
+  .hero-bg{ opacity:1; }
+  .hero-bg::after{
+    background:linear-gradient(90deg,
+      rgba(255,252,253,0) 0%,
+      rgba(255,252,253,.06) 26%,
+      rgba(255,252,253,.5) 44%,
+      rgba(255,252,253,.9) 58%,
+      rgba(255,252,253,.99) 72%,
+      rgba(255,252,253,1) 100%) !important;
+  }
+
+  /* Promo dog: bottom-left, peeking into the strip; content centered with left clearance. */
+  .promo-strip{ min-height:210px; overflow:hidden; }
+  .promo-strip .container{
+    display:flex; align-items:center; justify-content:center;
+    gap:30px; flex-wrap:nowrap;
+    padding-left:210px !important; padding-right:0 !important;
+  }
+  .promo-dog{
+    position:absolute !important; left:36px !important; right:auto !important; top:auto !important;
+    bottom:0 !important; transform:none !important; z-index:3;
+    width:185px; max-width:185px;
+    filter:drop-shadow(0 14px 22px rgba(26,21,24,.22));
+  }
+  .promo-dog img{ width:100%; height:auto; display:block; }
+}
