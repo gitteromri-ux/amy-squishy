@@ -93,26 +93,26 @@ h3{ font-size:1.2rem !important; }
    קטגוריות — Fold כהה פרימיום במובייל (סליידר אופקי, 2 שורות)
    ============================================================ */
 .cat-dark{
-  position:relative; background:#0c0a10; color:#fff;
+  position:relative; background:#eaf6fc; color:var(--ink);
   overflow:hidden; isolation:isolate;
   padding:30px 0 34px !important;
 }
 .cat-dark .cat-dark-bg{
   position:absolute; inset:0; z-index:0; pointer-events:none;
   background:
-    radial-gradient(70% 50% at 15% 8%, rgba(247,181,196,.22), transparent 70%),
-    radial-gradient(60% 45% at 90% 16%, rgba(127,196,221,.20), transparent 72%),
-    linear-gradient(180deg,#100d15 0%,#0a0810 100%);
+    radial-gradient(70% 50% at 15% 8%, rgba(255,255,255,.95), transparent 66%),
+    radial-gradient(62% 48% at 90% 14%, rgba(191,227,240,.85), transparent 70%),
+    linear-gradient(180deg,#f4fbff 0%,#dcf0fa 50%,#c9e8f6 100%);
 }
 .cat-dark .container{ position:relative; z-index:1; }
 .cat-dark .sec-head{ margin-bottom:16px; }
 .cat-dark .sec-head .eyebrow{ color:var(--pink); }
-.cat-dark .sec-head h2{ color:#fff; }
+.cat-dark .sec-head h2{ color:var(--ink); }
 .cat-dark .sec-head h2 .script{
-  background:linear-gradient(90deg,#ffb3c7,#7fe3ff);
+  background:linear-gradient(90deg,#ff7aa2,#2aa6d6);
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
-.cat-dark .sec-head p{ color:rgba(255,255,255,.66); }
+.cat-dark .sec-head p{ color:rgba(20,50,72,.62); }
 
 /* סליידר אופקי ב-2 שורות (grid-flow column) — קומפקטי */
 #categories #cat-grid.cat-grid{
@@ -134,9 +134,9 @@ h3{ font-size:1.2rem !important; }
   position:relative; overflow:hidden;
   display:flex !important; flex-direction:row; align-items:center; gap:10px;
   padding:11px 12px !important; border-radius:16px;
-  background:linear-gradient(155deg, rgba(255,255,255,.10), rgba(255,255,255,.035)) !important;
-  border:1px solid rgba(255,255,255,.10) !important;
-  box-shadow:0 1px 0 rgba(255,255,255,.10) inset, 0 8px 20px -10px rgba(0,0,0,.7) !important;
+  background:linear-gradient(155deg, rgba(255,255,255,.94), rgba(255,255,255,.7)) !important;
+  border:1px solid rgba(255,255,255,.9) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset, 0 8px 20px -10px rgba(36,107,150,.42) !important;
   text-align:start;
 }
 .cat-dark .cat-card::before{ content:none !important; }
@@ -144,24 +144,24 @@ h3{ font-size:1.2rem !important; }
   position:absolute; z-index:0; width:64px; height:64px; border-radius:50%;
   inset-inline-start:-12px; top:-14px;
   background:radial-gradient(circle, var(--ac), transparent 70%);
-  opacity:.42; filter:blur(7px);
+  opacity:.30; filter:blur(7px);
 }
 .cat-dark .cat-card .emoji{
   position:relative; z-index:1; margin:0 !important;
   width:38px; height:38px; flex:0 0 38px;
   display:flex; align-items:center; justify-content:center;
   font-size:1.4rem !important; border-radius:12px;
-  background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.18), rgba(255,255,255,.05));
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 4px 10px -5px rgba(0,0,0,.6), 0 0 0 3px color-mix(in srgb, var(--ac) 14%, transparent);
+  background:radial-gradient(circle at 30% 25%, #ffffff, color-mix(in srgb, var(--ac) 16%, #ffffff));
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 4px 10px -5px rgba(36,107,150,.3), 0 0 0 3px color-mix(in srgb, var(--ac) 16%, transparent);
 }
 .cat-dark .cat-card .cc-meta{ position:relative; z-index:1; display:flex; flex-direction:column; gap:1px; flex:1; min-width:0; }
 .cat-dark .cat-card h3{
-  margin:0 !important; color:#fff !important; font-size:.82rem !important; font-weight:700; line-height:1.15;
+  margin:0 !important; color:var(--ink) !important; font-size:.82rem !important; font-weight:700; line-height:1.15;
   display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
 }
-.cat-dark .cat-card .cnt{ font-size:.66rem !important; color:rgba(255,255,255,.55) !important; font-weight:600; }
-.cat-dark .cat-card:active{ transform:scale(.97); border-color:color-mix(in srgb, var(--ac) 50%, transparent) !important; }
+.cat-dark .cat-card .cnt{ font-size:.66rem !important; color:rgba(20,50,72,.52) !important; font-weight:600; }
+.cat-dark .cat-card:active{ transform:scale(.97); border-color:color-mix(in srgb, var(--ac) 50%, #ffffff) !important; }
 
 /* ---------- מוצרים מובחרים בבית — סליידר אופקי ---------- */
 #featured.prod-grid{
@@ -413,3 +413,19 @@ input, select, textarea{ font-size:16px !important; } /* מונע זום ב-iOS 
   align-items:center !important;
   font-size:.9rem !important;
 }
+
+/* ---- HOMEPAGE PREMIUM SECTIONS — mobile polish ---- */
+.promo-strip{ padding:20px 0 !important; }
+.promo-strip .container{ gap:12px; }
+.promo-strip .promo-title{ font-size:1.12rem !important; }
+.promo-code{ font-size:1rem !important; padding:8px 15px !important; }
+.promo-strip .promo-note{ font-size:.74rem; }
+.explore-strip .dog-wrap{ display:none !important; }
+.explore-grid{ grid-template-columns:1fr !important; gap:12px !important; }
+.explore-card.span-2,.nl-card{ grid-column:span 1 !important; }
+.explore-card{ padding:20px 18px !important; border-radius:18px; }
+.nl-card{ flex-direction:column !important; align-items:flex-start !important; padding:26px 22px !important; }
+.nl-card .nl-copy h3{ font-size:1.25rem !important; }
+.nl-form{ width:100%; min-width:0 !important; }
+.faq-item summary{ padding:16px 16px !important; font-size:.98rem !important; }
+.faq-item .faq-a{ padding:0 16px 18px !important; font-size:.9rem !important; }
