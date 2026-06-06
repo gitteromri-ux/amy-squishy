@@ -751,3 +751,32 @@ h1{font-weight:800}
 
 /* ---- remove old newsletter dog spacing ---- */
 .explore-strip .nl-card{ padding-left:0; }
+
+/* === MOBILE HERO+DOG AUTHORITATIVE FIX === */
+@media(max-width:880px){
+  /* Hero becomes a clean vertical stack: VISIBLE image banner on top, text below */
+  .hero{ min-height:auto; display:block; overflow:visible;
+    background:linear-gradient(135deg,var(--pink-tint),var(--sky) 240%); }
+  .hero .container{ display:block !important; padding-top:14px; padding-bottom:26px; }
+  /* show the new hero art as a real, fully-visible rounded banner */
+  .hero-bg{ position:relative !important; inset:auto !important;
+    opacity:1 !important; height:230px; border-radius:22px; overflow:hidden;
+    margin:6px 0 18px; box-shadow:0 18px 40px -18px rgba(232,136,158,.55);
+    z-index:1 !important; }
+  .hero-bg img{ transform:none !important; width:100%; height:100%;
+    object-fit:cover; object-position:center 28%; }
+  /* kill the white wash that was hiding the image */
+  .hero-bg::after{ display:none !important; background:none !important; }
+  .hero-copy{ grid-column:auto; justify-self:auto; max-width:none;
+    text-align:center; padding:0; }
+  .hero h1{ font-size:clamp(2rem,8vw,2.7rem); }
+  .hero p{ max-width:none; margin:0 auto; }
+  .hero-cta{ justify-content:center; }
+  .hero-collage{ display:none !important; }
+
+  /* Show the real dog on mobile too, sized for phone */
+  .promo-strip{ min-height:0; padding:22px 0 130px; overflow:visible; position:relative; }
+  .promo-strip .container{ padding-left:0 !important; }
+  .promo-dog{ display:block !important; left:50%; transform:translateX(-50%);
+    bottom:8px; width:120px; max-width:42vw; }
+}
