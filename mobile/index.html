@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20260606t">
+<link rel="stylesheet" href="css/style.css?v=20260606u">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -127,6 +127,8 @@
 .sec--shipping-black::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 160px 40px rgba(0,0,0,.65);pointer-events:none}
 .sec--shipping-black .container{position:relative;z-index:1}
 .ship-h2-oneline{white-space:normal}
+/* No single-word orphan lines in any fold header */
+.sec-head h2,section h2,.portal-title{text-wrap:balance}
 /* Compact shipping fold: roughly half the vertical footprint */
 .sec--compact{padding:28px 0 32px}
 .sec--compact .sec-head{margin-bottom:26px}
@@ -135,7 +137,7 @@
 .sec--compact .ship-promise .card>div:first-child{font-size:1.8rem !important}
 .sec--compact .ship-promise .card p[style*="2rem"]{font-size:1.45rem !important}
 </style>
-<link rel="stylesheet" href="css/mobile.css?v=20260606t">
+<link rel="stylesheet" href="css/mobile.css?v=20260606u">
 <meta name="theme-color" content="#E8889E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -231,7 +233,7 @@
   <div class="container">
     <div class="sec-head">
       <span class="eyebrow">למה דווקא אצל איימי</span>
-      <h2>חנות הסקווישי <span class="script">שעושה את ההבדל</span></h2>
+      <h2>חנות הסקווישי <span class="script">שעושה&nbsp;את&nbsp;ההבדל</span></h2>
       <p>לא עוד חנות צעצועים — מקום אחד עם המבחר הגדול בישראל ויחס אישי בכל הזמנה.</p>
     </div>
     <div class="why-grid">
@@ -264,7 +266,7 @@
   <div class="container">
     <div class="owner-band">
       <div class="owner-photo owner-photo--real reveal">
-        <img src="../assets/img/amy-portrait-real.jpg?v=20260606t" alt="איימי — בעלת האתר" class="owner-real">
+        <img src="../assets/img/amy-portrait-real.jpg?v=20260606u" alt="איימי — בעלת האתר" class="owner-real">
         <span class="sig">מאיימי באהבה 🩷</span>
       </div>
       <div class="reveal">
@@ -350,9 +352,9 @@
 <!-- WhatsApp bot launcher -->
 <div id="wa-mount"></div>
 
-<script src="js/products.js?v=20260606t"></script>
-<script src="js/app.js?v=20260606t"></script>
-<script src="js/whatsapp.js?v=20260606t"></script>
+<script src="js/products.js?v=20260606u"></script>
+<script src="js/app.js?v=20260606u"></script>
+<script src="js/whatsapp.js?v=20260606u"></script>
 <script>
   AmyApp.mountChrome("home");
   // categories
