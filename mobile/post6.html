@@ -130,6 +130,11 @@
   "image": "https://amysquishy.co.il/assets/img/amy-owner.jpg"
 }
 </script>
+<link rel="stylesheet" href="css/mobile.css">
+<meta name="theme-color" content="#E8889E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="איימי סקווישי">
 </head>
 <body>
 <div id="nav-mount"></div>
@@ -297,6 +302,28 @@
     }).join("");
   }
   AmyApp.initReveal();
+</script>
+<nav class="mobile-bottom-nav" aria-label="ניווט מהיר">
+  <a href="index.html" aria-label="בית"><span class="ico">🏠</span>בית</a>
+  <a href="shop.html" aria-label="חנות"><span class="ico">🛍️</span>חנות</a>
+  <a href="blog.html" class="active" aria-label="בלוג"><span class="ico">📖</span>בלוג</a>
+  <a href="track.html" aria-label="מעקב"><span class="ico">🚚</span>מעקב</a>
+  <a href="cart.html" aria-label="עגלה"><span class="ico">🛒</span><span class="cart-count" id="mobCartCount" style="display:none">0</span>עגלה</a>
+</nav>
+<script>
+/* עדכון מונה עגלה בניווט התחתון */
+(function(){
+  function upd(){
+    try{
+      var cart=JSON.parse(localStorage.getItem("amy_cart")||"[]");
+      var n=cart.reduce(function(s,i){return s+(i.qty||1);},0);
+      var el=document.getElementById("mobCartCount");
+      if(el){ el.textContent=n; el.style.display=n>0?"flex":"none"; }
+    }catch(e){}
+  }
+  upd(); window.addEventListener("storage",upd);
+  document.addEventListener("click",function(){ setTimeout(upd,200); });
+})();
 </script>
 </body>
 </html>

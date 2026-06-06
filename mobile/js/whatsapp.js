@@ -44,7 +44,7 @@
   body.innerHTML=`
   <div class="wa-panel" id="waPanel">
     <div class="wa-head">
-      <div class="av"><img src="assets/img/amy-owner-avatar.png" alt="איימי בעלת האתר"></div>
+      <div class="av"><img src="../assets/img/amy-owner-avatar.png" alt="איימי בעלת האתר"></div>
       <div><b>איימי 🩷</b><small>בדרך כלל עונה תוך דקה</small></div>
       <div class="x" id="waClose">×</div>
     </div>
