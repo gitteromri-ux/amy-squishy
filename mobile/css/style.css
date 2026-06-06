@@ -498,6 +498,12 @@ h1{font-weight:800}
 /* responsive: keep compact at all desktop widths */
 @media(max-width:1100px){ .cat-dark .cat-grid{ grid-template-columns:repeat(4,1fr) !important; } }
 @media(max-width:820px){  .cat-dark .cat-grid{ grid-template-columns:repeat(3,1fr) !important; } }
+@media(max-width:600px){  .cat-dark .cat-grid{ grid-template-columns:repeat(2,1fr) !important; gap:12px !important; } }
+@media(max-width:600px){
+  .cat-dark .cat-card{ padding:14px 12px !important; gap:10px; }
+  .cat-dark .cat-card .cnt{ white-space:nowrap; }
+  .cat-dark .cat-card h3{ font-size:.95rem; }
+}
 
 /* ============================================================
    HOMEPAGE PREMIUM SECTIONS — promo / explore / newsletter / FAQ
