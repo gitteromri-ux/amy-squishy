@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20260606p">
+<link rel="stylesheet" href="css/style.css?v=20260606q">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -100,8 +100,21 @@
 .ship-promise .card{border-radius:var(--r-md);padding:34px}
 @media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){.why-grid{grid-template-columns:1fr}.ship-promise{grid-template-columns:1fr}}
+/* WHY US fold on premium-dark bg: glass cards */
+.sec--shipping-dark .why-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px -18px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.sec--shipping-dark .why-card:hover{background:rgba(255,255,255,.08);box-shadow:0 22px 46px -22px rgba(0,0,0,.6)}
+.sec--shipping-dark .why-card h3{color:#fff}
+.sec--shipping-dark .why-card p{color:rgba(255,255,255,.7)}
+.sec--shipping-dark .eyebrow{color:#36d6e0}
+/* Compact shipping fold: roughly half the vertical footprint */
+.sec--compact{padding:28px 0 32px}
+.sec--compact .sec-head{margin-bottom:26px}
+.sec--compact .ship-promise .card{padding:18px 22px}
+.sec--compact .ship-promise .card h3{margin:8px 0 6px}
+.sec--compact .ship-promise .card>div:first-child{font-size:1.8rem !important}
+.sec--compact .ship-promise .card p[style*="2rem"]{font-size:1.45rem !important}
 </style>
-<link rel="stylesheet" href="css/mobile.css?v=20260606p">
+<link rel="stylesheet" href="css/mobile.css?v=20260606q">
 <meta name="theme-color" content="#E8889E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -193,7 +206,7 @@
 </section>
 
 <!-- ============ WHY US — value props ============ -->
-<section class="sec">
+<section class="sec sec--shipping-dark" style="color:#fff">
   <div class="container">
     <div class="sec-head">
       <span class="eyebrow">למה דווקא אצל איימי</span>
@@ -230,7 +243,7 @@
   <div class="container">
     <div class="owner-band">
       <div class="owner-photo owner-photo--cartoon reveal">
-        <img src="../assets/img/amy-cartoon.png?v=20260606p" alt="איימי — בעלת האתר" class="owner-cartoon">
+        <img src="../assets/img/amy-cartoon.png?v=20260606q" alt="איימי — בעלת האתר" class="owner-cartoon">
         <span class="sig">מאיימי באהבה 🩷</span>
       </div>
       <div class="reveal">
@@ -248,7 +261,7 @@
 </section>
 
 <!-- ============ SHIPPING PROMISE ============ -->
-<section class="sec sec--shipping-dark" style="color:#fff">
+<section class="sec sec--shipping-dark sec--compact" style="color:#fff">
   <div class="container">
     <div class="sec-head"><h2 style="color:#fff">זמני אספקה ברורים, בלי הפתעות</h2><p style="color:rgba(255,255,255,.72)">בוחרים את מהירות המשלוח שמתאימה לכם — לכל הזמנה מעקב חכם בפורטל.</p></div>
     <div class="ship-promise">
@@ -316,9 +329,9 @@
 <!-- WhatsApp bot launcher -->
 <div id="wa-mount"></div>
 
-<script src="js/products.js?v=20260606p"></script>
-<script src="js/app.js?v=20260606p"></script>
-<script src="js/whatsapp.js?v=20260606p"></script>
+<script src="js/products.js?v=20260606q"></script>
+<script src="js/app.js?v=20260606q"></script>
+<script src="js/whatsapp.js?v=20260606q"></script>
 <script>
   AmyApp.mountChrome("home");
   // categories

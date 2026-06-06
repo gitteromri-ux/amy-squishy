@@ -962,14 +962,15 @@ h1{font-weight:800}
      Strip height tuned to the dog so there's no empty middle gap. */
   .promo-strip{ min-height:190px; overflow:visible; padding:18px 0; }
   .promo-strip .container{
-    display:flex; align-items:center; justify-content:center;
+    display:flex; align-items:center; justify-content:flex-start;
     gap:26px; flex-wrap:nowrap;
-    padding-left:160px !important; padding-right:24px !important;
+    padding-left:200px !important; padding-right:60px !important;
   }
   .promo-dog{
     position:absolute !important; left:8px !important; right:auto !important; top:50% !important;
     bottom:auto !important; transform:translateY(-50%) !important; z-index:3;
     width:135px; max-width:135px;
+    left:64px !important;
     filter:drop-shadow(0 14px 22px rgba(26,21,24,.22));
   }
   .promo-dog img{ width:100%; height:auto; display:block; }
