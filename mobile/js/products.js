@@ -44,7 +44,7 @@ function P(name, cat, price, opts = {}) {
     source: opts.source || "",
     desc: opts.desc || "",
     emoji: opts.emoji || "🫧",         // אימוג'י ייחודי לכל דגם
-    img: `assets/products/${id}.png`,  // תמונה ראשית אחידה
+    img: `../assets/products/${id}.png`,  // תמונה ראשית אחידה
   };
 }
 
