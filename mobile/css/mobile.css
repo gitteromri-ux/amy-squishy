@@ -94,7 +94,7 @@ h3{ font-size:1.2rem !important; }
    ============================================================ */
 .cat-dark{
   position:relative; background:#eaf6fc; color:var(--ink);
-  overflow:hidden; isolation:isolate;
+  overflow-y:hidden; overflow-x:clip; isolation:isolate;
   padding:30px 0 34px !important;
 }
 .cat-dark .cat-dark-bg{
@@ -229,7 +229,7 @@ h3{ font-size:1.2rem !important; }
 /* קטלוג החנות (shop) — רשת 2 בשורה (לא סליידר, כי זה קטלוג מלא) */
 .shop-layout .prod-grid{ display:grid !important; grid-template-columns:repeat(2,1fr) !important; gap:14px !important; direction:rtl; overflow:visible !important; margin:0 !important; }
 .shop-layout .prod-grid > *{ width:auto !important; }
-.cat-grid{ grid-template-columns:repeat(2,1fr) !important; gap:14px !important; }
+.shop-layout .cat-grid{ grid-template-columns:repeat(2,1fr) !important; gap:14px !important; }
 .prod-card{ border-radius:18px; overflow:hidden; }
 .prod-body{ padding:12px 12px 14px !important; }
 .prod-cat{ font-size:.7rem !important; }

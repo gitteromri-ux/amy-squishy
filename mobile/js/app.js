@@ -143,6 +143,35 @@
     if(b){e.preventDefault();addToCart(b.getAttribute("data-add"));}
   });
 
+  /* ---------- Drag/swipe-to-scroll for all mobile sliders ---------- */
+  function initSliders(){
+    var sels=["#cat-grid","#featured",".hblog-grid",".why-grid"];
+    sels.forEach(function(sel){
+      document.querySelectorAll(sel).forEach(function(el){
+        if(el.dataset.dragInit) return; el.dataset.dragInit="1";
+        var down=false,startX=0,startScroll=0,moved=false,pid=null;
+        el.style.cursor="grab";
+        el.addEventListener("pointerdown",function(e){
+          down=true;moved=false;pid=e.pointerId;
+          startX=e.clientX;startScroll=el.scrollLeft;
+          el.style.cursor="grabbing";
+        });
+        el.addEventListener("pointermove",function(e){
+          if(!down)return;
+          var dx=e.clientX-startX;
+          if(Math.abs(dx)>4){moved=true; try{el.setPointerCapture(pid);}catch(_){}}
+          if(moved){ el.scrollLeft=startScroll-dx; e.preventDefault(); }
+        },{passive:false});
+        function end(){ down=false; el.style.cursor="grab"; }
+        el.addEventListener("pointerup",end);
+        el.addEventListener("pointercancel",end);
+        el.addEventListener("pointerleave",end);
+        // block accidental link navigation after a drag
+        el.addEventListener("click",function(e){ if(moved){e.preventDefault();e.stopPropagation();moved=false;} },true);
+      });
+    });
+  }
+
   /* expose */
-  window.AmyApp={prodCard,mountChrome,initReveal,addToCart,removeFromCart,setQty,getCart,saveCart,cartTotal,cartCount,toast,LOGO};
+  window.AmyApp={prodCard,mountChrome,initReveal,initSliders,addToCart,removeFromCart,setQty,getCart,saveCart,cartTotal,cartCount,toast,LOGO};
 })();

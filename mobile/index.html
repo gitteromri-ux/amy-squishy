@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20260607a7">
+<link rel="stylesheet" href="css/style.css?v=20260607a8">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -137,7 +137,7 @@
 .sec--compact .ship-promise .card>div:first-child{font-size:1.8rem !important}
 .sec--compact .ship-promise .card p[style*="2rem"]{font-size:1.45rem !important}
 </style>
-<link rel="stylesheet" href="css/mobile.css?v=20260607a7">
+<link rel="stylesheet" href="css/mobile.css?v=20260607a8">
 <meta name="theme-color" content="#E8889E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -286,7 +286,7 @@
   <div class="container">
     <div class="owner-band">
       <div class="owner-photo owner-photo--real reveal">
-        <img src="../assets/img/amy-portrait-real.jpg?v=20260607a7" alt="איימי — בעלת האתר" class="owner-real">
+        <img src="../assets/img/amy-portrait-real.jpg?v=20260607a8" alt="איימי — בעלת האתר" class="owner-real">
         <span class="sig">מאיימי באהבה 🩷</span>
       </div>
       <div class="reveal">
@@ -410,9 +410,9 @@
 <!-- WhatsApp bot launcher -->
 <div id="wa-mount"></div>
 
-<script src="js/products.js?v=20260607a7"></script>
-<script src="js/app.js?v=20260607a7"></script>
-<script src="js/whatsapp.js?v=20260607a7"></script>
+<script src="js/products.js?v=20260607a8"></script>
+<script src="js/app.js?v=20260607a8"></script>
+<script src="js/whatsapp.js?v=20260607a8"></script>
 <script>
   AmyApp.mountChrome("home");
   // categories
@@ -438,6 +438,7 @@
   const feat = pick.slice(0,8);
   document.getElementById("featured").innerHTML = feat.map(AmyApp.prodCard).join("");
   AmyApp.initReveal();
+  AmyApp.initSliders();
 </script>
 <nav class="mobile-bottom-nav" aria-label="ניווט מהיר">
   <a href="index.html" class="active" aria-label="בית"><span class="ico">🏠</span>בית</a>
