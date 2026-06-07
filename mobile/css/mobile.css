@@ -114,18 +114,23 @@ h3{ font-size:1.2rem !important; }
 }
 .cat-dark .sec-head p{ color:rgba(20,50,72,.62); }
 
-/* רשת קטגוריות נקייה — 2 בשורה, ללא גלישה/חיתוך */
+/* סליידר קטגוריות אופקי — 2 שורות שנגללות לצד */
 #categories #cat-grid.cat-grid{
   display:grid !important;
-  grid-auto-flow:row !important;
-  grid-template-columns:repeat(2,1fr) !important;
-  grid-template-rows:none !important;
-  overflow:visible !important; gap:12px !important; padding:2px 0 4px;
-  margin:0 !important;
+  grid-auto-flow:column !important;
+  grid-template-rows:repeat(2,auto) !important;
+  grid-template-columns:none !important;
+  grid-auto-columns:158px !important;
+  overflow-x:auto !important; overflow-y:hidden !important;
+  gap:10px !important; padding:2px 16px 14px;
+  margin:0 -16px !important;
+  scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
+  -ms-overflow-style:none; scrollbar-width:none;
 }
 #categories #cat-grid::-webkit-scrollbar{ display:none; }
 #categories #cat-grid > *{
-  width:auto !important;
+  width:158px !important; scroll-snap-align:start;
 }
 
 /* כרטיס זכוכית 3D במובייל */
