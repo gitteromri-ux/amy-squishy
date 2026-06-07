@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260606v">
+  <link rel="stylesheet" href="css/style.css?v=20260607w">
   <style>
     /* ---- Shop hero strip (small) ---- */
     .shop-hero {
@@ -160,6 +160,35 @@
       margin-bottom: 0;
     }
     .tabs-wrap .tabs { margin-bottom: 0; }
+
+    /* ---- MOBILE FIX: category bar must NOT cover the store ---- */
+    @media(max-width:768px){
+      /* not sticky on phones so it can never overlap the products */
+      .tabs-wrap {
+        position: static;
+        z-index: 1;
+        padding: 12px 0;
+        box-shadow: none;
+      }
+      /* 15 chips become ONE horizontal-scroll row instead of a tall wrapped block */
+      .tabs-wrap .tabs {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 8px;
+        padding: 2px 16px 8px;
+        margin: 0 -16px;
+      }
+      .tabs-wrap .tabs::-webkit-scrollbar { display: none; }
+      .tabs-wrap .tab {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 9px 16px;
+      }
+    }
 
     /* ---- Filters sidebar polish ---- */
     .filters-head {
@@ -337,9 +366,9 @@
 <div id="footer-mount"></div>
 <div id="wa-mount"></div>
 
-<script src="js/products.js?v=20260606v"></script>
-<script src="js/app.js?v=20260606v"></script>
-<script src="js/whatsapp.js?v=20260606v"></script>
+<script src="js/products.js?v=20260607w"></script>
+<script src="js/app.js?v=20260607w"></script>
+<script src="js/whatsapp.js?v=20260607w"></script>
 <script>
   AmyApp.mountChrome("shop");
 
