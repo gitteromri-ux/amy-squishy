@@ -114,19 +114,22 @@ h3{ font-size:1.2rem !important; }
 }
 .cat-dark .sec-head p{ color:rgba(20,50,72,.62); }
 
-/* קטגוריות — רשת 2 בשורה (יציב, ללא סליידר) */
+/* קטגוריות — סליידר אופקי 2 שורות (גרירה ב-JS) */
 #categories #cat-grid.cat-grid{
   display:grid !important;
-  grid-template-columns:repeat(2,1fr) !important;
-  grid-auto-flow:row !important;
-  grid-auto-columns:auto !important;
-  overflow:visible !important;
-  gap:10px !important; padding:2px 0 6px;
-  margin:0 !important;
+  grid-auto-flow:column !important;
+  grid-template-rows:repeat(2,auto) !important;
+  grid-template-columns:none !important;
+  grid-auto-columns:158px !important;
+  overflow-x:auto !important; overflow-y:hidden !important;
+  gap:10px !important; padding:2px 16px 14px;
+  margin:0 -16px !important;
   direction:rtl !important;
+  -ms-overflow-style:none; scrollbar-width:none;
 }
+#categories #cat-grid::-webkit-scrollbar{ display:none; }
 #categories #cat-grid > *{
-  width:auto !important;
+  width:158px !important;
 }
 
 /* כרטיס זכוכית 3D במובייל */
@@ -163,43 +166,49 @@ h3{ font-size:1.2rem !important; }
 .cat-dark .cat-card .cnt{ font-size:.66rem !important; color:rgba(20,50,72,.52) !important; font-weight:600; }
 .cat-dark .cat-card:active{ transform:scale(.97); border-color:color-mix(in srgb, var(--ac) 50%, #ffffff) !important; }
 
-/* ---------- מוצרים מובחרים — רשת 2 בשורה (יציב) ---------- */
+/* ---------- מוצרים מובחרים — סליידר אופקי (גרירה ב-JS) ---------- */
 #featured.prod-grid{
-  display:grid !important; grid-template-columns:repeat(2,1fr) !important;
-  grid-auto-flow:row !important;
-  overflow:visible !important;
-  gap:14px !important; padding:4px 0 6px;
-  margin:0 !important;
+  display:flex !important; flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  overflow-x:auto !important; overflow-y:hidden !important;
+  gap:14px !important; padding:4px 16px 14px;
+  margin:0 -16px !important;
   direction:rtl !important;
+  -ms-overflow-style:none; scrollbar-width:none;
 }
+#featured.prod-grid::-webkit-scrollbar{ display:none; }
 #featured.prod-grid > *{
-  width:auto !important;
+  flex:0 0 auto !important; width:172px !important;
 }
 
-/* ---------- בלוג — רשת בעמודה אחת (יציב) ---------- */
+/* ---------- בלוג — סליידר אופקי (גרירה ב-JS) ---------- */
 .hblog-grid{
-  display:grid !important; grid-template-columns:1fr !important;
-  grid-auto-flow:row !important;
-  overflow:visible !important;
-  gap:14px !important; padding:4px 0 6px;
-  margin:0 !important;
+  display:flex !important; flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  overflow-x:auto !important; overflow-y:hidden !important;
+  gap:14px !important; padding:4px 16px 14px;
+  margin:0 -16px !important;
   direction:rtl !important;
+  -ms-overflow-style:none; scrollbar-width:none;
 }
+.hblog-grid::-webkit-scrollbar{ display:none; }
 .hblog-grid > *{
-  width:auto !important;
+  flex:0 0 auto !important; width:248px !important;
 }
 
-/* ---------- WHY US (שעושה את ההבדל) — רשת בעמודה אחת (יציב) ---------- */
+/* ---------- WHY US (שעושה את ההבדל) — סליידר אופקי (גרירה ב-JS) ---------- */
 .why-grid{
-  display:grid !important; grid-template-columns:1fr !important;
-  grid-auto-flow:row !important;
-  overflow:visible !important;
-  gap:14px !important; padding:4px 0 6px;
-  margin:0 !important;
+  display:flex !important; flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  overflow-x:auto !important; overflow-y:hidden !important;
+  gap:14px !important; padding:4px 16px 14px;
+  margin:0 -16px !important;
   direction:rtl !important;
+  -ms-overflow-style:none; scrollbar-width:none;
 }
+.why-grid::-webkit-scrollbar{ display:none; }
 .why-grid > *{
-  width:auto !important;
+  flex:0 0 auto !important; width:262px !important;
 }
 
 /* ---------- רשת מוצרים (קטלוג shop) — 2 בשורה ---------- */
