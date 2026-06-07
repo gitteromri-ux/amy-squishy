@@ -367,6 +367,23 @@ input, select, textarea{ font-size:16px !important; } /* מונע זום ב-iOS 
 /* ---------- Accordion items on product page ---------- */
 .accordion{ margin-bottom:90px; } /* extra space for fixed CTA row */
 
+/* ---------- Owner / Amy story fold — center image, fix greeting ---------- */
+.owner-band{ display:block !important; text-align:center !important; }
+.owner-photo, .owner-photo--real{
+  position:relative !important; display:flex !important; flex-direction:column !important;
+  align-items:center !important; justify-content:center !important;
+  justify-self:center !important; width:100% !important; margin:0 auto 8px !important;
+}
+.owner-photo--real .owner-real, .owner-photo img{
+  width:auto !important; max-width:78% !important; height:auto !important;
+  margin:0 auto !important; display:block !important; object-fit:cover !important;
+}
+.owner-photo--real .sig, .owner-photo .sig{
+  position:static !important; display:inline-block !important;
+  margin-top:14px !important; right:auto !important; bottom:auto !important; left:auto !important;
+}
+.owner-band .lead, .owner-band .owner-note{ text-align:right !important; }
+
 /* ---------- Card image height constraint ---------- */
 .prod-media{ position:relative; min-height:150px; }
 .prod-media img{ width:100%; height:150px; max-height:150px; object-fit:contain; display:block; }
