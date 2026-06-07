@@ -201,6 +201,14 @@ h3{ font-size:1.2rem !important; }
   flex:0 0 auto !important; width:248px !important; scroll-snap-align:start;
 }
 
+/* כל הכרטיסים והקישורים בתוך סליידר — לא לתפוס את המגע האופקי */
+#featured.prod-grid > *, #featured .prod-card, #featured .prod-media,
+.hblog-grid > *, .hblog-grid .hblog-card,
+#categories #cat-grid > *, #categories .cat-card,
+.why-grid > *, .why-grid .why-card{
+  touch-action:pan-y !important;
+}
+
 /* ---------- WHY US (שעושה את ההבדל) — סליידר אופקי ---------- */
 .why-grid{
   display:flex !important; flex-wrap:nowrap !important;
