@@ -167,15 +167,34 @@ h3{ font-size:1.2rem !important; }
 .cat-dark .cat-card .cnt{ font-size:.66rem !important; color:rgba(20,50,72,.52) !important; font-weight:600; }
 .cat-dark .cat-card:active{ transform:scale(.97); border-color:color-mix(in srgb, var(--ac) 50%, #ffffff) !important; }
 
-/* ---------- מוצרים מובחרים בבית — רשת נקייה 2 בשורה ---------- */
+/* ---------- מוצרים מובחרים — סליידר אופקי ---------- */
 #featured.prod-grid{
-  display:grid !important; grid-template-columns:repeat(2,1fr) !important;
-  overflow:visible !important; gap:14px !important; padding:4px 0 8px;
-  margin:0 !important;
+  display:flex !important; flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  overflow-x:auto !important; overflow-y:hidden !important;
+  gap:14px !important; padding:4px 16px 14px;
+  margin:0 -16px !important;
+  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+  -ms-overflow-style:none; scrollbar-width:none;
 }
 #featured.prod-grid::-webkit-scrollbar{ display:none; }
 #featured.prod-grid > *{
-  width:auto !important;
+  flex:0 0 auto !important; width:172px !important; scroll-snap-align:start;
+}
+
+/* ---------- בלוג — סליידר אופקי ---------- */
+.hblog-grid{
+  display:flex !important; flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  overflow-x:auto !important; overflow-y:hidden !important;
+  gap:14px !important; padding:4px 16px 14px;
+  margin:0 -16px !important;
+  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+  -ms-overflow-style:none; scrollbar-width:none;
+}
+.hblog-grid::-webkit-scrollbar{ display:none; }
+.hblog-grid > *{
+  flex:0 0 auto !important; width:248px !important; scroll-snap-align:start;
 }
 
 /* ---------- רשת מוצרים (קטלוג shop) — 2 בשורה ---------- */
@@ -476,4 +495,4 @@ input, select, textarea{ font-size:16px !important; } /* מונע זום ב-iOS 
 .promo-dog{ position:absolute; bottom:0; left:8px; width:96px; max-width:26vw; z-index:3;
   pointer-events:none; filter:drop-shadow(0 10px 18px rgba(26,21,24,.28)); display:block !important; }
 .promo-dog img{ width:100%; height:auto; display:block; }
-@media(max-width:420px){ .promo-dog{ display:none !important; } }
+@media(max-width:420px){ .promo-dog{ display:block !important; width:84px; max-width:24vw; left:6px; } }
