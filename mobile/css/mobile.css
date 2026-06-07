@@ -114,25 +114,19 @@ h3{ font-size:1.2rem !important; }
 }
 .cat-dark .sec-head p{ color:rgba(20,50,72,.62); }
 
-/* סליידר קטגוריות אופקי — 2 שורות דו-כיווני RTL */
+/* קטגוריות — רשת 2 בשורה (יציב, ללא סליידר) */
 #categories #cat-grid.cat-grid{
   display:grid !important;
-  grid-auto-flow:column !important;
-  grid-template-rows:repeat(2,auto) !important;
-  grid-template-columns:none !important;
-  grid-auto-columns:158px !important;
-  overflow-x:auto !important; overflow-y:hidden !important;
-  gap:10px !important; padding:2px 16px 14px;
-  margin:0 -16px !important;
+  grid-template-columns:repeat(2,1fr) !important;
+  grid-auto-flow:row !important;
+  grid-auto-columns:auto !important;
+  overflow:visible !important;
+  gap:10px !important; padding:2px 0 6px;
+  margin:0 !important;
   direction:rtl !important;
-  scroll-snap-type:x proximity;
-  touch-action:pan-x !important;
-  -webkit-overflow-scrolling:touch;
-  -ms-overflow-style:none; scrollbar-width:none;
 }
-#categories #cat-grid::-webkit-scrollbar{ display:none; }
 #categories #cat-grid > *{
-  width:158px !important; scroll-snap-align:start;
+  width:auto !important;
 }
 
 /* כרטיס זכוכית 3D במובייל */
@@ -169,60 +163,43 @@ h3{ font-size:1.2rem !important; }
 .cat-dark .cat-card .cnt{ font-size:.66rem !important; color:rgba(20,50,72,.52) !important; font-weight:600; }
 .cat-dark .cat-card:active{ transform:scale(.97); border-color:color-mix(in srgb, var(--ac) 50%, #ffffff) !important; }
 
-/* ---------- מוצרים מובחרים — סליידר אופקי ---------- */
+/* ---------- מוצרים מובחרים — רשת 2 בשורה (יציב) ---------- */
 #featured.prod-grid{
-  display:flex !important; flex-wrap:nowrap !important;
-  grid-template-columns:none !important;
-  overflow-x:auto !important; overflow-y:hidden !important;
-  gap:14px !important; padding:4px 16px 14px;
-  margin:0 -16px !important;
+  display:grid !important; grid-template-columns:repeat(2,1fr) !important;
+  grid-auto-flow:row !important;
+  overflow:visible !important;
+  gap:14px !important; padding:4px 0 6px;
+  margin:0 !important;
   direction:rtl !important;
-  scroll-snap-type:x proximity; touch-action:pan-x; -webkit-overflow-scrolling:touch;
-  -ms-overflow-style:none; scrollbar-width:none;
 }
-#featured.prod-grid::-webkit-scrollbar{ display:none; }
 #featured.prod-grid > *{
-  flex:0 0 auto !important; width:172px !important; scroll-snap-align:start;
+  width:auto !important;
 }
 
-/* ---------- בלוג — סליידר אופקי ---------- */
+/* ---------- בלוג — רשת בעמודה אחת (יציב) ---------- */
 .hblog-grid{
-  display:flex !important; flex-wrap:nowrap !important;
-  grid-template-columns:none !important;
-  overflow-x:auto !important; overflow-y:hidden !important;
-  gap:14px !important; padding:4px 16px 14px;
-  margin:0 -16px !important;
+  display:grid !important; grid-template-columns:1fr !important;
+  grid-auto-flow:row !important;
+  overflow:visible !important;
+  gap:14px !important; padding:4px 0 6px;
+  margin:0 !important;
   direction:rtl !important;
-  scroll-snap-type:x proximity; touch-action:pan-x; -webkit-overflow-scrolling:touch;
-  -ms-overflow-style:none; scrollbar-width:none;
 }
-.hblog-grid::-webkit-scrollbar{ display:none; }
 .hblog-grid > *{
-  flex:0 0 auto !important; width:248px !important; scroll-snap-align:start;
+  width:auto !important;
 }
 
-/* כל הכרטיסים והקישורים בתוך סליידר — לא לתפוס את המגע האופקי */
-#featured.prod-grid > *, #featured .prod-card, #featured .prod-media,
-.hblog-grid > *, .hblog-grid .hblog-card,
-#categories #cat-grid > *, #categories .cat-card,
-.why-grid > *, .why-grid .why-card{
-  touch-action:pan-y !important;
-}
-
-/* ---------- WHY US (שעושה את ההבדל) — סליידר אופקי ---------- */
+/* ---------- WHY US (שעושה את ההבדל) — רשת בעמודה אחת (יציב) ---------- */
 .why-grid{
-  display:flex !important; flex-wrap:nowrap !important;
-  grid-template-columns:none !important;
-  overflow-x:auto !important; overflow-y:hidden !important;
-  gap:14px !important; padding:4px 16px 14px;
-  margin:0 -16px !important;
+  display:grid !important; grid-template-columns:1fr !important;
+  grid-auto-flow:row !important;
+  overflow:visible !important;
+  gap:14px !important; padding:4px 0 6px;
+  margin:0 !important;
   direction:rtl !important;
-  scroll-snap-type:x proximity; touch-action:pan-x; -webkit-overflow-scrolling:touch;
-  -ms-overflow-style:none; scrollbar-width:none;
 }
-.why-grid::-webkit-scrollbar{ display:none; }
 .why-grid > *{
-  flex:0 0 auto !important; width:262px !important; scroll-snap-align:start;
+  width:auto !important;
 }
 
 /* ---------- רשת מוצרים (קטלוג shop) — 2 בשורה ---------- */
