@@ -114,7 +114,7 @@ h3{ font-size:1.2rem !important; }
 }
 .cat-dark .sec-head p{ color:rgba(20,50,72,.62); }
 
-/* סליידר קטגוריות אופקי — 2 שורות שנגללות לצד */
+/* סליידר קטגוריות אופקי — 2 שורות דו-כיווני RTL */
 #categories #cat-grid.cat-grid{
   display:grid !important;
   grid-auto-flow:column !important;
@@ -124,6 +124,7 @@ h3{ font-size:1.2rem !important; }
   overflow-x:auto !important; overflow-y:hidden !important;
   gap:10px !important; padding:2px 16px 14px;
   margin:0 -16px !important;
+  direction:rtl !important;
   scroll-snap-type:x proximity;
   -webkit-overflow-scrolling:touch;
   -ms-overflow-style:none; scrollbar-width:none;
@@ -174,6 +175,7 @@ h3{ font-size:1.2rem !important; }
   overflow-x:auto !important; overflow-y:hidden !important;
   gap:14px !important; padding:4px 16px 14px;
   margin:0 -16px !important;
+  direction:rtl !important;
   scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
   -ms-overflow-style:none; scrollbar-width:none;
 }
@@ -189,6 +191,7 @@ h3{ font-size:1.2rem !important; }
   overflow-x:auto !important; overflow-y:hidden !important;
   gap:14px !important; padding:4px 16px 14px;
   margin:0 -16px !important;
+  direction:rtl !important;
   scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
   -ms-overflow-style:none; scrollbar-width:none;
 }
@@ -197,8 +200,26 @@ h3{ font-size:1.2rem !important; }
   flex:0 0 auto !important; width:248px !important; scroll-snap-align:start;
 }
 
+/* ---------- WHY US (שעושה את ההבדל) — סליידר אופקי ---------- */
+.why-grid{
+  display:flex !important; flex-wrap:nowrap !important;
+  grid-template-columns:none !important;
+  overflow-x:auto !important; overflow-y:hidden !important;
+  gap:14px !important; padding:4px 16px 14px;
+  margin:0 -16px !important;
+  direction:rtl !important;
+  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+  -ms-overflow-style:none; scrollbar-width:none;
+}
+.why-grid::-webkit-scrollbar{ display:none; }
+.why-grid > *{
+  flex:0 0 auto !important; width:262px !important; scroll-snap-align:start;
+}
+
 /* ---------- רשת מוצרים (קטלוג shop) — 2 בשורה ---------- */
-.prod-grid{ grid-template-columns:repeat(2,1fr) !important; gap:14px !important; }
+/* קטלוג החנות (shop) — רשת 2 בשורה (לא סליידר, כי זה קטלוג מלא) */
+.shop-layout .prod-grid{ display:grid !important; grid-template-columns:repeat(2,1fr) !important; gap:14px !important; direction:rtl; overflow:visible !important; margin:0 !important; }
+.shop-layout .prod-grid > *{ width:auto !important; }
 .cat-grid{ grid-template-columns:repeat(2,1fr) !important; gap:14px !important; }
 .prod-card{ border-radius:18px; overflow:hidden; }
 .prod-body{ padding:12px 12px 14px !important; }
