@@ -41,7 +41,7 @@
           ${p.badge?`<span class="badge">${p.badge}</span>`:""}
           ${fast?`<span class="badge fast">⚡ 4 ימים</span>`:""}
         </div>
-        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="if(!this.dataset.r){this.dataset.r=1;this.src=this.src.split('?')[0]+'?r='+Date.now();}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
         <span class="sq" style="display:none">${p.emoji||cat.emoji}</span>
         <button class="quick-add" data-add="${p.id}" aria-label="הוסף לעגלה מהיר">＋ הוסף לעגלה</button>
       </a>

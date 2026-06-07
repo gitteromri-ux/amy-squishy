@@ -363,7 +363,13 @@ input, select, textarea{ font-size:16px !important; } /* מונע זום ב-iOS 
 .accordion{ margin-bottom:90px; } /* extra space for fixed CTA row */
 
 /* ---------- Card image height constraint ---------- */
-.prod-media img{ max-height:180px; object-fit:contain; }
+.prod-media{ position:relative; min-height:150px; }
+.prod-media img{ width:100%; height:150px; max-height:150px; object-fit:contain; display:block; }
+.prod-media .sq{ font-size:3.4rem; align-items:center; justify-content:center; height:150px; }
+/* badges pinned top, never overlap quick-add */
+.prod-media .prod-badges{ position:absolute; top:8px; left:8px; right:8px; display:flex; flex-wrap:wrap; gap:5px; justify-content:flex-start; z-index:3; pointer-events:none; }
+.prod-media .prod-badges .badge{ font-size:.62rem !important; padding:4px 9px !important; line-height:1.1; white-space:nowrap; }
+.prod-media .quick-add{ bottom:8px; z-index:2; }
 
 /* ---------- WhatsApp chat window mobile ---------- */
 .wa-chat{ max-width:calc(100vw - 28px) !important; }
