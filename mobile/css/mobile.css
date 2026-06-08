@@ -512,3 +512,28 @@ input, select, textarea{ font-size:16px !important; } /* מונע זום ב-iOS 
   pointer-events:none; filter:drop-shadow(0 10px 18px rgba(26,21,24,.28)); display:block !important; }
 .promo-dog img{ width:100%; height:auto; display:block; }
 @media(max-width:420px){ .promo-dog{ display:block !important; width:84px; max-width:24vw; left:6px; } }
+
+/* ===== Dog click-to-play video modal (mobile) ===== */
+.promo-dog.dog-trigger{ background:none; border:0; padding:0; cursor:pointer; position:relative; }
+.promo-dog.dog-trigger .dog-play{
+  position:absolute; bottom:4px; left:50%; transform:translateX(-50%);
+  width:26px; height:26px; border-radius:50%;
+  background:rgba(232,136,158,.96); color:#fff; font-size:11px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 3px 10px rgba(0,0,0,.3); padding-left:1px;
+}
+.dog-modal{ position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; }
+.dog-modal[hidden]{ display:none; }
+.dog-modal-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.82); }
+.dog-modal-box{ position:relative; z-index:1; width:92vw; max-width:420px; }
+.dog-modal-video{ width:100%; max-height:78vh; border-radius:16px; background:#000; display:block; box-shadow:0 16px 50px rgba(0,0,0,.55); }
+.dog-modal-x{
+  position:absolute; top:-12px; right:-12px; z-index:2;
+  width:38px; height:38px; border-radius:50%; border:0;
+  background:#fff; color:#1A1518; font-size:22px; line-height:1; cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,.35);
+}
+.promo-strip{ position:relative; }
+.promo-strip .container{ position:relative; z-index:1; pointer-events:none; }
+.promo-strip .container a, .promo-strip .container button{ pointer-events:auto; }
+.promo-dog.dog-trigger{ z-index:3; }

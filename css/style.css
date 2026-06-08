@@ -1060,3 +1060,30 @@ img{ image-rendering:auto; -webkit-backface-visibility:hidden; backface-visibili
   .owner-photo--real .owner-real{max-width:280px}
   .owner-photo--real .sig{position:static;display:inline-block;margin-top:14px;right:auto;bottom:auto}
 }
+
+/* ===== Dog click-to-play video modal ===== */
+.promo-dog.dog-trigger{ background:none; border:0; padding:0; cursor:pointer; position:relative; }
+.promo-dog.dog-trigger .dog-play{
+  position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
+  width:34px; height:34px; border-radius:50%;
+  background:rgba(232,136,158,.95); color:#fff; font-size:14px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.28); padding-left:2px;
+  transition:transform .18s ease;
+}
+.promo-dog.dog-trigger:hover .dog-play{ transform:translateX(-50%) scale(1.12); }
+.dog-modal{ position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; }
+.dog-modal[hidden]{ display:none; }
+.dog-modal-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.78); backdrop-filter:blur(3px); }
+.dog-modal-box{ position:relative; z-index:1; width:min(420px,92vw); max-height:90vh; }
+.dog-modal-video{ width:100%; max-height:80vh; border-radius:18px; background:#000; box-shadow:0 20px 60px rgba(0,0,0,.5); display:block; }
+.dog-modal-x{
+  position:absolute; top:-14px; right:-14px; z-index:2;
+  width:40px; height:40px; border-radius:50%; border:0;
+  background:#fff; color:#1A1518; font-size:24px; line-height:1; cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.3);
+}
+.promo-strip{ position:relative; }
+.promo-strip .container{ position:relative; z-index:1; pointer-events:none; }
+.promo-strip .container a, .promo-strip .container button{ pointer-events:auto; }
+.promo-dog.dog-trigger{ z-index:3; }

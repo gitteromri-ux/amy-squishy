@@ -41,7 +41,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Heebo:wght@400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20260607b1">
+<link rel="stylesheet" href="css/style.css?v=20260608c1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -137,7 +137,7 @@
 .sec--compact .ship-promise .card>div:first-child{font-size:1.8rem !important}
 .sec--compact .ship-promise .card p[style*="2rem"]{font-size:1.45rem !important}
 </style>
-<link rel="stylesheet" href="css/mobile.css?v=20260607b1">
+<link rel="stylesheet" href="css/mobile.css?v=20260608c1">
 <meta name="theme-color" content="#E8889E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -217,7 +217,7 @@
 
 <!-- ============ PROMO STRIP (dog) — now BELOW featured ============ -->
 <section class="promo-strip" aria-label="מבצע יוני">
-  <div class="promo-dog" aria-hidden="true"><img src="../assets/img/amy-dog.png" alt=""></div>
+  <button class="promo-dog dog-trigger" type="button" aria-label="נגן את סרטון הכלבה של איימי"><img src="../assets/img/amy-dog.png" alt="הכלבה של איימי"><span class="dog-play" aria-hidden="true">▶</span></button>
   <div class="container">
     <span class="promo-emoji" aria-hidden="true">🎁</span>
     <div class="promo-text">
@@ -286,7 +286,7 @@
   <div class="container">
     <div class="owner-band">
       <div class="owner-photo owner-photo--real reveal">
-        <img src="../assets/img/amy-portrait-real.jpg?v=20260607b1" alt="איימי — בעלת האתר" class="owner-real">
+        <img src="../assets/img/amy-portrait-real.jpg?v=20260608c1" alt="איימי — בעלת האתר" class="owner-real">
         <span class="sig">מאיימי באהבה 🩷</span>
       </div>
       <div class="reveal">
@@ -410,9 +410,9 @@
 <!-- WhatsApp bot launcher -->
 <div id="wa-mount"></div>
 
-<script src="js/products.js?v=20260607b1"></script>
-<script src="js/app.js?v=20260607b1"></script>
-<script src="js/whatsapp.js?v=20260607b1"></script>
+<script src="js/products.js?v=20260608c1"></script>
+<script src="js/app.js?v=20260608c1"></script>
+<script src="js/whatsapp.js?v=20260608c1"></script>
 <script>
   AmyApp.mountChrome("home");
   // categories
@@ -460,6 +460,41 @@
   }
   upd(); window.addEventListener("storage",upd);
   document.addEventListener("click",function(){ setTimeout(upd,200); });
+})();
+</script>
+
+<!-- ============ DOG VIDEO MODAL ============ -->
+<div class="dog-modal" id="dogModal" role="dialog" aria-modal="true" aria-label="הכלבה של איימי" hidden>
+  <div class="dog-modal-backdrop" data-dog-close></div>
+  <div class="dog-modal-box">
+    <button class="dog-modal-x" type="button" aria-label="סגור" data-dog-close>×</button>
+    <video class="dog-modal-video" id="dogVideo" playsinline controls preload="metadata" poster="../assets/img/amy-dog.png">
+      <source src="../assets/media/dog-video.mp4" type="video/mp4">
+    </video>
+    <audio id="dogAudio" preload="none">
+      <source src="../assets/media/dog-sound.ogg" type="audio/ogg">
+      <source src="../assets/media/dog-sound.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+<script>
+(function(){
+  var modal=document.getElementById("dogModal");
+  var video=document.getElementById("dogVideo");
+  var audio=document.getElementById("dogAudio");
+  function open(){
+    modal.hidden=false; document.body.style.overflow="hidden";
+    try{ video.currentTime=0; video.play(); }catch(e){}
+    try{ audio.currentTime=0; audio.play(); }catch(e){}
+  }
+  function close(){
+    modal.hidden=true; document.body.style.overflow="";
+    try{ video.pause(); }catch(e){}
+    try{ audio.pause(); }catch(e){}
+  }
+  document.querySelectorAll(".dog-trigger").forEach(function(b){ b.addEventListener("click",open); });
+  modal.querySelectorAll("[data-dog-close]").forEach(function(el){ el.addEventListener("click",close); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!modal.hidden) close(); });
 })();
 </script>
 </body>
